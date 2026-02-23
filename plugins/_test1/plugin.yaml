@@ -1,0 +1,5 @@
+title: _Test1 Plugin
+description: Test plugin to validate PR checks
+github: https://github.com/example/_test1
+tags:
+  - example
