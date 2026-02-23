@@ -12,28 +12,6 @@ async function run({ github, context }) {
 
   console.log(`Commenting on PR #${issue_number} in ${owner}/${repo}`);
 
-  const comments = await github.paginate(github.rest.issues.listComments, {
-    owner,
-    repo,
-    issue_number,
-    per_page: 100,
-  });
-
-  const existing = comments.find(
-    (c) => (c.user?.type === 'Bot') && (c.body || '').includes(marker)
-  );
-
-  if (existing) {
-    const res = await github.rest.issues.updateComment({
-      owner,
-      repo,
-      comment_id: existing.id,
-      body,
-    });
-    console.log(`Updated validation comment: id=${existing.id} url=${res.data.html_url}`);
-    return { action: 'updated', comment_id: existing.id, url: res.data.html_url };
-  }
-
   const res = await github.rest.issues.createComment({
     owner,
     repo,
