@@ -36,16 +36,18 @@ jobs:
           HEAD_SHA: ${{ github.event.pull_request.head.sha }}
         continue-on-error: true
         run: |
-          set -o pipefail
+          set +e
           python scripts/validate_pr.py 2>&1 | tee validation.log
-          echo "exit_code=${PIPESTATUS[0]}" >> "$GITHUB_OUTPUT"
+          exit_code=${PIPESTATUS[0]}
+          echo "exit_code=${exit_code}" >> "$GITHUB_OUTPUT"
+          exit ${exit_code}
 
       - name: Comment on PR (validation failure)
-        if: ${{ steps.validate.outputs.exit_code != '0' }}
+        if: ${{ steps.validate.outcome == 'failure' }}
         uses: actions/github-script@v7
         with:
           script-file: scripts/comment_validation_failure.js
 
       - name: Fail job if validation failed
-        if: ${{ steps.validate.outputs.exit_code != '0' }}
+        if: ${{ steps.validate.outcome == 'failure' }}
         run: exit 1
