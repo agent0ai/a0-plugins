@@ -16,6 +16,8 @@ This repository is an index only: `plugin.yaml` points to the plugin's own repos
 
 ## Submitting a plugin (Pull Request)
 
+Every PR is first automatically validated by CI. If it passes, it will then be reviewed by a human maintainer before merging.
+
 ### Rules
 
 - **One plugin per PR**
@@ -28,6 +30,25 @@ This repository is an index only: `plugin.yaml` points to the plugin's own repos
   - All required fields in `plugin.yaml` must be present and non-empty.
 - **Optional metadata**
   - The only optional field is **`tags`**.
+
+### Automated validation (CI)
+
+PRs are automatically checked for:
+
+- **Structure**
+  - Exactly one plugin folder per PR under `plugins/<your-plugin-name>/`
+  - No extra files (only `plugin.yaml` and an optional thumbnail)
+- **`plugin.yaml` rules**
+  - Only allowed fields: `title`, `description`, `github`, `tags`
+  - Required fields: `title`, `description`, `github`
+  - `title` max length: 50 characters
+  - `description` max length: 500 characters
+  - `github` must be a GitHub repository URL that exists and contains `plugin.yaml` at the repository root
+  - `tags` (if present) must be a list of strings, up to 5
+- **Thumbnail rules (optional)**
+  - Must be named `thumbnail.<ext>`
+  - Must be square and <= 20 KB
+  - Allowed formats: `.png`, `.jpg`/`.jpeg`, `.webp`
 
 ### Folder structure
 

@@ -2,6 +2,9 @@ import os
 import re
 import subprocess
 import sys
+import urllib.error
+import urllib.parse
+import urllib.request
 from pathlib import Path
 from typing import NoReturn, cast
 
@@ -18,6 +21,8 @@ ALLOWED_IMAGE_EXTS = {".png", ".jpg", ".jpeg", ".webp"}
 MAX_IMAGE_BYTES = 20 * 1024
 MAX_TAGS = 5
 THUMBNAIL_BASENAME = "thumbnail"
+MAX_TITLE_LENGTH = 50
+MAX_DESCRIPTION_LENGTH = 500
 
 
 class ValidationError(Exception):
@@ -80,11 +85,26 @@ def _validate_yaml(plugin_yaml: Path) -> None:
         if not isinstance(v, str) or not v.strip():
             _fail(f"{plugin_yaml.relative_to(REPO_ROOT)} field '{k}' must be a non-empty string")
 
+    title = data.get("title")
+    if isinstance(title, str) and len(title) > MAX_TITLE_LENGTH:
+        _fail(
+            f"{plugin_yaml.relative_to(REPO_ROOT)} field 'title' must be at most {MAX_TITLE_LENGTH} characters"
+        )
+
+    description = data.get("description")
+    if isinstance(description, str) and len(description) > MAX_DESCRIPTION_LENGTH:
+        _fail(
+            f"{plugin_yaml.relative_to(REPO_ROOT)} field 'description' must be at most {MAX_DESCRIPTION_LENGTH} characters"
+        )
+
     github = data.get("github")
     if isinstance(github, str) and not re.match(r"^https?://", github.strip()):
         _fail(
             f"{plugin_yaml.relative_to(REPO_ROOT)} field 'github' must be a valid http(s) URL"
         )
+
+    if isinstance(github, str):
+        _validate_github_repo(github.strip())
 
     if "tags" in data:
         tags = data.get("tags")
@@ -121,6 +141,62 @@ def _validate_thumbnail(image_path: Path) -> None:
         _fail(
             f"Thumbnail must be square (width == height). Got {w}x{h}: {image_path.relative_to(REPO_ROOT)}"
         )
+
+
+def _github_api_get_json(url: str) -> dict:
+    token = os.environ.get("GITHUB_TOKEN")
+    headers = {
+        "Accept": "application/vnd.github+json",
+        "User-Agent": "a0-plugins-validator",
+    }
+    if token:
+        headers["Authorization"] = f"Bearer {token}"
+
+    req = urllib.request.Request(url, headers=headers)
+    try:
+        with urllib.request.urlopen(req, timeout=20) as resp:
+            payload = resp.read().decode("utf-8", errors="replace")
+    except urllib.error.HTTPError as e:
+        msg = e.read().decode("utf-8", errors="replace") if hasattr(e, "read") else str(e)
+        _fail(f"GitHub API request failed ({e.code}) for {url}: {msg}")
+    except Exception as e:
+        _fail(f"GitHub API request failed for {url}: {e}")
+
+    try:
+        return cast(dict, __import__("json").loads(payload))
+    except Exception as e:
+        _fail(f"GitHub API returned invalid JSON for {url}: {e}")
+
+
+def _parse_github_repo_url(repo_url: str) -> tuple[str, str]:
+    parsed = urllib.parse.urlparse(repo_url)
+    if parsed.netloc.lower() != "github.com":
+        _fail(f"github field must point to github.com: {repo_url}")
+
+    path = parsed.path.strip("/")
+    parts = [p for p in path.split("/") if p]
+    if len(parts) < 2:
+        _fail(f"github field must be a GitHub repository URL like https://github.com/<owner>/<repo>: {repo_url}")
+
+    owner = parts[0]
+    repo = parts[1]
+    if repo.endswith(".git"):
+        repo = repo[:-4]
+
+    return owner, repo
+
+
+def _validate_github_repo(repo_url: str) -> None:
+    owner, repo = _parse_github_repo_url(repo_url)
+
+    repo_info = _github_api_get_json(f"https://api.github.com/repos/{owner}/{repo}")
+    default_branch = repo_info.get("default_branch")
+    if not isinstance(default_branch, str) or not default_branch.strip():
+        _fail(f"Unable to determine default branch for GitHub repo: {repo_url}")
+
+    _github_api_get_json(
+        f"https://api.github.com/repos/{owner}/{repo}/contents/plugin.yaml?ref={urllib.parse.quote(default_branch)}"
+    )
 
 
 def main() -> int:
