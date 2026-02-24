@@ -67,6 +67,24 @@ def _get_changed_files(base_sha: str, head_sha: str) -> list[tuple[str, str]]:
     return changes
 
 
+def _get_affected_paths(base_sha: str, head_sha: str) -> list[str]:
+    """Return every path mentioned by the name-status diff, including old/new paths for renames/copies."""
+    raw = _run(["git", "diff", "--name-status", f"{base_sha}..{head_sha}"])
+    affected: list[str] = []
+    for line in raw.splitlines():
+        if not line.strip():
+            continue
+        parts = line.split("\t")
+        if len(parts) < 2:
+            continue
+        # parts[0] is status. Remaining parts are paths (1 for A/M/D, 2 for R/C).
+        for p in parts[1:]:
+            p = p.strip()
+            if p:
+                affected.append(p)
+    return affected
+
+
 def _fail(msg: str) -> NoReturn:
     raise ValidationError(msg)
 
@@ -229,14 +247,13 @@ def main() -> int:
     if not changes:
         _fail("No changed files detected")
 
-    changed_paths: list[Path] = []
-    for _, p in changes:
-        # Normalize to posix-like path fragments.
-        changed_paths.append(Path(p))
+    affected_paths = [Path(p) for p in _get_affected_paths(base_sha, head_sha)]
+    if not affected_paths:
+        _fail("No changed files detected")
 
     # Only allow modifications within exactly one plugin folder.
     plugin_roots: set[Path] = set()
-    for p in changed_paths:
+    for p in affected_paths:
         parts = p.parts
         if len(parts) < 3 or parts[0] != "plugins":
             _fail(
