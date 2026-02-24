@@ -1,4 +1,4 @@
-title: CI Trigger Test2
+title: CI Trigger Test
 description: Dummy plugin to verify that GitHub Actions validation runs on PRs
 github: https://github.com/example/this-repo-should-not-exist
 tags:
