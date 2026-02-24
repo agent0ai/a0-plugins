@@ -11,7 +11,7 @@ import yaml
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 PLUGINS_DIR = REPO_ROOT / "plugins"
-GENERATED_JSON_PATH = REPO_ROOT / ".generated.json"
+INDEX_JSON_PATH = REPO_ROOT / "index.json"
 DISCUSSIONS_CATEGORY_NAME = "Plugins"
 DISCUSSION_MARKER = "<!-- a0-plugins-discussion -->"
 PLUGIN_MARKER_PREFIX = "<!-- a0-plugins-plugin:"
@@ -31,17 +31,17 @@ def _run(cmd: list[str]) -> str:
     return out.decode("utf-8", errors="replace")
 
 
-def _load_generated() -> dict[str, Any]:
-    if not GENERATED_JSON_PATH.exists():
+def _load_index() -> dict[str, Any]:
+    if not INDEX_JSON_PATH.exists():
         return {"version": 1, "plugins": {}}
 
     try:
-        loaded = json.loads(GENERATED_JSON_PATH.read_text(encoding="utf-8"))
+        loaded = json.loads(INDEX_JSON_PATH.read_text(encoding="utf-8"))
     except Exception as e:
-        _fail(f"Unable to parse {GENERATED_JSON_PATH.name}: {e}")
+        _fail(f"Unable to parse {INDEX_JSON_PATH.name}: {e}")
 
     if not isinstance(loaded, dict):
-        _fail(f"{GENERATED_JSON_PATH.name} must contain a JSON object")
+        _fail(f"{INDEX_JSON_PATH.name} must contain a JSON object")
 
     if "plugins" not in loaded or not isinstance(loaded.get("plugins"), dict):
         loaded["plugins"] = {}
@@ -52,16 +52,61 @@ def _load_generated() -> dict[str, Any]:
     return cast(dict[str, Any], loaded)
 
 
-def _save_generated(data: dict[str, Any]) -> None:
+def _save_index(data: dict[str, Any]) -> None:
     plugins = data.get("plugins")
     if not isinstance(plugins, dict):
         plugins = {}
     # Ensure deterministic output order.
     data["plugins"] = {k: plugins[k] for k in sorted(plugins.keys())}
-    GENERATED_JSON_PATH.write_text(
+    INDEX_JSON_PATH.write_text(
         json.dumps(data, indent=2, sort_keys=True) + "\n",
         encoding="utf-8",
     )
+
+
+def _thumbnail_rel_path(plugin_name: str) -> str | None:
+    plugin_dir = PLUGINS_DIR / plugin_name
+    if not plugin_dir.exists():
+        return None
+
+    for ext in (".png", ".jpg", ".jpeg", ".webp"):
+        p = plugin_dir / f"thumbnail{ext}"
+        if p.exists():
+            return p.relative_to(REPO_ROOT).as_posix()
+    return None
+
+
+def _index_plugin_entry(plugin_name: str, meta: dict[str, Any]) -> dict[str, Any]:
+    title = meta.get("title") if isinstance(meta.get("title"), str) else None
+    description = meta.get("description") if isinstance(meta.get("description"), str) else None
+    gh = meta.get("github") if isinstance(meta.get("github"), str) else None
+    thumb = _thumbnail_rel_path(plugin_name)
+    return {
+        "title": title,
+        "description": description,
+        "github": gh,
+        "thumbnail": thumb,
+    }
+
+
+def _upsert_index_plugin(
+    index: dict[str, Any],
+    plugin_name: str,
+    meta: dict[str, Any],
+    discussion_id: str | None,
+    discussion_url: str | None,
+) -> None:
+    plugins = index.get("plugins")
+    if not isinstance(plugins, dict):
+        plugins = {}
+        index["plugins"] = plugins
+
+    entry = _index_plugin_entry(plugin_name, meta)
+    entry["discussion"] = {
+        "id": discussion_id,
+        "url": discussion_url,
+    }
+    plugins[plugin_name] = entry
 
 
 def _git_diff_names(before: str, after: str) -> list[str]:
@@ -377,8 +422,8 @@ def main() -> int:
             "Increase MAX_PLUGINS or run multiple smaller pushes."
         )
 
-    generated = _load_generated()
-    generated_before = json.dumps(generated, sort_keys=True)
+    index = _load_index()
+    index_before = json.dumps(index, sort_keys=True)
 
     repo_id, category_id = _get_repo_and_category(owner, repo)
 
@@ -401,16 +446,13 @@ def main() -> int:
                 skipped += 1
                 print(f"Exists: {plugin_name} -> {existing.get('url')}")
 
-            plugins = generated.get("plugins")
-            if not isinstance(plugins, dict):
-                plugins = {}
-                generated["plugins"] = plugins
-            plugins[plugin_name] = {
-                "discussion": {
-                    "id": disc_id if isinstance(disc_id, str) else None,
-                    "url": existing.get("url") if isinstance(existing.get("url"), str) else None,
-                }
-            }
+            _upsert_index_plugin(
+                index,
+                plugin_name,
+                meta,
+                disc_id if isinstance(disc_id, str) else None,
+                existing.get("url") if isinstance(existing.get("url"), str) else None,
+            )
 
             continue
 
@@ -419,21 +461,18 @@ def main() -> int:
         created += 1
         print(f"Created: {plugin_name} -> {disc.get('url')}")
 
-        plugins = generated.get("plugins")
-        if not isinstance(plugins, dict):
-            plugins = {}
-            generated["plugins"] = plugins
-        plugins[plugin_name] = {
-            "discussion": {
-                "id": disc.get("id") if isinstance(disc.get("id"), str) else None,
-                "url": disc.get("url") if isinstance(disc.get("url"), str) else None,
-            }
-        }
+        _upsert_index_plugin(
+            index,
+            plugin_name,
+            meta,
+            disc.get("id") if isinstance(disc.get("id"), str) else None,
+            disc.get("url") if isinstance(disc.get("url"), str) else None,
+        )
 
-    generated_after = json.dumps(generated, sort_keys=True)
-    if generated_after != generated_before:
-        _save_generated(generated)
-        print(f"Updated {GENERATED_JSON_PATH.name}")
+    index_after = json.dumps(index, sort_keys=True)
+    if index_after != index_before:
+        _save_index(index)
+        print(f"Updated {INDEX_JSON_PATH.name}")
 
     print(f"Done. created={created} skipped={skipped} total={len(plugin_names)}")
     return 0

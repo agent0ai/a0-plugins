@@ -1,0 +1,58 @@
+name: Update Index Stars (hourly)
+
+concurrency:
+  group: index-release-publisher
+  cancel-in-progress: false
+
+on:
+  schedule:
+    - cron: "17 * * * *" # hourly
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Download index.json from latest Release
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          INDEX_RELEASE_TAG: generated-index
+        run: |
+          python scripts/download_index_release.py
+
+      - name: Scan stars (write stars_updates.json)
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          STARS_CHUNK_SIZE: "50"
+        run: |
+          python scripts/update_index_stars.py --mode scan
+
+      - name: Refresh index.json from latest Release
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          INDEX_RELEASE_TAG: generated-index
+        run: |
+          python scripts/download_index_release.py
+
+      - name: Apply stars updates to refreshed index.json
+        run: |
+          python scripts/update_index_stars.py --mode apply
+
+      - name: Publish updated index.json to Release (replace asset)
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          INDEX_RELEASE_TAG: generated-index
+        run: |
+          python scripts/publish_index_release.py
