@@ -5,7 +5,7 @@ async function run({ github, context }) {
   const raw = fs.readFileSync('validation.log', 'utf8');
   const max = 60000;
   const text = raw.length > max ? raw.slice(0, max) + '\n... (truncated)\n' : raw;
-  const body = `${marker}\n## ❌ Plugin submission validation failed\n\n\`\`\`\n${text}\n\`\`\`\n\nPush an update to this PR to re-run validation.`;
+  const body = `${marker}\n## ❌ Plugin submission validation failed\n\n\`\`\`\n${text}\n\`\`\`\n\nPush an update to this PR to re-run validation.\n\nIf this PR keeps failing checks and has no activity for 7+ days, it may be automatically closed.`;
 
   const { owner, repo } = context.repo;
   const issue_number = context.payload.pull_request.number;

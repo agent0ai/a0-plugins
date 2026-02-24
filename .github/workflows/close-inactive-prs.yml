@@ -1,0 +1,32 @@
+name: Close PRs failing checks and inactive for 7+ days
+
+on:
+  schedule:
+    - cron: "17 4 * * *" # daily
+  workflow_dispatch:
+
+permissions:
+  pull-requests: write
+  contents: read
+  issues: write
+
+jobs:
+  close:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Close inactive failing PRs
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          OWNER: ${{ github.repository_owner }}
+          REPO: ${{ github.event.repository.name }}
+          INACTIVITY_DAYS: "7"
+        run: |
+          python scripts/close_inactive_failing_prs.py

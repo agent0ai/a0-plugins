@@ -18,6 +18,8 @@ This repository is an index only: `plugin.yaml` points to the plugin's own repos
 
 Every PR is first automatically validated by CI. If it passes, it will then be reviewed by a human maintainer before merging.
 
+If your PR keeps failing checks and has no activity for 7+ days, it may be automatically closed.
+
 ### Rules
 
 - **One plugin per PR**
