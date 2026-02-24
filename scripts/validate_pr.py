@@ -2,6 +2,7 @@ import os
 import re
 import subprocess
 import sys
+import tempfile
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -34,6 +35,22 @@ def _run(cmd: list[str]) -> str:
     return out.decode("utf-8", errors="replace")
 
 
+def _run_bytes(cmd: list[str]) -> bytes:
+    return subprocess.check_output(cmd, cwd=REPO_ROOT)
+
+
+def _git_ls_tree_names(commit: str, path: str) -> list[str]:
+    raw = _run(["git", "ls-tree", "-r", "--name-only", commit, "--", path])
+    return [line.strip() for line in raw.splitlines() if line.strip()]
+
+
+def _git_show_bytes(commit: str, file_path: str) -> bytes:
+    try:
+        return _run_bytes(["git", "show", f"{commit}:{file_path}"])
+    except subprocess.CalledProcessError as e:
+        _fail(f"Unable to read {file_path} at {commit}: {e}")
+
+
 def _get_changed_files(base_sha: str, head_sha: str) -> list[tuple[str, str]]:
     # Use name-status so we can detect deleted/renamed files.
     raw = _run(["git", "diff", "--name-status", f"{base_sha}..{head_sha}"])
@@ -54,17 +71,17 @@ def _fail(msg: str) -> NoReturn:
     raise ValidationError(msg)
 
 
-def _validate_yaml(plugin_yaml: Path) -> None:
+def _validate_yaml_bytes(plugin_yaml_path: str, content: bytes) -> None:
     loaded = None
     try:
-        loaded = yaml.safe_load(plugin_yaml.read_text(encoding="utf-8"))
+        loaded = yaml.safe_load(content.decode("utf-8", errors="strict"))
     except Exception as e:
-        _fail(f"Invalid YAML in {plugin_yaml.relative_to(REPO_ROOT)}: {e}")
+        _fail(f"Invalid YAML in {plugin_yaml_path}: {e}")
 
     data = loaded
 
     if not isinstance(data, dict):
-        _fail(f"{plugin_yaml.relative_to(REPO_ROOT)} must contain a YAML mapping/object")
+        _fail(f"{plugin_yaml_path} must contain a YAML mapping/object")
 
     keys = set(data.keys())
     extra = keys - ALLOWED_YAML_KEYS
@@ -72,35 +89,35 @@ def _validate_yaml(plugin_yaml: Path) -> None:
 
     if extra:
         _fail(
-            f"{plugin_yaml.relative_to(REPO_ROOT)} contains unsupported fields: {sorted(extra)}. "
+            f"{plugin_yaml_path} contains unsupported fields: {sorted(extra)}. "
             f"Allowed fields are: {sorted(ALLOWED_YAML_KEYS)}"
         )
     if missing:
         _fail(
-            f"{plugin_yaml.relative_to(REPO_ROOT)} is missing required fields: {sorted(missing)}"
+            f"{plugin_yaml_path} is missing required fields: {sorted(missing)}"
         )
 
     for k in REQUIRED_YAML_KEYS:
         v = data.get(k)
         if not isinstance(v, str) or not v.strip():
-            _fail(f"{plugin_yaml.relative_to(REPO_ROOT)} field '{k}' must be a non-empty string")
+            _fail(f"{plugin_yaml_path} field '{k}' must be a non-empty string")
 
     title = data.get("title")
     if isinstance(title, str) and len(title) > MAX_TITLE_LENGTH:
         _fail(
-            f"{plugin_yaml.relative_to(REPO_ROOT)} field 'title' must be at most {MAX_TITLE_LENGTH} characters"
+            f"{plugin_yaml_path} field 'title' must be at most {MAX_TITLE_LENGTH} characters"
         )
 
     description = data.get("description")
     if isinstance(description, str) and len(description) > MAX_DESCRIPTION_LENGTH:
         _fail(
-            f"{plugin_yaml.relative_to(REPO_ROOT)} field 'description' must be at most {MAX_DESCRIPTION_LENGTH} characters"
+            f"{plugin_yaml_path} field 'description' must be at most {MAX_DESCRIPTION_LENGTH} characters"
         )
 
     github = data.get("github")
     if isinstance(github, str) and not re.match(r"^https?://", github.strip()):
         _fail(
-            f"{plugin_yaml.relative_to(REPO_ROOT)} field 'github' must be a valid http(s) URL"
+            f"{plugin_yaml_path} field 'github' must be a valid http(s) URL"
         )
 
     if isinstance(github, str):
@@ -109,13 +126,13 @@ def _validate_yaml(plugin_yaml: Path) -> None:
     if "tags" in data:
         tags = data.get("tags")
         if tags is None:
-            _fail(f"{plugin_yaml.relative_to(REPO_ROOT)} field 'tags' must be a list of strings")
+            _fail(f"{plugin_yaml_path} field 'tags' must be a list of strings")
         if not isinstance(tags, list) or not all(isinstance(t, str) and t.strip() for t in tags):
-            _fail(f"{plugin_yaml.relative_to(REPO_ROOT)} field 'tags' must be a list of strings")
+            _fail(f"{plugin_yaml_path} field 'tags' must be a list of strings")
         tags_list = cast(list[str], tags)
         if len(tags_list) > MAX_TAGS:
             _fail(
-                f"{plugin_yaml.relative_to(REPO_ROOT)} field 'tags' must contain at most {MAX_TAGS} entries"
+                f"{plugin_yaml_path} field 'tags' must contain at most {MAX_TAGS} entries"
             )
 
 
@@ -241,45 +258,53 @@ def main() -> int:
             f"Plugin folder '{plugin_name}' starts with '_' which is reserved and not visible in Agent Zero"
         )
 
-    plugin_root = REPO_ROOT / plugin_root_rel
-    if not plugin_root.exists() or not plugin_root.is_dir():
-        _fail(f"Plugin folder does not exist: {plugin_root_rel.as_posix()}")
+    plugin_root_path = plugin_root_rel.as_posix()
+    plugin_files = _git_ls_tree_names(head_sha, plugin_root_path)
+    if not plugin_files:
+        _fail(f"Plugin folder does not exist in PR head: {plugin_root_path}")
 
-    plugin_yaml = plugin_root / "plugin.yaml"
-    if not plugin_yaml.exists():
-        _fail(f"Missing required file: {plugin_yaml.relative_to(REPO_ROOT)}")
+    plugin_yaml_path = f"{plugin_root_path}/plugin.yaml"
+    if plugin_yaml_path not in plugin_files:
+        _fail(f"Missing required file in PR head: {plugin_yaml_path}")
 
-    thumbnails: list[Path] = []
-    for child in plugin_root.iterdir():
-        if child.is_dir():
-            _fail(
-                f"No subdirectories are allowed inside a plugin folder: {child.relative_to(REPO_ROOT)}"
-            )
-        if child.name == "plugin.yaml":
+    # Validate no extra files and optional thumbnail naming.
+    thumbnails: list[str] = []
+    for f in plugin_files:
+        name = f.split("/")[-1]
+        if name == "plugin.yaml":
             continue
-        if child.suffix.lower() in ALLOWED_IMAGE_EXTS:
-            if child.stem.lower() != THUMBNAIL_BASENAME:
+        suffix = Path(name).suffix.lower()
+        if suffix in ALLOWED_IMAGE_EXTS:
+            stem = Path(name).stem.lower()
+            if stem != THUMBNAIL_BASENAME:
                 _fail(
-                    f"Thumbnail must be named '{THUMBNAIL_BASENAME}<ext>' (e.g. thumbnail.png). "
-                    f"Found: {child.relative_to(REPO_ROOT)}"
+                    f"Thumbnail must be named '{THUMBNAIL_BASENAME}<ext>' (e.g. thumbnail.png). Found: {f}"
                 )
-            thumbnails.append(child)
+            thumbnails.append(f)
             continue
         _fail(
-            f"Unsupported file in plugin folder: {child.relative_to(REPO_ROOT)}. "
-            "Only plugin.yaml and an optional thumbnail image are allowed."
+            f"Unsupported file in plugin folder: {f}. Only plugin.yaml and an optional thumbnail image are allowed."
         )
 
     if len(thumbnails) > 1:
-        _fail(
-            "At most one thumbnail image is allowed. Found: "
-            + ", ".join(t.relative_to(REPO_ROOT).as_posix() for t in thumbnails)
-        )
+        _fail("At most one thumbnail image is allowed. Found: " + ", ".join(thumbnails))
 
-    _validate_yaml(plugin_yaml)
+    plugin_yaml_bytes = _git_show_bytes(head_sha, plugin_yaml_path)
+    _validate_yaml_bytes(plugin_yaml_path, plugin_yaml_bytes)
 
     if thumbnails:
-        _validate_thumbnail(thumbnails[0])
+        thumb_path = thumbnails[0]
+        thumb_bytes = _git_show_bytes(head_sha, thumb_path)
+        with tempfile.NamedTemporaryFile(suffix=Path(thumb_path).suffix, delete=False) as tmp:
+            tmp.write(thumb_bytes)
+            tmp_path = Path(tmp.name)
+        try:
+            _validate_thumbnail(tmp_path)
+        finally:
+            try:
+                tmp_path.unlink(missing_ok=True)
+            except Exception:
+                pass
 
     # Ensure the PR didn't delete required files.
     deleted = [p for status, p in changes if status.startswith("D")]
