@@ -11,8 +11,10 @@ import yaml
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 PLUGINS_DIR = REPO_ROOT / "plugins"
+GENERATED_JSON_PATH = REPO_ROOT / ".generated.json"
 DISCUSSIONS_CATEGORY_NAME = "Plugins"
 DISCUSSION_MARKER = "<!-- a0-plugins-discussion -->"
+PLUGIN_MARKER_PREFIX = "<!-- a0-plugins-plugin:"
 DEFAULT_MAX_PLUGINS = 100
 
 
@@ -27,6 +29,39 @@ def _fail(msg: str) -> NoReturn:
 def _run(cmd: list[str]) -> str:
     out = subprocess.check_output(cmd, cwd=REPO_ROOT)
     return out.decode("utf-8", errors="replace")
+
+
+def _load_generated() -> dict[str, Any]:
+    if not GENERATED_JSON_PATH.exists():
+        return {"version": 1, "plugins": {}}
+
+    try:
+        loaded = json.loads(GENERATED_JSON_PATH.read_text(encoding="utf-8"))
+    except Exception as e:
+        _fail(f"Unable to parse {GENERATED_JSON_PATH.name}: {e}")
+
+    if not isinstance(loaded, dict):
+        _fail(f"{GENERATED_JSON_PATH.name} must contain a JSON object")
+
+    if "plugins" not in loaded or not isinstance(loaded.get("plugins"), dict):
+        loaded["plugins"] = {}
+
+    if "version" not in loaded:
+        loaded["version"] = 1
+
+    return cast(dict[str, Any], loaded)
+
+
+def _save_generated(data: dict[str, Any]) -> None:
+    plugins = data.get("plugins")
+    if not isinstance(plugins, dict):
+        plugins = {}
+    # Ensure deterministic output order.
+    data["plugins"] = {k: plugins[k] for k in sorted(plugins.keys())}
+    GENERATED_JSON_PATH.write_text(
+        json.dumps(data, indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
 
 
 def _git_diff_names(before: str, after: str) -> list[str]:
@@ -188,6 +223,7 @@ def _discussion_body(plugin_name: str, meta: dict[str, Any], owner: str, repo: s
 
     lines: list[str] = []
     lines.append(DISCUSSION_MARKER)
+    lines.append(f"{PLUGIN_MARKER_PREFIX}{plugin_name} -->")
     lines.append(f"## {title}" if title else "## Plugin")
     if description:
         lines.append("")
@@ -205,7 +241,7 @@ def _discussion_body(plugin_name: str, meta: dict[str, Any], owner: str, repo: s
     return "\n".join(lines).strip() + "\n"
 
 
-def _find_existing_discussion(owner: str, repo: str, expected_title: str) -> dict[str, Any] | None:
+def _search_discussion(owner: str, repo: str, query_str: str) -> dict[str, Any] | None:
     query = """
     query($q: String!) {
       search(query: $q, type: DISCUSSION, first: 5) {
@@ -215,14 +251,14 @@ def _find_existing_discussion(owner: str, repo: str, expected_title: str) -> dic
             id
             title
             url
+            closed
           }
         }
       }
     }
     """
 
-    q = f'repo:{owner}/{repo} in:title "{expected_title}"'
-    data = _graphql_request(query, {"q": q})
+    data = _graphql_request(query, {"q": query_str})
 
     search = data.get("search")
     if not isinstance(search, dict):
@@ -237,10 +273,46 @@ def _find_existing_discussion(owner: str, repo: str, expected_title: str) -> dic
             continue
         if n.get("__typename") != "Discussion":
             continue
-        if n.get("title") == expected_title:
-            return n
+        return n
 
     return None
+
+
+def _find_existing_discussion(owner: str, repo: str, plugin_name: str, expected_title: str) -> dict[str, Any] | None:
+    marker = f"{PLUGIN_MARKER_PREFIX}{plugin_name} -->"
+    # Deterministic lookup: marker in body.
+    by_marker = _search_discussion(owner, repo, f'repo:{owner}/{repo} in:body "{marker}"')
+    if by_marker:
+        return by_marker
+    # Backward-compatible fallback: title.
+    by_title = _search_discussion(owner, repo, f'repo:{owner}/{repo} in:title "{expected_title}"')
+    if by_title and by_title.get("title") == expected_title:
+        return by_title
+    return None
+
+
+def _reopen_discussion(discussion_id: str) -> None:
+    query = """
+    mutation($id: ID!) {
+      reopenDiscussion(input: {discussionId: $id}) {
+        discussion {
+          id
+          url
+          closed
+        }
+      }
+    }
+    """
+
+    data = _graphql_request(query, {"id": discussion_id})
+    rd = data.get("reopenDiscussion")
+    if not isinstance(rd, dict):
+        _fail("Unexpected GraphQL response: missing reopenDiscussion")
+    disc = rd.get("discussion")
+    if not isinstance(disc, dict):
+        _fail("Unexpected GraphQL response: missing discussion")
+    if disc.get("closed") is True:
+        _fail("Attempted to reopen discussion but it is still closed")
 
 
 def _create_discussion(repo_id: str, category_id: str, title: str, body: str) -> dict[str, Any]:
@@ -305,6 +377,9 @@ def main() -> int:
             "Increase MAX_PLUGINS or run multiple smaller pushes."
         )
 
+    generated = _load_generated()
+    generated_before = json.dumps(generated, sort_keys=True)
+
     repo_id, category_id = _get_repo_and_category(owner, repo)
 
     created = 0
@@ -314,16 +389,51 @@ def main() -> int:
         meta = _read_plugin_yaml(plugin_name)
         expected_title = _discussion_title(plugin_name)
 
-        existing = _find_existing_discussion(owner, repo, expected_title)
+        existing = _find_existing_discussion(owner, repo, plugin_name, expected_title)
         if existing:
-            skipped += 1
-            print(f"Exists: {plugin_name} -> {existing.get('url')}")
+            disc_id = existing.get("id")
+            closed = existing.get("closed")
+            if isinstance(disc_id, str) and closed is True:
+                _reopen_discussion(disc_id)
+                print(f"Reopened: {plugin_name} -> {existing.get('url')}")
+                skipped += 1
+            else:
+                skipped += 1
+                print(f"Exists: {plugin_name} -> {existing.get('url')}")
+
+            plugins = generated.get("plugins")
+            if not isinstance(plugins, dict):
+                plugins = {}
+                generated["plugins"] = plugins
+            plugins[plugin_name] = {
+                "discussion": {
+                    "id": disc_id if isinstance(disc_id, str) else None,
+                    "url": existing.get("url") if isinstance(existing.get("url"), str) else None,
+                }
+            }
+
             continue
 
         body = _discussion_body(plugin_name, meta, owner, repo)
         disc = _create_discussion(repo_id, category_id, expected_title, body)
         created += 1
         print(f"Created: {plugin_name} -> {disc.get('url')}")
+
+        plugins = generated.get("plugins")
+        if not isinstance(plugins, dict):
+            plugins = {}
+            generated["plugins"] = plugins
+        plugins[plugin_name] = {
+            "discussion": {
+                "id": disc.get("id") if isinstance(disc.get("id"), str) else None,
+                "url": disc.get("url") if isinstance(disc.get("url"), str) else None,
+            }
+        }
+
+    generated_after = json.dumps(generated, sort_keys=True)
+    if generated_after != generated_before:
+        _save_generated(generated)
+        print(f"Updated {GENERATED_JSON_PATH.name}")
 
     print(f"Done. created={created} skipped={skipped} total={len(plugin_names)}")
     return 0
