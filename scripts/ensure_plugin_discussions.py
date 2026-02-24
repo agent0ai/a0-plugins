@@ -68,7 +68,6 @@ def _thumbnail_rel_path(plugin_name: str) -> str | None:
     plugin_dir = PLUGINS_DIR / plugin_name
     if not plugin_dir.exists():
         return None
-
     for ext in (".png", ".jpg", ".jpeg", ".webp"):
         p = plugin_dir / f"thumbnail{ext}"
         if p.exists():
@@ -76,11 +75,24 @@ def _thumbnail_rel_path(plugin_name: str) -> str | None:
     return None
 
 
+def _repo_file_url(rel_path: str) -> str:
+    repo_full = os.environ.get("GITHUB_REPOSITORY")
+    if not repo_full or "/" not in repo_full:
+        _fail("GITHUB_REPOSITORY is required (owner/repo)")
+    owner, repo = repo_full.split("/", 1)
+
+    ref = os.environ.get("GITHUB_REF_NAME") or "main"
+
+    # Use raw.githubusercontent.com for direct file access.
+    return f"https://raw.githubusercontent.com/{owner}/{repo}/{ref}/{rel_path.lstrip('/')}"
+
+
 def _index_plugin_entry(plugin_name: str, meta: dict[str, Any]) -> dict[str, Any]:
     title = meta.get("title") if isinstance(meta.get("title"), str) else None
     description = meta.get("description") if isinstance(meta.get("description"), str) else None
     gh = meta.get("github") if isinstance(meta.get("github"), str) else None
-    thumb = _thumbnail_rel_path(plugin_name)
+    thumb_rel = _thumbnail_rel_path(plugin_name)
+    thumb = _repo_file_url(thumb_rel) if isinstance(thumb_rel, str) else None
     return {
         "title": title,
         "description": description,
@@ -93,7 +105,6 @@ def _upsert_index_plugin(
     index: dict[str, Any],
     plugin_name: str,
     meta: dict[str, Any],
-    discussion_id: str | None,
     discussion_url: str | None,
 ) -> None:
     plugins = index.get("plugins")
@@ -101,11 +112,19 @@ def _upsert_index_plugin(
         plugins = {}
         index["plugins"] = plugins
 
-    entry = _index_plugin_entry(plugin_name, meta)
-    entry["discussion"] = {
-        "id": discussion_id,
-        "url": discussion_url,
-    }
+    existing = plugins.get(plugin_name)
+    existing_dict = existing if isinstance(existing, dict) else {}
+
+    # Merge-based update: preserve any fields not owned by this generator.
+    entry: dict[str, Any] = dict(existing_dict)
+
+    generated = _index_plugin_entry(plugin_name, meta)
+    entry["title"] = generated.get("title")
+    entry["description"] = generated.get("description")
+    entry["github"] = generated.get("github")
+    entry["thumbnail"] = generated.get("thumbnail")
+    entry["discussion"] = discussion_url
+
     plugins[plugin_name] = entry
 
 
@@ -450,7 +469,6 @@ def main() -> int:
                 index,
                 plugin_name,
                 meta,
-                disc_id if isinstance(disc_id, str) else None,
                 existing.get("url") if isinstance(existing.get("url"), str) else None,
             )
 
@@ -465,7 +483,6 @@ def main() -> int:
             index,
             plugin_name,
             meta,
-            disc.get("id") if isinstance(disc.get("id"), str) else None,
             disc.get("url") if isinstance(disc.get("url"), str) else None,
         )
 

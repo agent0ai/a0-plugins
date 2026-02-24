@@ -1,6 +1,6 @@
 title: Test Plugin 1.2
 description: Example plugin template to demonstrate the plugin system
-github: https://github.com/agen0ai/a0-plugins
+github: https://github.com/agent0ai/a0-plugins
 tags:
   - example
   - template

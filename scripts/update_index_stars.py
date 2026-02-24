@@ -149,7 +149,6 @@ def _scan_and_write_updates(chunk_size: int, updates_path: Path) -> int:
         updates_path.write_text("{}\n", encoding="utf-8")
         return 0
 
-    updated_at = datetime.now(timezone.utc).isoformat()
     updates: dict[str, Any] = {}
 
     for batch in _chunks(items, chunk_size):
@@ -200,7 +199,6 @@ def _scan_and_write_updates(chunk_size: int, updates_path: Path) -> int:
             if key in alias_errors:
                 updates[plugin_name] = {
                     "error": alias_errors[key],
-                    "stars_updated_at": updated_at,
                     "repo": f"{owner}/{repo}",
                 }
                 continue
@@ -214,7 +212,6 @@ def _scan_and_write_updates(chunk_size: int, updates_path: Path) -> int:
                 continue
             updates[plugin_name] = {
                 "stars": stars,
-                "stars_updated_at": updated_at,
                 "repo": f"{owner}/{repo}",
             }
 
@@ -244,11 +241,8 @@ def _apply_updates(updates_path: Path) -> int:
             # plugin may have been removed; skip
             continue
         stars = upd.get("stars")
-        stars_updated_at = upd.get("stars_updated_at")
         if isinstance(stars, int):
             entry["stars"] = stars
-        if isinstance(stars_updated_at, str):
-            entry["stars_updated_at"] = stars_updated_at
         applied += 1
 
     _save_index(index)
