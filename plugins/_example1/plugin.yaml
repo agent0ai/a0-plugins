@@ -1,6 +1,6 @@
 title: Example Plugin
 description: Example plugin template to demonstrate the plugin system
-github: https://github.com/agentzero/a0-plugin-example
+github: https://github.com/agen0ai/a0-plugins
 tags:
   - example
   - template

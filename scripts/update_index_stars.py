@@ -60,14 +60,35 @@ def _graphql(query: str) -> dict[str, Any]:
     if not isinstance(parsed, dict):
         _fail("GitHub GraphQL returned non-object JSON")
 
-    if parsed.get("errors"):
-        _fail(f"GitHub GraphQL errors: {parsed['errors']}")
+    # Note: GitHub GraphQL can return partial data with per-field errors (e.g. NOT_FOUND
+    # for a single repository). We must not fail the whole run on those.
 
     data = parsed.get("data")
     if not isinstance(data, dict):
         _fail("GitHub GraphQL response missing data")
 
     return cast(dict[str, Any], data)
+
+
+def _extract_alias_errors(parsed: dict[str, Any]) -> dict[str, str]:
+    errors = parsed.get("errors")
+    if not isinstance(errors, list):
+        return {}
+
+    out: dict[str, str] = {}
+    for e in errors:
+        if not isinstance(e, dict):
+            continue
+        path = e.get("path")
+        if not isinstance(path, list) or not path:
+            continue
+        alias = path[0]
+        if not isinstance(alias, str):
+            continue
+        msg = e.get("message")
+        if isinstance(msg, str) and msg.strip():
+            out[alias] = msg.strip()
+    return out
 
 
 def _parse_repo_url(url: str) -> tuple[str, str] | None:
@@ -138,10 +159,51 @@ def _scan_and_write_updates(chunk_size: int, updates_path: Path) -> int:
                 f'r{i}: repository(owner: "{owner}", name: "{repo}") {{ stargazerCount }}'
             )
         query = "query {\n" + "\n".join(blocks) + "\n}"
-        data = _graphql(query)
+        # We want per-alias errors without failing the whole run.
+        req = urllib.request.Request(
+            "https://api.github.com/graphql",
+            data=json.dumps({"query": query}).encode("utf-8"),
+            method="POST",
+            headers={
+                "Authorization": f"Bearer {_token()}",
+                "Accept": "application/vnd.github+json",
+                "User-Agent": "a0-plugins-stars-updater",
+                "Content-Type": "application/json",
+            },
+        )
+
+        try:
+            with urllib.request.urlopen(req, timeout=60) as resp:
+                payload = resp.read().decode("utf-8", errors="replace")
+        except urllib.error.HTTPError as e:
+            msg = e.read().decode("utf-8", errors="replace") if hasattr(e, "read") else str(e)
+            _fail(f"GitHub GraphQL request failed ({e.code}): {msg}")
+        except Exception as e:
+            _fail(f"GitHub GraphQL request failed: {e}")
+
+        try:
+            parsed = json.loads(payload)
+        except Exception as e:
+            _fail(f"GitHub GraphQL returned invalid JSON: {e}: {payload[:500]}")
+
+        if not isinstance(parsed, dict):
+            _fail("GitHub GraphQL returned non-object JSON")
+
+        alias_errors = _extract_alias_errors(cast(dict[str, Any], parsed))
+        data = parsed.get("data")
+        if not isinstance(data, dict):
+            _fail("GitHub GraphQL response missing data")
+        data = cast(dict[str, Any], data)
 
         for i, (plugin_name, owner, repo) in enumerate(batch):
             key = f"r{i}"
+            if key in alias_errors:
+                updates[plugin_name] = {
+                    "error": alias_errors[key],
+                    "stars_updated_at": updated_at,
+                    "repo": f"{owner}/{repo}",
+                }
+                continue
             repo_obj = data.get(key)
             if repo_obj is None:
                 continue
