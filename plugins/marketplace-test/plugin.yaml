@@ -1,0 +1,6 @@
+title: Marketplace Test Plugin
+description: Test plugin submission expected to pass automated validation
+github: https://github.com/a0-community-plugins/a0-marketplace
+tags:
+  - example
+  - test
