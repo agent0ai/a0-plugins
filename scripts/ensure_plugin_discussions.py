@@ -52,6 +52,29 @@ def _load_index() -> dict[str, Any]:
     return cast(dict[str, Any], loaded)
 
 
+def _plugin_exists(plugin_name: str) -> bool:
+    plugin_yaml = PLUGINS_DIR / plugin_name / "plugin.yaml"
+    return plugin_yaml.exists()
+
+
+def _prune_removed_plugins(index: dict[str, Any]) -> int:
+    plugins = index.get("plugins")
+    if not isinstance(plugins, dict):
+        return 0
+
+    removed = 0
+    for plugin_name in list(plugins.keys()):
+        if not isinstance(plugin_name, str):
+            continue
+        if not plugin_name or plugin_name.startswith("_"):
+            continue
+        if not _plugin_exists(plugin_name):
+            del plugins[plugin_name]
+            removed += 1
+
+    return removed
+
+
 def _save_index(data: dict[str, Any]) -> None:
     plugins = data.get("plugins")
     if not isinstance(plugins, dict):
@@ -444,12 +467,27 @@ def main() -> int:
     index = _load_index()
     index_before = json.dumps(index, sort_keys=True)
 
+    # When running a full refresh, also remove any index entries whose plugin no longer exists.
+    if run_all:
+        removed = _prune_removed_plugins(index)
+        if removed:
+            print(f"Pruned {removed} removed plugins from {INDEX_JSON_PATH.name}")
+
     repo_id, category_id = _get_repo_and_category(owner, repo)
 
     created = 0
     skipped = 0
 
     for plugin_name in plugin_names:
+        if not _plugin_exists(plugin_name):
+            plugins_obj = index.get("plugins")
+            if isinstance(plugins_obj, dict) and plugin_name in plugins_obj:
+                del plugins_obj[plugin_name]
+                print(f"Removed from index (plugin deleted): {plugin_name}")
+            else:
+                print(f"Plugin deleted (not in index): {plugin_name}")
+            continue
+
         meta = _read_plugin_yaml(plugin_name)
         expected_title = _discussion_title(plugin_name)
 

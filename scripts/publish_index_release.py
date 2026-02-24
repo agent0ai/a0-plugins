@@ -222,7 +222,8 @@ def main() -> int:
     asset_name = os.environ.get("INDEX_ASSET_NAME", DEFAULT_ASSET_NAME)
 
     if not INDEX_PATH.exists():
-        _fail(f"Missing {INDEX_PATH.relative_to(REPO_ROOT)}. Generate it first.")
+        print(f"Missing {INDEX_PATH.relative_to(REPO_ROOT)}. Nothing to publish.")
+        return 0
 
     content = INDEX_PATH.read_bytes()
 

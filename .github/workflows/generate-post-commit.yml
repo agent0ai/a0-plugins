@@ -34,6 +34,14 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install pyyaml
 
+      - name: Download current index.json (best effort)
+        continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          INDEX_RELEASE_TAG: generated-index
+        run: |
+          python scripts/download_index_release.py
+
       - name: Generate (post-commit)
         env:
           GITHUB_TOKEN: ${{ github.token }}
