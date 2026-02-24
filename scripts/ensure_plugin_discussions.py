@@ -114,12 +114,17 @@ def _index_plugin_entry(plugin_name: str, meta: dict[str, Any]) -> dict[str, Any
     title = meta.get("title") if isinstance(meta.get("title"), str) else None
     description = meta.get("description") if isinstance(meta.get("description"), str) else None
     gh = meta.get("github") if isinstance(meta.get("github"), str) else None
+    tags_val = meta.get("tags")
+    tags: list[str] | None = None
+    if isinstance(tags_val, list) and all(isinstance(t, str) for t in tags_val):
+        tags = [t for t in tags_val if t.strip()]
     thumb_rel = _thumbnail_rel_path(plugin_name)
     thumb = _repo_file_url(thumb_rel) if isinstance(thumb_rel, str) else None
     return {
         "title": title,
         "description": description,
         "github": gh,
+        "tags": tags,
         "thumbnail": thumb,
     }
 
@@ -145,6 +150,7 @@ def _upsert_index_plugin(
     entry["title"] = generated.get("title")
     entry["description"] = generated.get("description")
     entry["github"] = generated.get("github")
+    entry["tags"] = generated.get("tags")
     entry["thumbnail"] = generated.get("thumbnail")
     entry["discussion"] = discussion_url
 
