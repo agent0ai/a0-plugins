@@ -1,0 +1,7 @@
+title: Guard System
+description: Security guards for tool execution and prompt safety. Blocks tools with flagged scan status and detects prompt injection patterns.
+github: https://github.com/PaoloC68/a0-guard-system
+tags:
+  - security
+  - tools
+  - prompting
