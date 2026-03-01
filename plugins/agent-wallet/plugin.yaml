@@ -1,0 +1,8 @@
+title: Agent Wallet
+description: Non-custodial crypto wallet for AI agents. Send payments, check balances, swap tokens (Uniswap V3), bridge cross-chain (CCTP), and make x402 payments.
+github: https://github.com/up2itnow0822/agent-wallet-a0-plugin
+tags:
+  - tools
+  - crypto
+  - payments
+  - defi
