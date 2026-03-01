@@ -1,0 +1,7 @@
+title: ReadyTrader FOREX
+description: Agent Zero plugin for the ReadyTrader-FOREX MCP server. Gives your agent access to forex market data, risk validation, backtesting, and paper/live trading.
+github: https://github.com/up2itnow0822/a0-readytrader-forex-plugin
+tags:
+  - tools
+  - trading
+  - finance
