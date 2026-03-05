@@ -538,34 +538,6 @@ def _update_discussion(discussion_id: str, title: str, body: str) -> None:
         _fail("Unexpected GraphQL response: missing discussion")
 
 
-def _update_discussion_rest(owner: str, repo: str, discussion_url: str, title: str, body: str) -> None:
-    number = _discussion_number_from_url(discussion_url)
-    if number is None:
-        _fail(f"Unable to parse discussion number from url: {discussion_url}")
-
-    api_url = f"https://api.github.com/repos/{owner}/{repo}/discussions/{number}"
-
-    def _preflight() -> None:
-        _rest_request_json("GET", api_url)
-
-    def _do_patch() -> None:
-        _rest_request_json("PATCH", api_url, {"title": title, "body": body})
-
-    try:
-        _with_retries("discussion REST preflight", _preflight)
-    except GitHubHttpError as e:
-        if e.status == 404:
-            _fail(
-                "GitHub REST returned 404 for discussion resource. This is usually either: "
-                "(1) Discussions REST API not enabled/available, or (2) token lacks Discussions permission, "
-                "or (3) GitHub is masking a 403 as 404. "
-                f"url={api_url} request_id={e.request_id} body={e.body[:300]}"
-            )
-        raise
-
-    _with_retries("discussion REST patch", _do_patch)
-
-
 def main() -> int:
     owner = os.environ.get("GITHUB_REPOSITORY_OWNER")
     repo_full = os.environ.get("GITHUB_REPOSITORY")
@@ -622,17 +594,17 @@ def main() -> int:
                 if isinstance(disc_id, str) and closed is True:
                     _with_retries(f"reopen discussion {plugin_name}", lambda: _reopen_discussion(disc_id))
 
-                if existing_url:
+                if isinstance(disc_id, str) and disc_id:
                     body = _render_discussion_body(plugin_name, meta, owner, repo)
                     _with_retries(
                         f"update discussion {plugin_name}",
-                        lambda: _update_discussion_rest(owner, repo, existing_url, expected_title, body),
+                        lambda: _update_discussion(disc_id, expected_title, body),
                     )
                     updated += 1
                     print(f"Updated: {plugin_name} -> {existing.get('url')}")
                 else:
                     skipped += 1
-                    print(f"Exists (no url): {plugin_name} -> {existing.get('url')}")
+                    print(f"Exists (no id): {plugin_name} -> {existing.get('url')}")
                 continue
 
             body = _render_discussion_body(plugin_name, meta, owner, repo)
