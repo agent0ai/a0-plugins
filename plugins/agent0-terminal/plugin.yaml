@@ -1,0 +1,9 @@
+title: Agent0 Terminal
+description: PTY-backed terminal modal for Agent Zero with persistent sessions, TUI support, and TerminalLog integration.
+github: https://github.com/Nunezchef/agent0-terminal
+tags:
+  - development
+  - cli
+  - tools
+  - files
+  - workflow
