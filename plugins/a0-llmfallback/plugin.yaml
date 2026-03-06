@@ -1,0 +1,9 @@
+title: A0 LLM Fallback
+description: Automatic per-role LLM failover for Agent Zero with configurable fallback models, settings UI integration, and one-command install.
+github: https://github.com/Nunezchef/a0-llmfallback
+tags:
+  - llm
+  - automation
+  - tools
+  - workflow
+  - agents
