@@ -1,4 +1,4 @@
-name: Update Index Stars (hourly)
+name: Update Index Stars (auto)
 
 concurrency:
   group: index-release-publisher
@@ -20,28 +20,35 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Create bot app token
+        id: bot-app-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.A0_BOT_APP_ID }}
+          private-key: ${{ secrets.A0_BOT_PRIVATE_KEY }}
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      - name: Download index.json from latest Release
+      - name: Download index.json from tagged Release
         env:
-          GITHUB_TOKEN: ${{ github.token }}
+          GITHUB_TOKEN: ${{ steps.bot-app-token.outputs.token }}
           INDEX_RELEASE_TAG: generated-index
         run: |
           python scripts/download_index_release.py
 
       - name: Scan stars (write stars_updates.json)
         env:
-          GITHUB_TOKEN: ${{ github.token }}
+          GITHUB_TOKEN: ${{ steps.bot-app-token.outputs.token }}
           STARS_CHUNK_SIZE: "50"
         run: |
           python scripts/update_index_stars.py --mode scan
 
-      - name: Refresh index.json from latest Release
+      - name: Refresh index.json from tagged Release
         env:
-          GITHUB_TOKEN: ${{ github.token }}
+          GITHUB_TOKEN: ${{ steps.bot-app-token.outputs.token }}
           INDEX_RELEASE_TAG: generated-index
         run: |
           python scripts/download_index_release.py
@@ -52,7 +59,7 @@ jobs:
 
       - name: Publish updated index.json to Release (replace asset)
         env:
-          GITHUB_TOKEN: ${{ github.token }}
+          GITHUB_TOKEN: ${{ steps.bot-app-token.outputs.token }}
           INDEX_RELEASE_TAG: generated-index
         run: |
           python scripts/publish_index_release.py

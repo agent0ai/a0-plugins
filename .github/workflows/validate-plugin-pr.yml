@@ -6,12 +6,11 @@ on:
 
 permissions:
   contents: read
-  pull-requests: write
 
 jobs:
   validate:
-    runs-on: ubuntu-latest
     if: ${{ !github.event.pull_request.draft }}
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
@@ -26,6 +25,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           git fetch --no-tags --depth=1 "https://x-access-token:${GH_TOKEN}@github.com/${HEAD_REPO}.git" ${HEAD_SHA}
+          git checkout --detach ${HEAD_SHA}
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -37,28 +37,10 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install pyyaml pillow
 
-      - name: Validate PR contents
-        id: validate
+      - name: Validate plugin submission
         env:
           BASE_SHA: ${{ github.event.pull_request.base.sha }}
           HEAD_SHA: ${{ github.event.pull_request.head.sha }}
           GITHUB_TOKEN: ${{ github.token }}
-        continue-on-error: true
         run: |
-          set +e
-          python scripts/validate_pr.py 2>&1 | tee validation.log
-          exit_code=${PIPESTATUS[0]}
-          echo "exit_code=${exit_code}" >> "$GITHUB_OUTPUT"
-          exit ${exit_code}
-
-      - name: Comment on PR (validation failure)
-        if: ${{ steps.validate.outcome == 'failure' }}
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const { run } = require('./scripts/comment_validation_failure.js');
-            await run({ github, context });
-
-      - name: Fail job if validation failed
-        if: ${{ steps.validate.outcome == 'failure' }}
-        run: exit 1
+          python scripts/validate_plugin_submission.py

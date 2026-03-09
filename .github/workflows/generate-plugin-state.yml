@@ -1,0 +1,105 @@
+name: Generate Plugin State
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "plugins/**"
+      - "authors/**"
+  workflow_dispatch:
+    inputs:
+      max_plugins:
+        description: "Max number of plugins to process"
+        required: false
+        default: "1000"
+      start_from:
+        description: "Start processing from this plugin index"
+        required: false
+        default: "0"
+      plugin_names:
+        description: "Comma-separated list of plugins to process"
+        required: false
+        default: ""
+      cleanup_orphans:
+        description: "If true, ignore explicit/diff selection and clean up orphaned index/discussion entries without plugin folders"
+        required: false
+        default: "false"
+      before_sha:
+        description: "Git diff start SHA"
+        required: false
+        default: ""
+      after_sha:
+        description: "Git diff end SHA"
+        required: false
+        default: ""
+
+concurrency:
+  group: index-release-publisher
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  discussions: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Create bot app token
+        id: bot-app-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.A0_BOT_APP_ID }}
+          private-key: ${{ secrets.A0_BOT_PRIVATE_KEY }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install pyyaml pillow
+
+      - name: Download current index.json (best effort)
+        continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ steps.bot-app-token.outputs.token }}
+          INDEX_RELEASE_TAG: generated-index
+        run: |
+          python scripts/download_index_release.py
+
+      - name: Resolve orphan plugin names
+        if: ${{ github.event.inputs.cleanup_orphans == 'true' }}
+        id: orphan_names
+        env:
+          GITHUB_TOKEN: ${{ steps.bot-app-token.outputs.token }}
+        run: |
+          names="$(python scripts/find_orphan_plugin_names.py)"
+          echo "plugin_names=${names}" >> "$GITHUB_OUTPUT"
+          echo "Resolved orphan plugin names: ${names}"
+
+      - name: Sync plugin state
+        env:
+          GITHUB_TOKEN: ${{ steps.bot-app-token.outputs.token }}
+          MAX_PLUGINS: ${{ github.event.inputs.max_plugins || '1000' }}
+          START_FROM: ${{ github.event.inputs.start_from || '0' }}
+          PLUGIN_NAMES: ${{ github.event.inputs.cleanup_orphans == 'true' && steps.orphan_names.outputs.plugin_names || github.event.inputs.plugin_names || '' }}
+          BEFORE_SHA: ${{ github.event.inputs.cleanup_orphans == 'true' && github.sha || github.event.inputs.before_sha || github.event.before || '' }}
+          AFTER_SHA: ${{ github.event.inputs.cleanup_orphans == 'true' && github.sha || github.event.inputs.after_sha || github.sha || '' }}
+        run: |
+          python scripts/sync_plugin_state.py
+
+      - name: Publish index.json to Release (replace asset)
+        env:
+          GITHUB_TOKEN: ${{ steps.bot-app-token.outputs.token }}
+          INDEX_RELEASE_TAG: generated-index
+        run: |
+          python scripts/publish_index_release.py

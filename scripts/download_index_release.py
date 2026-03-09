@@ -1,5 +1,6 @@
 import json
 import os
+import time
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -72,14 +73,31 @@ def _download_bytes(url: str) -> bytes:
         },
     )
 
-    try:
-        with urllib.request.urlopen(req, timeout=60) as resp:
-            return resp.read()
-    except urllib.error.HTTPError as e:
-        msg = e.read().decode("utf-8", errors="replace") if hasattr(e, "read") else str(e)
-        _fail(f"Download failed ({e.code}) GET {url}: {msg}")
-    except Exception as e:
-        _fail(f"Download failed GET {url}: {e}")
+    last_error: Exception | None = None
+    for attempt in range(1, 4):
+        try:
+            with urllib.request.urlopen(req, timeout=60) as resp:
+                return resp.read()
+        except urllib.error.HTTPError as e:
+            msg = e.read().decode("utf-8", errors="replace") if hasattr(e, "read") else str(e)
+            should_retry = e.code >= 500 or e.code == 429
+            last_error = DownloadIndexError(f"Download failed ({e.code}) GET {url}: {msg}")
+            if should_retry and attempt < 3:
+                time.sleep(5)
+                continue
+            raise last_error
+        except Exception as e:
+            last_error = e
+            if attempt < 3:
+                time.sleep(5)
+                continue
+            _fail(f"Download failed GET {url}: {e}")
+
+    if last_error is not None:
+        if isinstance(last_error, DownloadIndexError):
+            raise last_error
+        _fail(f"Download failed GET {url}: {last_error}")
+    _fail(f"Download failed GET {url}: unknown error")
 
 
 def main() -> int:

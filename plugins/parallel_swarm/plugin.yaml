@@ -1,0 +1,8 @@
+title: Parallel Swarm
+description: Run multiple agents in parallel with fan-out/fan-in execution. Task dependencies, token budgets, shared memory, and dynamic model routing.
+github: https://github.com/up2itnow0822/a0-parallel-swarm-plugin
+tags:
+  - tools
+  - parallel
+  - swarm
+  - orchestration

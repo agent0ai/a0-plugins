@@ -1,4 +1,4 @@
-name: Close PRs failing checks and inactive for 7+ days
+name: Close Inactive PRs (auto)
 
 on:
   schedule:
