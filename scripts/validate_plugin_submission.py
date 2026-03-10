@@ -12,7 +12,7 @@ from typing import Any, NoReturn, cast
 import yaml
 from PIL import Image
 
-from plugin_resolution import REPO_ROOT
+from plugin_resolution import INDEX_YAML_NAME, REPO_ROOT
 
 PLUGINS_DIR = REPO_ROOT / "plugins"
 INDEX_JSON_PATH = REPO_ROOT / "index.json"
@@ -21,7 +21,7 @@ REQUIRED_FIELDS = {"title", "description", "github"}
 ALLOWED_IMAGE_EXTS = {".png", ".jpg", ".jpeg", ".webp"}
 THUMBNAIL_MAX_BYTES = 20 * 1024
 SCREENSHOT_MAX_BYTES = 2 * 1024 * 1024
-PLUGIN_YAML_MAX_CHARS = 2000
+INDEX_YAML_MAX_CHARS = 2000
 TITLE_MAX_LEN = 50
 DESCRIPTION_MAX_LEN = 500
 MAX_TAGS = 5
@@ -83,18 +83,18 @@ def _plugin_dir(plugin_name: str) -> Path:
 
 
 def _read_plugin_yaml(plugin_name: str) -> dict[str, Any]:
-    plugin_yaml = _plugin_dir(plugin_name) / "plugin.yaml"
+    plugin_yaml = _plugin_dir(plugin_name) / INDEX_YAML_NAME
     if not plugin_yaml.exists():
-        _fail(f"Missing plugin.yaml: {plugin_yaml.relative_to(REPO_ROOT)}")
+        _fail(f"Missing {INDEX_YAML_NAME}: {plugin_yaml.relative_to(REPO_ROOT)}")
     raw_text = plugin_yaml.read_text(encoding="utf-8")
-    if len(raw_text) > PLUGIN_YAML_MAX_CHARS:
-        _fail(f"plugin.yaml exceeds max total length {PLUGIN_YAML_MAX_CHARS} characters")
+    if len(raw_text) > INDEX_YAML_MAX_CHARS:
+        _fail(f"{INDEX_YAML_NAME} exceeds max total length {INDEX_YAML_MAX_CHARS} characters")
     try:
         loaded = yaml.safe_load(raw_text)
     except Exception as e:
         _fail(f"Invalid YAML in {plugin_yaml.relative_to(REPO_ROOT)}: {e}")
     if not isinstance(loaded, dict):
-        _fail("plugin.yaml must be a YAML mapping/object")
+        _fail(f"{INDEX_YAML_NAME} must be a YAML mapping/object")
     return cast(dict[str, Any], loaded)
 
 
@@ -102,10 +102,10 @@ def _validate_fields(meta: dict[str, Any], plugin_name: str) -> None:
     keys = set(meta.keys())
     unknown = sorted(k for k in keys if k not in ALLOWED_FIELDS)
     if unknown:
-        _fail(f"plugin.yaml contains unsupported fields: {', '.join(unknown)}")
+        _fail(f"{INDEX_YAML_NAME} contains unsupported fields: {', '.join(unknown)}")
     missing = sorted(k for k in REQUIRED_FIELDS if not isinstance(meta.get(k), str) or not cast(str, meta.get(k)).strip())
     if missing:
-        _fail(f"plugin.yaml is missing required non-empty fields: {', '.join(missing)}")
+        _fail(f"{INDEX_YAML_NAME} is missing required non-empty fields: {', '.join(missing)}")
 
     title = cast(str, meta.get("title"))
     description = cast(str, meta.get("description"))
@@ -314,7 +314,7 @@ def _validate_allowed_files(plugin_dir: Path) -> None:
     for path in plugin_dir.iterdir():
         if path.is_dir():
             _fail(f"Unexpected directory in plugin folder: {path.name}")
-        if path.name == "plugin.yaml":
+        if path.name == INDEX_YAML_NAME:
             continue
         if path.stem == "thumbnail" and path.suffix.lower() in ALLOWED_IMAGE_EXTS:
             continue

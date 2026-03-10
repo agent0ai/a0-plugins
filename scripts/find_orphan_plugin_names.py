@@ -7,7 +7,7 @@ import urllib.request
 from pathlib import Path
 from typing import Any, NoReturn, cast
 
-from plugin_resolution import PLUGINS_DIR, REPO_ROOT, is_reserved_plugin_dirname, is_valid_plugin_dirname
+from plugin_resolution import INDEX_YAML_NAME, PLUGINS_DIR, REPO_ROOT, is_reserved_plugin_dirname, is_valid_plugin_dirname
 
 INDEX_JSON_PATH = REPO_ROOT / "index.json"
 PLUGIN_MARKER_PREFIX = "<!-- a0-plugins-plugin:"
@@ -109,7 +109,7 @@ def _index_plugin_names_and_discussions() -> tuple[set[str], set[str]]:
 def _plugin_exists(plugin_name: str) -> bool:
     if is_reserved_plugin_dirname(plugin_name):
         return False
-    return (PLUGINS_DIR / plugin_name / "plugin.yaml").exists()
+    return (PLUGINS_DIR / plugin_name / INDEX_YAML_NAME).exists()
 
 
 def _discussion_marker_name(body: str) -> str | None:

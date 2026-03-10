@@ -7,18 +7,18 @@ Submit a PR here to make your plugin visible to other Agent Zero users.
 
 Each plugin submission is a single folder (unique plugin name) containing:
 
-- **`plugin.yaml`**
+- **`index.yaml`**
 - **Optional thumbnail image** (`.png`, `.jpeg`/`.jpg`, or `.webp`)
   - **Square aspect ratio**
   - **Max size: 20 KB**
-- **Optional screenshots** in `plugin.yaml` under `screenshots`
+- **Optional screenshots** in `index.yaml` under `screenshots`
   - Up to **5 screenshot URLs**
   - Must be **full URLs**
   - Allowed formats: `.png`, `.jpg`/`.jpeg`, `.webp`
   - URL must exist
   - **Max size: 2 MB per screenshot**
 
-This repository is an index only: `plugin.yaml` points to the plugin's own repository.
+This repository is an index only: `index.yaml` points to the plugin's own repository.
 
 ## Submitting a plugin (Pull Request)
 
@@ -35,7 +35,7 @@ If your PR keeps failing checks and has no activity for 7+ days, it may be autom
 - **Reserved names**
   - Folders starting with `_` are reserved for project/internal use (examples, templates, etc.) and are **not visible in Agent Zero**. Do not submit community plugins with a leading underscore.
 - **Required metadata**
-  - All required fields in `plugin.yaml` must be present and non-empty.
+  - All required fields in `index.yaml` must be present and non-empty.
 - **Optional metadata**
   - The optional fields are **`tags`** and **`screenshots`**.
 
@@ -45,11 +45,11 @@ PRs are automatically checked for:
 
 - **Structure**
   - Exactly one plugin folder per PR under `plugins/<your-plugin-name>/`
-  - No extra files (only `plugin.yaml` and an optional thumbnail)
-- **`plugin.yaml` rules**
+  - No extra files (only `index.yaml` and an optional thumbnail)
+- **`index.yaml` rules**
   - Only allowed fields: `title`, `description`, `github`, `tags`, `screenshots`
   - Required fields: `title`, `description`, `github`
-  - `plugin.yaml` max total length: 2000 characters
+  - `index.yaml` max total length: 2000 characters
   - `title` max length: 50 characters
   - `description` max length: 500 characters
   - `github` must be a GitHub repository URL that exists and contains `plugin.yaml` at the repository root
@@ -61,7 +61,7 @@ PRs are automatically checked for:
   - Must be square and <= 20 KB
   - Allowed formats: `.png`, `.jpg`/`.jpeg`, `.webp`
 - **Screenshot rules (optional)**
-  - Must be provided only via `plugin.yaml` field `screenshots`
+  - Must be provided only via `index.yaml` field `screenshots`
   - Up to 5 URLs total
   - Must be full URLs
   - Allowed formats: `.png`, `.jpg`/`.jpeg`, `.webp`
@@ -72,15 +72,15 @@ PRs are automatically checked for:
 
 ```text
 plugins/<your_plugin_name>/
-  plugin.yaml
+  index.yaml
   thumbnail.png|thumbnail.jpg|thumbnail.jpeg|thumbnail.webp   (optional)
 ```
 
 The folder name under `plugins/` is authoritative in this index and must exactly match the `name` in your remote repository's root `plugin.yaml`.
 
-### `plugin.yaml` format
+### `index.yaml` format
 
-See `plugins/_example1/plugin.yaml` for the reference format.
+See `plugins/_example1/index.yaml` for the reference format.
 
 Required fields:
 

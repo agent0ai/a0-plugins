@@ -7,6 +7,7 @@ from typing import NoReturn
 REPO_ROOT = Path(__file__).resolve().parents[1]
 PLUGINS_DIR = REPO_ROOT / "plugins"
 DEFAULT_MAX_PLUGINS = 1000
+INDEX_YAML_NAME = "index.yaml"
 PLUGIN_DIRNAME_PATTERN = re.compile(r"^[a-z0-9_]+$")
 
 

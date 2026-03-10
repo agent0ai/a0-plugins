@@ -8,7 +8,7 @@ from typing import Any, NoReturn, cast
 
 import yaml
 
-from plugin_resolution import PLUGINS_DIR, REPO_ROOT, PluginResolutionError, get_plugin_names, is_reserved_plugin_dirname
+from plugin_resolution import INDEX_YAML_NAME, PLUGINS_DIR, REPO_ROOT, PluginResolutionError, get_plugin_names, is_reserved_plugin_dirname
 
 INDEX_JSON_PATH = REPO_ROOT / "index.json"
 AUTHORS_DIR = REPO_ROOT / "authors"
@@ -150,13 +150,13 @@ def _get_owner_repo() -> tuple[str, str]:
 def _plugin_exists(plugin_name: str) -> bool:
     if is_reserved_plugin_dirname(plugin_name):
         return False
-    return (PLUGINS_DIR / plugin_name / "plugin.yaml").exists()
+    return (PLUGINS_DIR / plugin_name / INDEX_YAML_NAME).exists()
 
 
 def _read_plugin_yaml(plugin_name: str) -> dict[str, Any]:
-    plugin_yaml = PLUGINS_DIR / plugin_name / "plugin.yaml"
+    plugin_yaml = PLUGINS_DIR / plugin_name / INDEX_YAML_NAME
     if not plugin_yaml.exists():
-        _fail(f"Missing plugin.yaml for plugin '{plugin_name}': {plugin_yaml.relative_to(REPO_ROOT)}")
+        _fail(f"Missing {INDEX_YAML_NAME} for plugin '{plugin_name}': {plugin_yaml.relative_to(REPO_ROOT)}")
 
     loaded: Any = None
     try:
@@ -165,7 +165,7 @@ def _read_plugin_yaml(plugin_name: str) -> dict[str, Any]:
         _fail(f"Invalid YAML for plugin '{plugin_name}': {e}")
 
     if not isinstance(loaded, dict):
-        _fail(f"plugin.yaml for '{plugin_name}' must be a YAML mapping/object")
+        _fail(f"{INDEX_YAML_NAME} for '{plugin_name}' must be a YAML mapping/object")
 
     return cast(dict[str, Any], loaded)
 
