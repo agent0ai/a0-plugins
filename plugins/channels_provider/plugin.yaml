@@ -1,0 +1,7 @@
+title: Channels
+description: Unified messaging adapter for Discord, Telegram, and WhatsApp. Routes platform messages to agents and responses back to platforms.
+github: https://github.com/protolabs42/channels-provider
+tags:
+  - discord
+  - telegram
+  - integration
