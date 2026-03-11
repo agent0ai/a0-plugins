@@ -1,0 +1,8 @@
+title: Telegram Integration
+description: Send, receive, and manage messages via Telegram Bot API. Chat/group reading, message sending with photos and reactions, member listing, conversation summarization, and real-time chat bridge with dual-mode security architecture.
+github: https://github.com/spinnakergit/a0-telegram
+tags:
+  - telegram
+  - communication
+  - messaging
+  - automation
