@@ -1,0 +1,12 @@
+title: Slack Integration
+description: >
+  Read, send, and manage messages in Slack workspaces.
+  Includes a real-time Socket Mode chat bridge with dual-mode security
+  (restricted and elevated), DM-only authentication, prompt injection defense,
+  workspace search, channel management, and a WebUI dashboard.
+github: https://github.com/spinnakergit/a0-slack
+tags:
+  - messaging
+  - slack
+  - chat
+  - productivity
