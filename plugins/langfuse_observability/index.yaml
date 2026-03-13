@@ -1,5 +1,5 @@
-title: Observability
+title: langfuse_observability
 description: Langfuse tracing, trace viewer, chat forking, prompt lab, and split-screen comparison.
-github: https://github.com/a0-community-plugins/langfuse-observability
+github: https://github.com/a0-community-plugins/langfuse_observability
 tags:
   - observability
