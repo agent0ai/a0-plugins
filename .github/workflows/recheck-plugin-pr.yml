@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   recheck:
-    if: ${{ github.event.issue.pull_request }}
+    if: ${{ github.event.issue.pull_request && github.event.comment.body == '/recheck' }}
     runs-on: ubuntu-latest
 
     steps:
@@ -29,11 +29,6 @@ jobs:
         with:
           github-token: ${{ steps.bot-app-token.outputs.token }}
           script: |
-            const commentBody = (context.payload.comment && context.payload.comment.body ? context.payload.comment.body : '').trim();
-            if (commentBody !== '/recheck') {
-              return;
-            }
-
             const owner = context.repo.owner;
             const repo = context.repo.repo;
             const issue_number = context.issue.number;
@@ -79,11 +74,4 @@ jobs:
               repo,
               issue_number,
               labels: [labelName],
-            });
-
-            await github.rest.issues.createComment({
-              owner,
-              repo,
-              issue_number,
-              body: 'Re-running plugin validation.',
             });
