@@ -247,16 +247,17 @@ def main() -> int:
 
     affected_paths = [Path(p) for p in _get_affected_paths(base_sha, head_sha)]
 
-    # All changes must be within exactly one plugin folder.
+    # Only consider changes within plugins/.
     plugin_roots: set[Path] = set()
     for p in affected_paths:
         parts = p.parts
         if len(parts) < 3 or parts[0] != "plugins":
-            _fail(
-                "PRs must only change files under plugins/<plugin-name>/. "
-                f"Found change outside plugins/: {p.as_posix()}"
-            )
+            continue
         plugin_roots.add(Path(parts[0]) / parts[1])
+
+    if len(plugin_roots) == 0:
+        print("No plugin changes detected. Nothing to validate.")
+        return 0
 
     if len(plugin_roots) != 1:
         _fail(
@@ -271,8 +272,9 @@ def main() -> int:
             f"Plugin folder '{plugin_name}' starts with '_' which is reserved and not visible in Agent Zero"
         )
 
-    # If all changes are deletions, this is a plugin removal — allow it.
-    all_deleted = all(status.startswith("D") for status, _ in changes)
+    # If all plugin changes are deletions, this is a plugin removal — allow it.
+    plugin_changes = [(s, p) for s, p in changes if Path(p).parts[0] == "plugins"]
+    all_deleted = bool(plugin_changes) and all(status.startswith("D") for status, _ in plugin_changes)
     if all_deleted:
         print(f"Plugin removal detected for '{plugin_name}'. Approved.")
         return 0
