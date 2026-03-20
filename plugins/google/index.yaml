@@ -1,0 +1,12 @@
+title: Google Suite
+description: >
+  Unified Google integration with 21 tools across Gmail, Calendar, Drive,
+  Contacts, and Tasks. Shared OAuth2 authentication, per-service toggles,
+  email sanitization, path traversal protection, and a tabbed WebUI dashboard.
+github: https://github.com/spinnakergit/a0-google
+tags:
+  - google
+  - gmail
+  - calendar
+  - drive
+  - productivity
