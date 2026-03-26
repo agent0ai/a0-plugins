@@ -1,0 +1,1 @@
+This plugin breaks native agent zero models configuration.
