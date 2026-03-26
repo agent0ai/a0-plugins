@@ -1,0 +1,12 @@
+title: Instagram Integration
+description: >-
+  Post photos, carousels, and reels to Instagram via Meta's Graph API v21.0;
+  read media feeds and stories; manage comments (list, post, reply, delete);
+  search hashtags; track account and media insights; look up profiles by
+  username via Business Discovery.
+github: https://github.com/spinnakergit/a0-instagram
+tags:
+  - social-media
+  - instagram
+  - marketing
+  - analytics
