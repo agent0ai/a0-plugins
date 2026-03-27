@@ -1,0 +1,19 @@
+title: A.P.U Automatic Polling Utility
+description: >
+  Non-blocking API rate throttle for Agent Zero. Enforces configurable cooldown
+  delays after every tool execution to prevent 429 errors and quota exhaustion.
+  High-compute detection (api/fetch/download/scrape/crawl/stream patterns + runtime > 5s)
+  applies a multiplier automatically. Interruptible wake button in the chat bar.
+  Cooldown state persists across container restarts. Zero external dependencies.
+github: https://github.com/MrTrenchTrucker/apu-governor
+tags:
+  - automation
+  - api
+  - tools
+  - scheduling
+  - rate-limiting
+screenshots:
+  - https://raw.githubusercontent.com/MrTrenchTrucker/apu-governor/main/docs/screenshots/apu_screenshot_plugin_menu.png
+  - https://raw.githubusercontent.com/MrTrenchTrucker/apu-governor/main/docs/screenshots/apu_demo_settings.png
+  - https://raw.githubusercontent.com/MrTrenchTrucker/apu-governor/main/docs/screenshots/apu_demo_wake_button.png
+  - https://raw.githubusercontent.com/MrTrenchTrucker/apu-governor/main/docs/screenshots/apu_security_scan.png
