@@ -1,0 +1,12 @@
+title: WhatsApp Automation
+description: Automatización completa de WhatsApp Web con sesiones persistentes en Chrome headless, sin escanear QR en cada reinicio.
+github: https://github.com/pachuki87/whatsapp-automation
+tags:
+  - whatsapp
+  - automation
+  - chrome
+  - messaging
+  - headless
+screenshots:
+  - https://raw.githubusercontent.com/pachuki87/whatsapp-automation/main/screenshot1.png
+  - https://raw.githubusercontent.com/pachuki87/whatsapp-automation/main/screenshot2.png
