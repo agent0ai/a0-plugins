@@ -1,0 +1,9 @@
+title: Beta Testing Hub
+description: A community board where developers can list their apps for beta testing and other Agent Zero users can discover, browse, and sign up to test new projects. Includes filtering by category and platform, tester progress tracking, and a listing submission form.
+github: https://github.com/Anunakie/a0-beta-testing-hub
+tags:
+  - tools
+  - web
+  - automation
+  - workflow
+  - api
