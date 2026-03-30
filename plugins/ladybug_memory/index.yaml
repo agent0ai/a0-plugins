@@ -1,5 +1,5 @@
 title: Ladybug Memory
-description: Parallel graph-backed memory workspace powered by LadybugDB, with recall and a dashboard for search and topic visualization. Runs alongside built-in memory.
+description: Parallel graph-backed memory workspace powered by LadybugDB, with recall and a dashboard for search and topic visualization. Can run alongside built-in A0 memory.
 github: https://github.com/3clyp50/ladybug_memory
 tags:
   - memory
