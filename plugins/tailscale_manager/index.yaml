@@ -1,0 +1,10 @@
+title: Tailscale Manager
+description: Install, configure, and manage Tailscale VPN connections directly from the Agent Zero UI. Includes auto-SSH-key management.
+github: https://github.com/PepeDiedrich/tailscale_manager
+tags:
+  - network
+  - security
+  - tools
+  - integration
+screenshots:
+  - https://raw.githubusercontent.com/PepeDiedrich/tailscale_manager/main/screenshot.png
