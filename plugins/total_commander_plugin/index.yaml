@@ -1,0 +1,10 @@
+title: Total Commander
+description: Dual-pane file commander for Agent Zero with keyboard shortcuts, copy/move, text editing, and archive compression/extraction.
+author: "Watcher23-cool"
+version: "1.1.0"
+github: https://github.com/Watcher23-cool/TC-like-AZ-plugin.git
+tags:
+  - tools
+  - workflow
+  - development
+  - automation
