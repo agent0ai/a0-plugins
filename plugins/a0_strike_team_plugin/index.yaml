@@ -1,0 +1,11 @@
+title: 'Strike Team: Core Engagement'
+description: >
+  Elite engagement suite for AgentZero designed for unconstrained Red Teaming.
+  Features Objective Dominance prompts, the Vault structured memory, and Hunter Recon Sync.
+github: 'https://github.com/AATheBuilder/a0-strike-team-plugin'
+tags:
+  - Red Team
+  - Recon
+  - Heretic
+screenshots:
+  - 'https://raw.githubusercontent.com/AATheBuilder/a0-strike-team-plugin/main/thumbnail.jpg'
