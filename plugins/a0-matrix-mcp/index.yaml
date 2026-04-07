@@ -1,0 +1,12 @@
+title: Matrix Protocol MCP Server and Bot (agent-matrix)
+description: Rust implementation of matrix-mcp-server plug compatible with mjknowles server. Along with  companion Bot. Will support E2EE.
+github: https://github.com/l0r3zz/a0-matrix
+tags:
+  - integration
+  - automation
+  - agents
+  - tools
+  - matrix
+  - chat
+  - e2ee
+  - mcp
