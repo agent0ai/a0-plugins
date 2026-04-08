@@ -1,0 +1,6 @@
+title: AgentMail Integration
+description: Send and receive emails via the AgentMail API, including agent-assisted email replies inside Agent Zero.
+github: https://github.com/Raleksand/agentmail
+tags:
+  - email
+  - integration
