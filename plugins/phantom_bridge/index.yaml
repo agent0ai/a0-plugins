@@ -3,11 +3,11 @@ description: >
   Log into any service once — A0 uses it forever. Opens a remote browser
   viewer (noVNC) so you can authenticate from your own browser. A0 inherits
   those sessions, learns site patterns, and can replay recorded workflows.
-github: https://github.com/Nunezchef/phantom-bridge
+github: https://github.com/notabotchef/phantom-bridge
 tags:
   - browser
   - authentication
   - automation
   - tools
 screenshots:
-  - https://raw.githubusercontent.com/Nunezchef/phantom-bridge/main/docs/banner.png
+  - https://raw.githubusercontent.com/notabotchef/phantom-bridge/main/docs/banner.png
