@@ -1,0 +1,17 @@
+title: Telegram Mini App
+description: >
+  Auth + shell bridge that exposes Agent Zero as a Telegram Mini App with
+  terminal-style streaming chat, Ed25519 initData auth, and a local gateway
+  running over a Cloudflare tunnel.
+github: https://github.com/notabotchef/a0-TelegramMiniApp
+tags:
+  - telegram
+  - web
+  - api
+  - security
+  - integration
+screenshots:
+  - https://raw.githubusercontent.com/notabotchef/a0-TelegramMiniApp/main/Screenshots/CleanShot%202026-04-13%20at%2002.56.35%402x.png
+  - https://raw.githubusercontent.com/notabotchef/a0-TelegramMiniApp/main/Screenshots/CleanShot%202026-04-13%20at%2003.28.40%402x.png
+  - https://raw.githubusercontent.com/notabotchef/a0-TelegramMiniApp/main/Screenshots/CleanShot%202026-04-13%20at%2003.29.24%402x.png
+  - https://raw.githubusercontent.com/notabotchef/a0-TelegramMiniApp/main/Screenshots/thumbnail.png
