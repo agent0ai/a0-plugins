@@ -1,0 +1,7 @@
+title: AgentMail Integration
+description: Send and receive emails via the AgentMail API with attachments, thread replies, and automated agent-powered email processing.
+github: https://github.com/Raleksand/agentmail
+tags:
+  - email
+  - integration
+  - automation
