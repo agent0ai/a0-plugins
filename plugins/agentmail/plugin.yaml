@@ -1,8 +1,0 @@
-name: agentmail
-title: AgentMail Integration
-description: Send and receive emails via the AgentMail API.
-version: 1.2.0
-settings_sections:
-  - external
-per_project_config: false
-per_agent_config: true
