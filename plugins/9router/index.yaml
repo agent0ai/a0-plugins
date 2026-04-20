@@ -1,0 +1,9 @@
+title: 9Router
+description: Smart AI model router with 3-tier fallback (subscription → cheap → free) that minimizes costs and prevents coding interruptions across 40+ providers and 100+ models
+github: https://github.com/decolua/9router
+tags:
+  - llm
+  - api
+  - automation
+  - cli
+  - integration
