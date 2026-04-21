@@ -1,0 +1,11 @@
+title: "YATCA - Telegram Connector for Agent Zero"
+description: >-
+  Full-featured Telegram bot bridge for Agent Zero.
+  Per-user sessions, photos, files, agent control,
+  project switching, task scheduler - all from Telegram.
+  Multiple bots, access control, WebUI config.
+github: https://github.com/mirecekd/yatca
+tags:
+  - telegram
+  - automation
+  - integration
