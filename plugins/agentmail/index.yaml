@@ -1,0 +1,7 @@
+title: AgentMail Integration
+description: Send and receive emails with thread continuity and outbox attachments via the AgentMail API.
+github: https://github.com/Raleksand/agentmail
+tags:
+  - email
+  - integration
+  - automation
