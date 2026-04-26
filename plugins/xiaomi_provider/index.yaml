@@ -1,0 +1,6 @@
+title: Xiaomi MiMo Provider
+description: Adds Xiaomi MiMo models (mimo-v2-flash, mimo-v2-pro, mimo-v2-omni, mimo-v2.5, mimo-v2.5-pro) as an LLM provider. Free tier available, no credit card required.
+github: https://github.com/wgnrai/xiaomi-mimo-provider
+tags:
+  - llm
+  - integration
