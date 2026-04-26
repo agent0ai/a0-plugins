@@ -1,0 +1,7 @@
+title: Heartbeat
+description: Openclaw style heartbeat plugin for Agent Zero.
+github: https://github.com/a0-community-plugins/heartbeat
+tags:
+  - agents
+  - workflow
+  - automation
