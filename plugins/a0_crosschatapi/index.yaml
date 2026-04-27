@@ -1,0 +1,13 @@
+title: Cross-Chat API
+description: >-
+  WebSocket-based bidirectional bridge that allows external agents to share
+  a chat context with Agent Zero. Messages flow through without triggering
+  local inference unless explicitly requested. Includes REST fallback,
+  streaming inference, and full UI integration.
+github: https://github.com/neurocis/a0_crosschatapi
+tags:
+  - api
+  - agents
+  - integration
+  - webhooks
+  - automation
