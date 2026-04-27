@@ -1,0 +1,7 @@
+title: ReadyTrader Stocks
+description: Agent Zero plugin for the ReadyTrader-Stocks MCP server. Gives your agent access to equities market data, risk validation, backtesting, and paper/live trading.
+github: https://github.com/up2itnow0822/a0-readytrader-stocks-plugin
+tags:
+  - tools
+  - trading
+  - finance
