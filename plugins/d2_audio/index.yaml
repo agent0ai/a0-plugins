@@ -1,0 +1,12 @@
+title: D2 Audio Compression & Voice Auth
+description: >-
+  Compress audio to the D2 format (peak extraction + Bezier reconstruction)
+  and restore it to WAV. Includes D2 voice fingerprinting for lightweight
+  speaker authentication without cloud or ML dependencies.
+  Original research by Adrian Mallett (2021).
+github: https://github.com/adrianmallettne-commits/d2_audio
+tags:
+  - audio
+  - tools
+  - security
+  - research
