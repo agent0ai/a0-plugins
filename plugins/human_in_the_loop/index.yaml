@@ -1,0 +1,7 @@
+title: Human in the Loop
+description: Allows the agent to pause and ask the user for a decision via a polished multi-step popup modal.
+github: https://github.com/alexveli1/human_in_the_loop
+tags:
+  - tools
+  - ui
+  - interaction
