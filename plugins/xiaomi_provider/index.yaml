@@ -1,0 +1,5 @@
+title: Xiaomi MiMo Provider
+description: Adds Xiaomi MiMo (V2.5 Pro) models as an LLM provider option. High-intelligence MoE model (AA 54, 1M context) via OpenRouter or direct API.
+github: https://github.com/wgnr-ai/xiaomi-mimo-providertags:
+  - models
+  - provider
