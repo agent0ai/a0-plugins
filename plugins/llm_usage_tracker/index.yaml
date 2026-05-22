@@ -1,0 +1,6 @@
+title: LLM Usage Tracker
+description: A simple extension to agent0's dashboard to track requests and volume in the last 24 hours.
+github: https://github.com/alxfu/a0-llm-usage-tracker
+tags:
+  - dashboard
+  - metrics
