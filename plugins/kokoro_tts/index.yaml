@@ -1,0 +1,7 @@
+title: Kokoro TTS
+description: Kokoro text-to-speech plugin with voice dropdown menus, blend voice synthesis (up to 3 voices with weights summing to 1.0), manual mode, and browser TTS fallback.
+github: https://github.com/twilso24/agent-zero-kokoro-tts
+tags:
+  - tools
+  - agents
+  - automation
