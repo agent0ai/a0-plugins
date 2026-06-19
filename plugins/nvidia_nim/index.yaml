@@ -1,0 +1,11 @@
+title: NVIDIA NIM
+description: Adds NVIDIA NIM as a chat and embedding model provider for Agent Zero. Exposes the OpenAI-compatible /v1 endpoints of the NVIDIA NIM hosted API and any self-hosted NIM microservice through LiteLLM. Includes a settings UI for the API key, API base override, and default model names.
+github: https://github.com/shawn5cents/agent-zero-nvidia-nim
+tags:
+  - models
+  - providers
+  - llm
+  - embeddings
+  - integrations
+screenshots:
+  - https://raw.githubusercontent.com/shawn5cents/agent-zero-nvidia-nim/main/docs/screenshot-settings.png
