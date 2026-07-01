@@ -1,0 +1,13 @@
+title: Vision Fallback
+description: >-
+  Routes image analysis to a dedicated vision model when the main chat model
+  doesn't support vision. Intercepts images before they reach the LLM, sends
+  them to a configurable vision model (via LiteLLM), and inserts the text
+  description into the conversation. Works with any text-only model.
+github: https://github.com/lelabdev/a0-vision-fallback
+tags:
+  - llm
+  - tools
+  - vision
+  - integration
+  - agents
