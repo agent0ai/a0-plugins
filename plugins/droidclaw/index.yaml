@@ -1,0 +1,8 @@
+title: Android Control
+description: Control Android devices through ADB with QR/manual pairing, Tailscale remote-device connection, screenshots, and agent-guided app automation.
+github: https://github.com/Omni-NexusAI/android-control
+tags:
+  - automation
+  - tools
+  - integration
+  - development
