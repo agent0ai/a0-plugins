@@ -1,0 +1,9 @@
+title: Browser Session Sync
+description: WIP plugin for preserving native Browser tabs, cookies, and localStorage across A0 restarts with boot-gated restore and debounced saves.
+github: https://github.com/Omni-NexusAI/a0-plugins
+tags:
+  - browser
+  - storage
+  - workflow
+  - automation
+  - ui
