@@ -1,0 +1,7 @@
+title: Chat Export
+description: Export full chat conversations in multiple formats (MD, TXT, PDF, DOCX, HTML, EPUB, LaTeX, RST, ODT, RTF) via pandoc.
+github: https://github.com/guyjames/a0-chat-export
+tags:
+  - tools
+  - documents
+  - export

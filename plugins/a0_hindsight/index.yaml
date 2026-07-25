@@ -1,0 +1,9 @@
+title: A0_Hindsight Memory
+description: Augments Agent Zero's memory with Hindsight semantic search and disposition-aware context generation.
+github: https://github.com/neurocis/a0_hindsight
+tags:
+  - memory
+  - semantic
+  - hindsight
+  - ai
+  - persistent

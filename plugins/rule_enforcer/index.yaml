@@ -1,0 +1,7 @@
+title: Rule Enforcer
+description: Enforces configurable behavioral rules at the tool execution layer. Blocks tool calls that violate rules and returns corrective guidance to the agent.
+github: https://github.com/wgnr-ai/a0-plugin-rule-enforcer
+tags:
+  - tools
+  - automation
+  - development

@@ -1,0 +1,6 @@
+title: Requests per Day
+description: A simple extension to agent0's dashboard to track requests in the last 24 hours.
+github: https://github.com/alxfu/a0-requests-per-day
+tags:
+  - dashboard
+  - metrics

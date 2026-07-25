@@ -1,0 +1,9 @@
+title: A0_Fauxplexica
+description: Perplexity/Vane-style deep-research answer engine for Agent Zero. Classifies → researches (BYO SearxNG) → composes → cites, with inline-bracket citations, three depth modes, widgets, file RAG, and agentic fauxplexica_search / fauxplexica_answer tools.
+github: https://github.com/neurocis/a0_fauxplexica
+tags:
+  - tools
+  - web
+  - agents
+  - integration
+  - llm

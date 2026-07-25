@@ -1,0 +1,8 @@
+title: GitHub
+description: Skill-guided GitHub operations for Agent Zero via the gh CLI — open and review pull requests, triage issues, search code/issues/PRs, and cut releases with notes. Installs and SHA-256-verifies gh automatically; stateless auth reads a token from an A0 Secret at call time and never stores it.
+github: https://github.com/King0James0/a0-github-plugin
+tags:
+  - github
+  - tools
+  - automation
+  - integration

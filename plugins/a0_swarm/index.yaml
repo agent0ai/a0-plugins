@@ -1,0 +1,8 @@
+title: A0 Swarm
+description: A0 Swarm is a plugin that allows you to create a swarm of agents that can work together to achieve a goal.
+github: https://github.com/a0-community-plugins/a0_swarm
+tags:
+  - agents
+  - orchestration
+  - tools
+  - workflow

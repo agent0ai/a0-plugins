@@ -1,0 +1,9 @@
+title: Browser Session Sync
+description: Persists native Browser tabs, cookies, and localStorage across restarts with one-shot startup restore and debounced live-state tracking.
+github: https://github.com/Omni-NexusAI/browser_session_sync
+tags:
+  - browser
+  - storage
+  - workflow
+  - automation
+  - ui

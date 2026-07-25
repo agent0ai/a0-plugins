@@ -1,0 +1,3 @@
+title: Karpathy Guidelines
+description: Behavioral guidelines to reduce common LLM coding mistakes, enforces simplicity, surgical changes, surface assumptions, and goal-driven execution with verifiable success criteria.
+github: https://github.com/sendralt/karpathy-guidelines

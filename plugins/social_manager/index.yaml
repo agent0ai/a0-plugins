@@ -1,0 +1,16 @@
+title: Social Media Manager
+description: >-
+  Meta-plugin orchestrator that coordinates cross-platform posting across all
+  installed social media plugins (Bluesky, X, Reddit, Facebook, Threads,
+  Instagram, LinkedIn, YouTube, Pinterest, TikTok). Discovers installed
+  platform plugins at runtime and delegates to their native tools. Auto-adapts
+  content to each platform's character limits, normalizes hashtags, schedules
+  posts, and aggregates analytics across all connected platforms. No external
+  APIs of its own — a pure orchestration layer.
+github: https://github.com/spinnakergit/a0-social-manager
+tags:
+  - social-media
+  - orchestrator
+  - cross-posting
+  - scheduling
+  - analytics

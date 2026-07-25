@@ -1,0 +1,8 @@
+title: LangExtract
+description: Structured document extraction powered by google/langextract. Parse invoices, recipes, prep lists, and any document into typed JSON with source grounding. Supports PDF, text, and URLs.
+github: https://github.com/notabotchef/a0-langextract
+tags:
+  - documents
+  - llm
+  - tools
+  - automation

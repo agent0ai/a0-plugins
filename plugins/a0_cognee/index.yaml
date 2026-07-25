@@ -1,0 +1,9 @@
+title: Cognee Knowledge Memory
+description: Integrates Cognee AI memory platform with Agent Zero for graph-connected knowledge retention, semantic search enrichment, and context injection. Supports 14+ search strategies including graph completion, RAG, and chain-of-thought reasoning. Part of the neurocis method for personal assistant memory.
+github: https://github.com/neurocis/a0_cognee
+tags:
+  - memory
+  - knowledge-graph
+  - semantic-search
+  - agents
+  - integration

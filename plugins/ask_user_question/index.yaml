@@ -1,0 +1,9 @@
+title: Ask User Question
+description: Lets AI agents ask structured clarifying questions with a beautiful tabbed modal UI in the Agent Zero web interface.
+github: https://github.com/Reaperrhs/a0-plugin-ask-user-question
+tags:
+  - tools
+  - agents
+  - workflow
+screenshots:
+  - https://raw.githubusercontent.com/Reaperrhs/a0-plugin-ask-user-question/main/docs/logo.png

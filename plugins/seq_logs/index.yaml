@@ -1,0 +1,8 @@
+title: Seq Logs
+description: Fetch and inspect logs from a Seq centralized logging server using a URL and API key.
+github: https://github.com/wendallmartin/AgentZero_Seq_Plugin
+tags:
+  - tools
+  - integration
+  - api
+  - development

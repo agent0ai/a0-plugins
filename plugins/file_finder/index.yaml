@@ -1,0 +1,8 @@
+title: File Finder
+description: A fuzzy file finder popup, triggered by typing @ in the chat input
+github: https://github.com/jhillyerd/agent0-file-finder
+tags:
+  - files
+  - search
+screenshots:
+  - https://raw.githubusercontent.com/jhillyerd/agent0-file-finder/main/screenshot.png

@@ -1,0 +1,9 @@
+title: KAME — API Rotation & Stability Engine
+description: KAME rotates API keys to avoid 429 errors, cooldown exhausted keys, respect retry delays, and route around provider outages during long agent runs.
+github: https://github.com/Kame696/kame-api-engine
+tags:
+  - api
+  - llm
+  - integration
+  - automation
+  - tools

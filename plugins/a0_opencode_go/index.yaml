@@ -1,0 +1,8 @@
+title: OpenCode Go
+description: Adds OpenCode Go and Zen model gateway providers to Agent Zero model configuration.
+github: https://github.com/3clyp50/a0_opencode_go
+tags:
+  - llm
+  - api
+  - integration
+  - development

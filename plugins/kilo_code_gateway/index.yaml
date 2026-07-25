@@ -1,0 +1,7 @@
+title: Kilo Code Gateway
+description: Adds Kilo Code Gateway as an OpenAI-compatible LLM provider for Agent Zero.
+github: https://github.com/cstreil/a0-plugin-kilo-code-gateway
+tags:
+  - llm
+  - integration
+  - development

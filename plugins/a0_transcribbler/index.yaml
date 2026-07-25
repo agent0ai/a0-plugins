@@ -1,0 +1,8 @@
+title: "a0_transcribbler"
+description: "Voice messages become text conversations! Automatically transcribe audio attachments, URLs, and YouTube videos before LLM processing."
+github: "https://github.com/neurocis/a0_transcribbler"
+tags:
+  - "voice"
+  - "multimedia"
+  - "transcription"
+  - "speech-to-text"

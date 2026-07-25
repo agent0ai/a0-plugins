@@ -1,0 +1,7 @@
+title: Eye Comfort
+description: Blue-light reduction overlay for the Agent Zero Web UI. Seven warmth modes from Gentle Warm to Night Red, a circadian auto-schedule, and a Ctrl+Alt+R emergency reset. Tints the whole interface including popups and modals. No dependencies, no telemetry, settings persist locally.
+github: https://github.com/bdunn77/eye_comfort
+tags:
+  - ui
+  - workflow
+  - tools

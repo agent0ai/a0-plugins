@@ -1,0 +1,9 @@
+title: Agent Skills
+description: Production-grade engineering lifecycle skills for Agent Zero. 21 skills across define, plan, build, verify, review, and ship phases, plus 3 specialist agent personas, 7 slash commands, and 4 reference checklists.
+github: https://github.com/vanja-emichi/a0_agent_skills
+tags:
+  - workflow
+  - development
+  - agents
+  - testing
+  - automation

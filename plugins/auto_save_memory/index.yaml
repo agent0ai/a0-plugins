@@ -1,0 +1,8 @@
+title: Auto Save Memory
+description: Automatically extracts and saves strategic decisions, action items, and key insights from conversations into long-term memory. Uses the utility LLM in the background — zero impact on chat response cost or latency.
+github: https://github.com/agkonnect/agent-zero-auto-save-memory
+tags:
+  - memory
+  - automation
+  - agents
+  - llm

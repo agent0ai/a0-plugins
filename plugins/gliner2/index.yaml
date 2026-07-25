@@ -1,0 +1,9 @@
+title: GLiNER2
+description: GLiNER2 adds local CPU/CUDA or hosted structured inference for entities, classification, typed JSON, and relations, plus bounded Agent Zero memory enrichment, safe Utility fallback, runtime diagnostics, and an in-panel test bench.
+github: https://github.com/a0-community-plugins/gliner2
+tags:
+  - tools
+  - memory
+  - agents
+  - api
+  - ui

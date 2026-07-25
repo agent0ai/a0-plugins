@@ -1,0 +1,13 @@
+title: Open Notebook
+description: Connect Agent Zero to Open Notebook for notebook browsing, source management, RAG queries, notes, podcasts, and a right-canvas knowledge panel.
+github: https://github.com/twilso24/open_notebook_agent_zero
+tags:
+  - integration
+  - tools
+  - llm
+  - search
+  - web
+screenshots:
+  - https://raw.githubusercontent.com/twilso24/open_notebook_agent_zero/main/docs/screenshot-notebooks.png
+  - https://raw.githubusercontent.com/twilso24/open_notebook_agent_zero/main/docs/screenshot-podcasts.png
+  - https://raw.githubusercontent.com/twilso24/open_notebook_agent_zero/main/docs/screenshot-sources.png

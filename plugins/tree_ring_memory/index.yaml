@@ -1,0 +1,11 @@
+title: Tree Ring Memory
+description: Rust-native lifecycle memory for Agent Zero with automatic hook-based setup, validated legacy migration, evidence-aware recall, maintenance tools, and a live ring-usage dashboard.
+github: https://github.com/TerminallyLazy/tree-ring-memory-agent-zero
+tags:
+  - memory
+  - sqlite
+  - cli
+  - ui
+  - workflow
+screenshots:
+  - https://raw.githubusercontent.com/TerminallyLazy/tree-ring-memory-agent-zero/main/screenshots/tree-ring-memory-dashboard.png

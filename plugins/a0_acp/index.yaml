@@ -1,0 +1,8 @@
+title: Agent Client Protocol
+description: Expose Agent Zero as an ACP stdio agent for editor-native sessions, workspace prompts, streaming updates, and session resume/fork support.
+github: https://github.com/3clyp50/a0_acp
+tags:
+  - api
+  - agents
+  - integration
+  - development
