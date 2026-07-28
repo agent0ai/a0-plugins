@@ -1,0 +1,9 @@
+title: Honcho Shared Memory
+description: Shared persistent memory for Agent Zero through a self-hosted Honcho database. Supports multi-agent cross-compatible memory sharing with Hermes-Agent and OpenClaw. Includes auto-retrieval, secret redaction, and a fully configurable settings interface.
+github: https://github.com/jphermans/agent-zero-honcho-memory
+tags:
+  - memory
+  - tools
+  - database
+  - integration
+  - agents
