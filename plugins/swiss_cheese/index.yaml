@@ -1,0 +1,9 @@
+title: SwissCheese
+description: Conversation-level harness for Agent Zero that audits turns, tracks workflow holes, and drives bounded self-recovery.
+github: https://github.com/3clyp50/SwissCheese
+tags:
+  - workflow
+  - tools
+  - prompting
+  - agents
+  - monitoring
