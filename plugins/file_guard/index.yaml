@@ -1,0 +1,8 @@
+title: File Guard
+description: Protects files from agent-caused corruption with pre-write backups and empty-overwrite blocking.
+github: https://github.com/wgnr-ai/a0-file-guard
+tags:
+  - files
+  - safety
+  - backup
+  - protection
