@@ -1,0 +1,8 @@
+title: Kokoro
+description: Full control over Kokoro text-to-speech — voice selection, weighted blending, speed adjustment, and language configuration from the Agent Zero settings UI.
+github: https://github.com/twilso24/kokoro-a0-plugin
+tags:
+  - tts
+  - speech
+  - audio
+  - voices
