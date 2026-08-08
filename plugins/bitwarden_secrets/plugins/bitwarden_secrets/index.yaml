@@ -1,0 +1,9 @@
+title: Bitwarden Secrets Manager
+description: Read-only Bitwarden Secrets Manager integration for Agent Zero with redacted project and secret metadata.
+github: https://github.com/drwprtcht/a0-bitwarden-secrets-plugin.git
+tags:
+  - security
+  - secrets
+  - integration
+  - auth
+  - api
