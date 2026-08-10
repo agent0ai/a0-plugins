@@ -1,0 +1,13 @@
+title: NVIDIA NIM
+description: >-
+  Adds NVIDIA NIM (integrate.api.nvidia.com) as an OpenAI-compatible chat,
+  utility, and embedding model provider for Agent Zero. Pure drop-in — no
+  core framework changes, survives upstream updates. Models are
+  auto-discovered from the NIM /v1/models endpoint and appear in the model
+  selector. Requires a free NVIDIA API key from build.nvidia.com.
+github: https://github.com/Olszalsik/a0-nvidia-nim
+tags:
+  - llm
+  - embeddings
+  - api
+  - integration
