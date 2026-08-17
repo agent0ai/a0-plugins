@@ -1,0 +1,9 @@
+title: Honcho Shared Memory
+description: Shared persistent memory for Agent Zero through a self-hosted Honcho database, with single-agent and multi-agent modes, automatic retrieval and storage hooks, and memory search tools.
+github: https://github.com/jphermans/agent-zero-honcho-memory
+tags:
+  - memory
+  - database
+  - agents
+  - integration
+  - embeddings
