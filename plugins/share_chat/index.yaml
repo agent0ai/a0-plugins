@@ -1,0 +1,10 @@
+title: Share Chat
+description: >-
+  Adds a share button to the top-right of the chat area that copies a deep link to the current
+  conversation straight to your clipboard, so you can hand a teammate the exact chat you are
+  looking at instead of describing it. Opening the link restores that conversation directly.
+github: https://github.com/agent-zero-plugins/agent-zero-plugin-share-chat
+tags:
+  - ui
+  - web
+  - workflow
