@@ -1,6 +1,7 @@
-title: Skills Auto-Unload
-description: Automatically unloads stale skills after a configurable number of turns
-  and provides explicit skill cleanup controls.
+title: Skills Lifecycle
+description: >-
+  Cache-friendly skill loading, logical unload, and compaction-time instruction
+  eviction for stock and rolling Agent Zero chat history.
 github: https://github.com/Nicfox77/a0-plugin-skills-autoload
 tags:
 - prompting
