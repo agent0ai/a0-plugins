@@ -1,0 +1,11 @@
+title: LLM Transport
+description: Portable model transport improvements for Responses, Chat Completions,
+  and Anthropic Messages, with normalized reasoning, native tools, retries, media
+  handling, and provider-safe state replay.
+github: https://github.com/Nicfox77/a0-plugin-llm-transport
+tags:
+- llm
+- api
+- tools
+- framework
+- monitoring
