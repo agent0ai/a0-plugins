@@ -1,0 +1,11 @@
+title: Custom Providers
+description: Manage custom OpenAI-compatible model providers. Add, edit, delete, and
+  test custom LLM endpoints that integrate seamlessly with the model configuration
+  dropdowns.
+github: https://github.com/Nicfox77/a0-plugin-custom-providers
+tags:
+- llm
+- api
+- ui
+- integration
+- secrets
