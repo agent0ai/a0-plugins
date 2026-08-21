@@ -1,0 +1,9 @@
+title: Skills Lifecycle
+description: >-
+  Cache-friendly skill loading, logical unload, and compaction-time instruction
+  eviction for stock and rolling Agent Zero chat history.
+github: https://github.com/Nicfox77/a0-plugin-skills-autoload
+tags:
+- prompting
+- agents
+- workflow
