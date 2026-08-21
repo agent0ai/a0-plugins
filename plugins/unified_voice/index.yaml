@@ -1,0 +1,11 @@
+title: Unified Voice
+description: 'Full-duplex-style live calls for Agent Zero with streaming speech, CPU
+  semantic endpointing, staged interruption, and local or cloud providers.
+
+  '
+github: https://github.com/Nicfox77/a0-plugin-unified-voice
+tags:
+- audio
+- ui
+- agents
+- integration
