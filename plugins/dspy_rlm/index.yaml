@@ -1,0 +1,9 @@
+title: A0 Self-Improvement
+description: Improves Agent Zero during runtime with DSPy GEPA prompt optimization, bounded RLM long-context analysis, semantic quality gates, and managed local multiprocess workers.
+github: https://github.com/TerminallyLazy/a0-self-improvement
+tags:
+  - llm
+  - prompting
+  - agents
+  - automation
+  - development
