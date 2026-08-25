@@ -1,5 +1,5 @@
 title: Tree Ring Memory
-description: Tree Ring Memory 3.1.0 integrates Agent Zero with project-local memory, explicit harness activation, shared multi-agent context, and receipt-backed proof that project recall was used.
+description: Tree Ring Memory 3.2.0 integrates Agent Zero with bundled Tree Ring 0.15.3, project-local memory, explicit harness activation, shared multi-agent context, and receipt-backed proof that project recall was used.
 github: https://github.com/TerminallyLazy/tree-ring-memory-agent-zero
 tags:
   - memory
