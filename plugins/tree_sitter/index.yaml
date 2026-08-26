@@ -1,6 +1,9 @@
-title: Tree Sitter
-description: Tree Sitter is a plugin for Agent Zero that allows you to parse and analyze code.
+title: Tree-sitter Code Intelligence
+description: Repository-scale structural intelligence for Agent Zero, with project indexing, coding context, definitions, references, queries, and syntax diagnostics.
 github: https://github.com/a0-community-plugins/tree_sitter
 tags:
+  - development
+  - tools
+  - search
   - agents
   - integration
