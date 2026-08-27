@@ -1,5 +1,5 @@
 title: Tree-sitter Code Intelligence
-description: Repository-scale structural intelligence for Agent Zero, with project indexing, coding context, definitions, references, queries, and syntax diagnostics.
+description: Always-on structural intelligence for Agent Zero, with automatic active-project context, incremental indexing, definitions, references, queries, syntax diagnostics, and a responsive Inspector.
 github: https://github.com/a0-community-plugins/tree_sitter
 tags:
   - development
