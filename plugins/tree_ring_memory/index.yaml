@@ -1,5 +1,5 @@
 title: Tree Ring Memory
-description: Tree Ring Memory 3.3.1 integrates Agent Zero with bundled Tree Ring 0.15.4, reliable one-click project activation, persistent project-level writer identity, shared multi-agent memory, and accurate receipt-backed activation status.
+description: Tree Ring Memory 3.4.0 integrates Agent Zero with bundled Tree Ring 0.15.5, native receipt-backed lifecycle recall, bounded agent-mediated automatic capture, persistent project-level writer identity, and shared multi-agent memory.
 github: https://github.com/TerminallyLazy/tree-ring-memory-agent-zero
 tags:
   - memory
