@@ -1,0 +1,13 @@
+title: SkillOpt Self-Evolution Engine
+description: >-
+  Turns the agent's own task trajectories into better skill documents: an
+  auto-loop drives Microsoft's SkillOpt optimizer, a held-out counterfactual
+  replay gate scores every proposed change, and a human-approval adopt UI
+  promotes validated improvements into usr/skills. Local-first, opt-in
+  per-skill governance; edits skill text, never model weights.
+github: https://github.com/Olszalsik/a0-skillopt
+tags:
+  - agents
+  - prompting
+  - development
+  - automation
