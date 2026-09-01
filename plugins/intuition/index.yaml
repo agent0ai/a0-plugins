@@ -1,1 +1,10 @@
+title: Intuition
+description: A quiet inner voice that watches your agent work and whispers best-practice nudges when it sees something dumb or forgotten - without ever blocking the flow. Includes a hang watchdog for stuck tool calls and delegated sub-agents.
+github: https://github.com/DoThatKarma/intuition
+tags:
+  - agents
+  - monologue
+  - prompting
+  - development
+  - automation
 
