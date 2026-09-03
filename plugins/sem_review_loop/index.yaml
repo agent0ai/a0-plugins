@@ -1,5 +1,5 @@
 title: Semantic Review Loop
-description: Adds a local-only semantic diff review loop for Agent Zero with entity-level changes, bounded repair, MCP tools, and project-scoped lessons.
+description: Adds local semantic code review for Agent Zero with full working-tree coverage, guided MCP tools, entity-level changes, bounded repair, and project-scoped lessons.
 github: https://github.com/TerminallyLazy/sem-review-loop-agent-zero
 tags:
   - development
