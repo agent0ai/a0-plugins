@@ -1,0 +1,9 @@
+title: Mech.Calendar
+description: Local month/week calendar with categories, export/import, JSON store, and agent handoffs that run agent tasks at event start/finish times.
+github: https://github.com/twilso24/mech_calendar
+tags:
+  - scheduling
+  - automation
+  - tools
+  - workflow
+  - ui
