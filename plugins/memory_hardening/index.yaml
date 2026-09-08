@@ -1,0 +1,15 @@
+title: Memory Hardening
+description: >-
+  Wraps the built-in _memory plugin with resilience and circuit-breaker
+  protection against FAISS recall timeouts, leaked asyncio tasks, stuck
+  memorize threads, unbounded index caches, and ContextOverflow on
+  memorize/solve. Includes a memory-history clamp (merged from the former
+  _memory_resilience plugin), per-subdir circuit breakers, rate limiting,
+  recall-wait crash guard, and a live WebUI dashboard. Zero source
+  modifications to the official _memory plugin.
+github: https://github.com/Olszalsik/a0-memory-hardening
+tags:
+  - memory
+  - development
+  - tools
+  - agents
