@@ -1,0 +1,14 @@
+title: Misformat Guard
+description: >-
+  Repairs misformatted chat-model responses (broken JSON tool requests)
+  with a cheap utility-model call so Agent Zero never stalls or aborts on
+  them. Defensive layers including a tool-repeat guard that breaks the
+  reasoning death-loop where the agent re-emits the same failing tool
+  call dozens of times. No core patch - pure extension hooks, with a live
+  WebUI dashboard and per-agent configuration.
+github: https://github.com/Olszalsik/a0-misformat-guard
+tags:
+  - llm
+  - tools
+  - prompting
+  - agents
