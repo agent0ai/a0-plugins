@@ -1,0 +1,13 @@
+title: SAM Mesh
+description: >-
+  Community preview of governed Sovereign Agent Mesh discovery, remote tool approvals,
+  and native mesh inference for Agent Zero, with scoped permissions, redacted activity,
+  and an offline emergency disconnect; Embassy publication and Sovereign deployment
+  remain unavailable.
+github: https://github.com/TerminallyLazy/a0-sam-mesh
+tags:
+  - integration
+  - tools
+  - llm
+  - security
+  - monitoring
