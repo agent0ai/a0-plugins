@@ -1,5 +1,5 @@
 title: A0 Self-Improvement
-description: A0 Self-Improvement 2.1.1 fixes metadata-only candidate evidence and skips empty RLM calls, with governed replay, canaries, signed promotion, monitoring, and rollback.
+description: A0 Self-Improvement 2.3.1 adds a native Agent Zero interface with light/dark themes, outcome-aware learning, and failure-prioritized optimization, with governed replay, canaries, promotion, monitoring, and rollback.
 github: https://github.com/TerminallyLazy/a0-self-improvement
 tags:
   - llm
