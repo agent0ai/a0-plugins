@@ -1,0 +1,8 @@
+title: Agent Guild Preflight
+description: Deny-only preflight for operator-selected remote MCP tools. Checks the configured public endpoint through Agent Guild before invocation. Default policy blocks do_not_delegate, unproven required checks, caution and unavailable evidence; existing tool permissions remain in force. Inactive until configured. Retains observation evidence and rechecks the endpoint binding before allowing native execution.
+github: https://github.com/AgentTanuki/a0-agent-guild-preflight
+tags:
+  - security
+  - tools
+  - integration
+  - monitoring
