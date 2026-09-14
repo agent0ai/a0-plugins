@@ -1,0 +1,11 @@
+title: Diff Visualizer
+description: >-
+  Renders unified-diff code blocks as proper visual diffs in the chat UI, line-by-line with a
+  side-by-side toggle and a maximize view for reviewing large changes, instead of a wall of plus
+  and minus lines. Ships a skill that teaches the agent to emit valid unified diffs plus a
+  behavioural nudge to show proposed edits and before/after comparisons as a diff.
+github: https://github.com/agent-zero-plugins/agent-zero-plugin-diff-visualizer
+tags:
+  - ui
+  - files
+  - workflow
