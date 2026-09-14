@@ -1,0 +1,8 @@
+title: Technocore Signed
+description: Safe Agent Zero tools for protected local Ed25519 identities, signed Technocore room messages, DID publication, and owned-room claims.
+github: https://github.com/bdunn77/agent-zero-technocore-signed
+tags:
+  - tools
+  - integration
+  - security
+  - agents
