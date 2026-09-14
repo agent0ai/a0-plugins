@@ -1,0 +1,11 @@
+title: Chat Comments
+description: >-
+  Select any text in a chat message and attach a Google-Docs-style comment to it. Comments are
+  highlighted inline, persist with the chat across reloads and chat switches, and can be edited
+  or deleted from a comments panel. When you are ready, send every comment on the chat to the
+  prompt box in one go, so review feedback becomes the agent's next instruction.
+github: https://github.com/agent-zero-plugins/agent-zero-plugin-chat-comments
+tags:
+  - ui
+  - workflow
+  - prompting
