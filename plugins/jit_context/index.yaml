@@ -1,0 +1,9 @@
+title: JIT Context OS
+description: Epistemic context runtime & 3-tier memory cascade (L0/L1/L2) with deterministic prompt caching & anti-poisoning invariants.
+github: https://github.com/wojciechwiesner/jit-context-os
+tags:
+  - context
+  - memory
+  - caching
+  - tools
+  - development
