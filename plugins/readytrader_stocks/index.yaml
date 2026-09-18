@@ -1,0 +1,8 @@
+title: ReadyTrader Stocks
+description: Connect your agent to stock markets via the ReadyTrader-Stocks MCP server. Quotes, OHLCV, fundamentals, sentiment, market regime, and paper or live trades through Alpaca.
+github: https://github.com/up2itnow0822/a0-readytrader-stocks-plugin
+tags:
+  - tools
+  - api
+  - integration
+  - automation
