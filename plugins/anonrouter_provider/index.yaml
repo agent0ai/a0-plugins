@@ -1,0 +1,8 @@
+title: AnonRouter Provider
+description: Registers AnonRouter as an OpenAI-compatible chat and embedding provider with authenticated model discovery; requires a key with OpenAI-compatible access enabled.
+github: https://github.com/anonrouterai/agent-zero-anonrouter
+tags:
+  - llm
+  - embeddings
+  - integration
+  - api
