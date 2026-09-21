@@ -1,0 +1,9 @@
+title: Headless Oracle
+description: "Ed25519-signed market-state receipts for 28 global exchanges. Pre-trade verification gate for autonomous financial agents. UNKNOWN = CLOSED. MCP tools: get_market_status, get_market_schedule, list_exchanges, verify_receipt. Sandbox: 200 free calls. $0.001 USDC/req via x402."
+github: https://github.com/LembaGang/headless-oracle-v5
+tags:
+  - tools
+  - api
+  - integration
+  - security
+  - agents
