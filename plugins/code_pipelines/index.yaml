@@ -1,0 +1,13 @@
+title: Code Pipelines
+description: 'Automated code pipelines: per-repo worktree bundles plus a shadow repo
+  for project instructions, developer subagent builds, exit-code verification, parallel
+  review by up to 3 agent profiles, a bounded fix loop with feedback to the developer,
+  and push + PR — with terminal-state notifications. Built on stock parallel jobs
+  and the subagents orchestration pattern.'
+github: https://github.com/Nicfox77/a0-plugin-code-pipelines
+tags:
+- development
+- workflow
+- automation
+- jobs
+- github
