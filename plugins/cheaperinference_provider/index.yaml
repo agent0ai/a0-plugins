@@ -1,0 +1,7 @@
+title: Cheaper Inference Provider
+description: Adds Cheaper Inference as an OpenAI-compatible chat provider. One key reaches models from OpenAI, Anthropic, Google, DeepSeek, Z.ai and other labs, below the list price of each lab.
+github: https://github.com/aiapienthusiast/agent-zero-cheaperinference
+tags:
+  - llm
+  - integration
+  - api
