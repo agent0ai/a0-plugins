@@ -1,5 +1,5 @@
 title: RLM
-description: Hybrid recursive language model routing for oversized external context in Agent Zero.
+description: Recursive long-context analysis for Agent Zero, with guided Docker Desktop setup, persistent workspaces, and sandbox diagnostics.
 github: https://github.com/a0-community-plugins/rlm
 tags:
   - agents
