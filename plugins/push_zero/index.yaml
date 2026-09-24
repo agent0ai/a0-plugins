@@ -1,0 +1,9 @@
+title: Pushover
+description: Send push notifications from Agent Zero through Pushover. Includes an agent-callable notification tool, a dedicated Setup page, connection testing, emergency notifications with receipts, devices, sounds, URLs, TTL and application API usage.
+github: https://github.com/jphermans/Push-Agent
+tags:
+ - notifications
+ - tools
+ - external-services
+ - productivity
+ - automation
