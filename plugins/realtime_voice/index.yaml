@@ -1,0 +1,7 @@
+title: Realtime Voice
+description: Continuous, interruptible OpenAI speech-to-speech conversation that delegates real work to Agent Zero and speaks the result.
+github: https://github.com/NoHara42/a0-realtime-voice
+tags:
+  - audio
+  - agents
+  - integration
