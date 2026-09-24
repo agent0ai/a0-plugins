@@ -1,0 +1,9 @@
+title: Vision Router
+description: Transparently routes image attachments to native vision models or a cached
+  vision fallback.
+github: https://github.com/Nicfox77/a0-plugin-vision-router
+tags:
+- image
+- llm
+- tools
+- api
