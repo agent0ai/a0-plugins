@@ -1,9 +1,9 @@
-title: KAME — API Rotation & Stability Engine
-description: KAME rotates API keys to avoid 429 errors, cooldown exhausted keys, respect retry delays, and route around provider outages during long agent runs. When every key is cooling it waits for the exact moment one recovers, and says so in the chat instead of looking frozen.
+title: "KAME — API Key Rotation & Rate-Limit Recovery"
+description: "Paste several API keys into one provider field and KAME picks the healthiest key for every call — not round-robin. Every 429, quota and RESOURCE_EXHAUSTED refusal is read from its own evidence: the provider's retry delay to the second, per-minute and daily quotas told apart, Gemini's bare 429 on a 1-2-4-8s ladder, outages rested 1s, and no key ever held over an hour. When every key rests it waits for the first one back and says so in the chat. Any provider; zero configuration."
 github: https://github.com/Kame696/kame-api-rotation-for-agent-zero
 tags:
   - api
   - llm
+  - google
+  - secrets
   - integration
-  - automation
-  - tools
