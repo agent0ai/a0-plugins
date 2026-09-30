@@ -1,9 +1,11 @@
-title: Caveman (token-compressed replies)
+title: Caveman (compressed replies)
 description: >-
-  Cuts output tokens by roughly 65% while keeping full technical accuracy by
-  having the agent answer in compressed caveman-speak, across six intensity
-  levels including Classical Chinese modes. Toggleable per chat from the
-  WebUI, with live response validation and cumulative token-savings stats.
+  Squeezes the assistant's own wording into short, accurate prose by having it
+  answer in caveman-speak, across six intensity levels including Classical
+  Chinese modes. Toggle per chat from the WebUI, with a slash command, or over
+  HTTP. Reports the output it actually observed instead of an estimated
+  saving, and ships a validated file compressor, 3 subagent profiles, 5
+  sub-skills, and 51 unit tests with 15 health-check self-tests.
 github: https://github.com/Olszalsik/a0-caveman
 tags:
   - prompting
