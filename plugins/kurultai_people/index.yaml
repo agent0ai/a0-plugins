@@ -1,0 +1,11 @@
+title: Kurultai Memory
+description: Connect Agent Zero to your Kurultai brain — search, recall, and cite indexed knowledge with excerpts and source paths.
+github: https://github.com/duketopceo/kurultai_people
+tags:
+  - tools
+  - search
+  - memory
+  - integration
+  - rag
+screenshots:
+  - https://raw.githubusercontent.com/duketopceo/kurultai_people/main/docs/logo.webp

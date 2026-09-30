@@ -1,0 +1,9 @@
+title: Thread+
+description: Show configurable last activity, new activity, running state, project, agent profile, and creation date beneath chat titles in the Agent Zero sidebar.
+github: https://github.com/3clyp50/a0-thread-plus
+tags:
+  - ui
+  - workflow
+  - sidebar
+screenshots:
+  - https://raw.githubusercontent.com/3clyp50/a0-thread-plus/main/screenshots/sidebar.webp

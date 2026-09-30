@@ -134,3 +134,11 @@ Use tags from [`TAGS.md`](./TAGS.md) where possible (recommended: up to 5 tags):
 By contributing to this repository, you agree that your submission must not contain malicious content.
 
 If we detect malicious behavior (including but not limited to malware, credential theft, obfuscation intended to hide harmful behavior, or supply-chain attacks), the submission will be removed and **we will report it** to the relevant platforms and/or authorities. **Legal action may be taken if needed.**
+
+## Index maintenance
+
+The `generated-index` release serves `index.json`. The shared publisher uploads and verifies `index.json.next` before renaming the current index to `index.json.previous` and promoting the new index. The previous copy is retained for recovery. These renames are not atomic; the downloader can use a completed recovery asset if the main file is missing, and the next publisher restores it before continuing. Workflow downloads include the asset ID to avoid cached redirects to an older upload. Keep the existing workflow serialization enabled.
+
+If the release or all usable index assets are missing, manually run **Generate Plugin State** on `main` with **rebuild_index** enabled. This starts a complete index from repository metadata, ignores plugin/diff/offset/cleanup selections, and verifies that all eligible plugins are included before publishing. `max_plugins` remains a safety limit and must cover the whole catalog. Normal runs still require a valid existing index. Rebuilds also sync plugin discussions; repository statistics are refreshed by the existing stats workflow.
+
+After recovery, check the public [index download](https://github.com/agent0ai/a0-plugins/releases/download/generated-index/index.json). Run the offline publication regression check with `python scripts/test_index_release.py`.

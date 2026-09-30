@@ -1,9 +1,8 @@
 title: Superpowers
-description: Complete Superpowers agentic development framework for Agent Zero with 14 verified skills, mandatory bootstrap, supervised parallel workers, SDD review loops, live methodology observability, and a visual design companion.
+description: Verified Superpowers v6.3.0 methodology adapter for Agent Zero with 14 skills, mandatory prompt-cycle bootstrap, native skill loading and delegation, conversational approvals, and locked upstream provenance.
 github: https://github.com/TerminallyLazy/agent-zero-superpowers
 tags:
   - development
   - workflow
   - agents
-  - automation
-  - ui
+  - skills

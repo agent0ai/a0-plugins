@@ -1,0 +1,8 @@
+title: A2A Async
+description: Non-blocking A2A communication for Agent Zero. Dispatch messages to remote FastA2A-compatible agents and receive a task_id instantly instead of waiting for the answer, then collect results later with a2a_poll, cancel with a2a_cancel, and track pending tasks through [EXTRAS] reminders between turns. Solves a2a_chat timeouts on long-running remote agents. No framework modifications; httpx and fasta2a ship with the runtime.
+github: https://github.com/momo2002/a0-a2a_async
+tags:
+  - agents
+  - tools
+  - api
+  - workflow

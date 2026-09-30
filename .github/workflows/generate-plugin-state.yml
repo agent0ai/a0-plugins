@@ -8,6 +8,11 @@ on:
       - "authors/**"
   workflow_dispatch:
     inputs:
+      rebuild_index:
+        description: "Rebuild the complete index without downloading the current release; ignores selection and cleanup inputs"
+        type: boolean
+        required: false
+        default: false
       max_plugins:
         description: "Max number of plugins to process"
         required: false
@@ -73,8 +78,8 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install pyyaml pillow
 
-      - name: Download current index.json (best effort)
-        continue-on-error: true
+      - name: Download current index.json
+        if: ${{ github.event.inputs.rebuild_index != 'true' }}
         env:
           GITHUB_TOKEN: ${{ steps.bot-app-token.outputs.token }}
           INDEX_RELEASE_TAG: generated-index
@@ -82,7 +87,7 @@ jobs:
           python scripts/download_index_release.py
 
       - name: Resolve orphan plugin names
-        if: ${{ github.event.inputs.cleanup_orphans == 'true' }}
+        if: ${{ github.event.inputs.cleanup_orphans == 'true' && github.event.inputs.rebuild_index != 'true' }}
         id: orphan_names
         env:
           GITHUB_TOKEN: ${{ steps.bot-app-token.outputs.token }}
@@ -94,13 +99,33 @@ jobs:
       - name: Sync plugin state
         env:
           GITHUB_TOKEN: ${{ steps.bot-app-token.outputs.token }}
+          REBUILD_INDEX: ${{ github.event.inputs.rebuild_index || 'false' }}
           MAX_PLUGINS: ${{ github.event.inputs.max_plugins || '1000' }}
           START_FROM: ${{ github.event.inputs.start_from || '0' }}
           PLUGIN_NAMES: ${{ github.event.inputs.cleanup_orphans == 'true' && steps.orphan_names.outputs.plugin_names || github.event.inputs.plugin_names || '' }}
           BEFORE_SHA: ${{ github.event.inputs.cleanup_orphans == 'true' && github.sha || github.event.inputs.before_sha || github.event.before || '' }}
           AFTER_SHA: ${{ github.event.inputs.cleanup_orphans == 'true' && github.sha || github.event.inputs.after_sha || github.sha || '' }}
         run: |
+          if [ "$REBUILD_INDEX" = "true" ]; then
+            rm -f index.json
+            export PLUGIN_NAMES="" BEFORE_SHA="" AFTER_SHA="$GITHUB_SHA" START_FROM="0"
+          fi
           python scripts/sync_plugin_state.py
+          if [ "$REBUILD_INDEX" = "true" ]; then
+            python - <<'PY'
+          import json
+          from pathlib import Path
+
+          expected = {
+              path.parent.name for path in Path("plugins").glob("*/index.yaml")
+              if not path.parent.name.startswith("_") and not (path.parent / "blocked.md").exists()
+          }
+          actual = set(json.loads(Path("index.json").read_text())["plugins"])
+          if actual != expected:
+              raise SystemExit(f"Incomplete rebuild: missing={sorted(expected - actual)}, extra={sorted(actual - expected)}")
+          print(f"Verified complete index: {len(actual)} plugins")
+          PY
+          fi
 
       - name: Publish index.json to Release (replace asset)
         env:

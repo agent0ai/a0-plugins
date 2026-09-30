@@ -1,0 +1,7 @@
+title: Chat Jumper
+description: Keyboard navigation between chats. Ctrl+K opens a fuzzy quick switcher showing your most recent chats with number badges, Alt+1..9 jumps straight to the Nth most recent chat, and Ctrl+backtick flips back to the last chat. Type to filter chats by name or topic with fuzzy subsequence matching. Pure frontend, no backend, no settings.
+github: https://github.com/glatinone/chat-jumper
+tags:
+  - automation
+  - workflow
+  - tools

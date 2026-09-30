@@ -1,0 +1,8 @@
+title: File Browser SMB 3 for NAS
+description: Browse encrypted SMB 3 NAS shares in Files with signed sessions, explicit credentials and per-connection permissions. Requires Agent Zero v2.12 or later.
+github: https://github.com/3clyp50/a0-file-browser-smb
+tags:
+  - files
+  - file-browser
+  - storage
+  - integration

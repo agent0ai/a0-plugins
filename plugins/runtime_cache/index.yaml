@@ -1,0 +1,7 @@
+title: Runtime Cache
+description: Makes Agent Zero faster by remembering prompts and state in memory and refreshing them the moment anything changes on disk.
+github: https://github.com/linkliti/a0-plugin-runtime_cache
+tags:
+  - framework
+  - prompting
+  - monologue

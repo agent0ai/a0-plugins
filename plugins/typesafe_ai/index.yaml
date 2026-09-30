@@ -1,0 +1,9 @@
+title: TypeSafe AI · Jev
+description: Ask Jev typed questions using the official TypeSafe SDK. Batch choices, yes/no probabilities, and rubric scores, with probability cards in chat and the official TypeSafe skill included.
+github: https://github.com/3clyp50/a0-typesafe-ai
+tags:
+  - llm
+  - tools
+  - integration
+  - workflow
+  - ui

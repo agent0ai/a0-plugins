@@ -1,0 +1,8 @@
+title: File Browser FTPS access
+description: Connect registered FTPS accounts to Files with verified TLS on control and data channels, per-connection permissions and shared Editor support. Requires Agent Zero v2.12 or later.
+github: https://github.com/3clyp50/a0-file-browser-ftps
+tags:
+  - files
+  - file-browser
+  - storage
+  - integration

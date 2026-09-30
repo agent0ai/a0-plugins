@@ -1,0 +1,8 @@
+title: File Browser S3 access
+description: Browse S3 buckets and prefixes in Files with explicit credentials, per-connection permissions and conditional object saves. Requires Agent Zero v2.12 or later.
+github: https://github.com/3clyp50/a0-file-browser-s3
+tags:
+  - files
+  - file-browser
+  - storage
+  - integration

@@ -1,0 +1,7 @@
+title: Chat Status Lights
+description: Colored status dots next to sidebar chat titles. Blue pulse while the agent runs, red when a chat ended with an error, yellow when an action waits for your approval (with the Human Approval Gate plugin), green for finished chats you have not opened. One glance tells you which chats need attention. Pure frontend plus one tiny status API, works standalone.
+github: https://github.com/glatinone/chat-status-lights
+tags:
+  - ui
+  - productivity
+  - agents

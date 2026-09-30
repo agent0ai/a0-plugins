@@ -1,5 +1,0 @@
-title: Prompt File Cache
-description: Caches agent.read_prompt calls within a monologue to eliminate redundant disk I/O and template parsing.
-github: https://github.com/linkliti/a0-plugin-prompt_file_cache
-tags:
-  - monologue

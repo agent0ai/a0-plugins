@@ -121,17 +121,29 @@ def main() -> int:
         _fail("Release response missing assets")
 
     download_url: str | None = None
-    for a in assets:
-        if not isinstance(a, dict):
-            continue
-        if a.get("name") == asset_name and isinstance(a.get("browser_download_url"), str):
-            download_url = cast(str, a.get("browser_download_url"))
+    for name in (asset_name, f"{asset_name}.next", f"{asset_name}.previous"):
+        for a in assets:
+            if not isinstance(a, dict):
+                continue
+            if a.get("name") == name and a.get("state") == "uploaded" and isinstance(a.get("id"), int) and isinstance(a.get("browser_download_url"), str):
+                # Avoid cached redirects to a previous upload.
+                download_url = f"{a['browser_download_url']}?asset_id={a['id']}"
+                if name != asset_name:
+                    print(f"WARN: {asset_name} missing; downloading recovery asset {name}")
+                break
+        if download_url:
             break
 
     if not download_url:
         _fail(f"Release '{tag}' does not contain asset '{asset_name}'")
 
     content = _download_bytes(download_url)
+    try:
+        index = json.loads(content)
+    except ValueError as e:
+        _fail(f"Invalid index JSON: {e}")
+    if not isinstance(index, dict) or not isinstance(index.get("plugins"), dict) or not index["plugins"]:
+        _fail("Downloaded index must contain a non-empty plugins object")
     INDEX_PATH.write_bytes(content)
     print(f"Downloaded {asset_name} -> {INDEX_PATH.relative_to(REPO_ROOT)}")
     return 0
