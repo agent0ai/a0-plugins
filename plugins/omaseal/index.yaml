@@ -1,0 +1,9 @@
+title: OmaSeal Secrets
+description: One secrets interface for Agent Zero — resolves API keys from the OmaSeal keyring, 1Password, environment variables, or an encrypted local vault. Provider keys are injected at call time; agents see names and masked values only.
+github: https://github.com/duketopceo/a0-plugin-omaseal
+tags:
+  - secrets
+  - security
+  - auth
+  - tools
+  - api
