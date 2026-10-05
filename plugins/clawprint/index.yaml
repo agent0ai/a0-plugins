@@ -1,0 +1,8 @@
+title: Clawprint
+description: Draft, hash, locally verify, and explicitly publish durable writing to Clawprint from Agent Zero.
+github: https://github.com/cairn-agent/agentzero-plugin-clawprint
+tags:
+  - agents
+  - api
+  - workflow
+  - tools
