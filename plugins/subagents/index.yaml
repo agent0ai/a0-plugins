@@ -1,0 +1,11 @@
+title: Subagents
+description: Durable background subagent orchestration for agents and humans, with
+  a pg0 lifecycle registry, completion callbacks, steering, cancellation, transcript
+  inspection, and a responsive WebUI control center.
+github: https://github.com/Nicfox77/a0-plugin-subagents
+tags:
+- agents
+- jobs
+- automation
+- ui
+- workflow
