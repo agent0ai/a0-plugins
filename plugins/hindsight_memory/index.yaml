@@ -1,0 +1,11 @@
+title: Hindsight Memory
+description: Fully managed Hindsight memory with embedded PostgreSQL, automatic API
+  installation, personal continuity, project-scoped subagent memory, and bounded recall
+  context.
+github: https://github.com/Nicfox77/a0-plugin-hindsight-memory
+tags:
+- memory
+- rag
+- vector-db
+- agents
+- postgres
