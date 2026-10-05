@@ -1,0 +1,9 @@
+title: Chat Shepherd
+description: Background supervisor for your chats. Detects stalled and wedged agents, auto-nudges them to keep working, escalates chats that need a human, and shows a live status icon per chat. Optional supervised mode (human reviews drafts first), goal-completion gate, and webhook/Telegram alerts. Works locally with no network calls; not related to the passive chat_status_lights display plugin.
+github: https://github.com/Olszalsik/a0-chat-shepherd
+tags:
+  - monitoring
+  - automation
+  - agents
+  - workflow
+  - ui
