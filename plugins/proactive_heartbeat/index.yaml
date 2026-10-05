@@ -1,0 +1,11 @@
+title: Heartbeat Scheduler
+description: Autonomous heartbeat — wakes the agent after an idle period for silent
+  maintenance work (notes queue, journal, maintenance checks). Replaces the external
+  systemd daemon with an in-process scheduler.
+github: https://github.com/Nicfox77/a0-plugin-proactive-heartbeat
+tags:
+- agents
+- automation
+- scheduling
+- monitoring
+- workflow
