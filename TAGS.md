@@ -16,6 +16,7 @@ Use short, lowercase tags. Prefer existing tags from this list. Recommended: up 
 ## AI / LLM
 
 - `llm`
+- `provider`
 - `prompting`
 - `embeddings`
 - `rag`
