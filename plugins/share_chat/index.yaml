@@ -1,0 +1,10 @@
+title: Share Chat
+description: >-
+  One-click chat sharing for Agent Zero — a share button in the top bar copies
+  a deep link that opens straight to the current conversation. Client-side
+  only; recipients still need access to your instance.
+github: https://github.com/agent-zero-plugins/agent-zero-plugin-share-chat
+tags:
+  - workflow
+  - tools
+  - integration
