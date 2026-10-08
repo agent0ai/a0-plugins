@@ -1,0 +1,9 @@
+title: OpenRouter Credit Monitor
+description: Displays the current OpenRouter credit balance and API-key usage directly in the Agent Zero WebUI. Features real-time balance monitoring, low-credit alerts, and secure server-side API calls.
+github: https://github.com/jphermans/openrouter-credit-monitor
+tags:
+  - openrouter
+  - credits
+  - balance
+  - monitoring
+  - api
