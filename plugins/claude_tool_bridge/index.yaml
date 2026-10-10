@@ -1,0 +1,7 @@
+title: Claude Tool Bridge
+description: Makes Claude 5 models, such as claude-sonnet-5-5, work in Agent Zero's chat mode. Translates Claude's native <invoke> tool calls into the JSON tool requests Agent Zero expects, with typed arguments, MCP and tool:method support, and an early stop of the stream. Replies that already hold JSON, quoted examples and unknown tools are left untouched.
+github: https://github.com/spcdatapro/claude-tool-bridge
+tags:
+  - llm
+  - tools
+  - agents
