@@ -1,0 +1,11 @@
+title: Device Sync
+description: >-
+  Cross-instance sync packs for Agent Zero — secret-free settings, chats,
+  and memory atoms between a0 boxes over Tailscale (or a manual peer
+  list). HMAC-authenticated peers; imported secrets are never accepted.
+github: https://github.com/duketopceo/a0-plugin-device-sync
+tags:
+  - storage
+  - api
+  - automation
+  - tools
