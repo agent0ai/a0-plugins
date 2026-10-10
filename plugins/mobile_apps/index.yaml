@@ -1,0 +1,7 @@
+title: Mobile Apps
+description: Android and iOS downloads in the sidebar and Home dashboard, with locally generated QR codes for Android installation and HTTPS server pairing. No core WebUI patches.
+github: https://github.com/TerminallyLazy/a0-mobile-apps
+tags:
+  - ui
+  - integration
+  - web
