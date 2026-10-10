@@ -1,0 +1,11 @@
+title: DiffVisualizer
+description: >-
+  Turns diff code blocks in Agent Zero chat into side-by-side visual diffs, so
+  proposed changes read as an instant review instead of raw text. Includes a
+  fullscreen view and nudges the agent to answer with diffs.
+github: https://github.com/agent-zero-plugins/agent-zero-plugin-diff-visualizer
+tags:
+  - development
+  - code-review
+  - workflow
+  - tools
