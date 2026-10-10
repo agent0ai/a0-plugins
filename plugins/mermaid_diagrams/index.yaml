@@ -1,0 +1,11 @@
+title: Mermaid Diagrams
+description: >-
+  Renders mermaid code blocks in Agent Zero chat as interactive diagrams, and
+  nudges the agent to answer with diagrams instead of describing structures in
+  prose.
+github: https://github.com/agent-zero-plugins/agent-zero-plugin-mermaid-diagrams
+tags:
+  - tools
+  - development
+  - workflow
+  - agents
