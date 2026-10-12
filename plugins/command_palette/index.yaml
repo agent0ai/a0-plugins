@@ -1,0 +1,8 @@
+title: Command Palette
+description: Launch chats, projects, built-in actions, and context-aware slash commands from an editable Cmd/Ctrl+K palette.
+github: https://github.com/TerminallyLazy/command-palette-agent-zero
+tags:
+  - ui
+  - workflow
+  - search
+  - tools

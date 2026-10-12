@@ -1,0 +1,9 @@
+title: Plugin Nester
+description: Bundle, install, and manage community or custom Agent Zero plugins as nested children.
+github: https://github.com/TerminallyLazy/agent-zero-plugin-nester
+tags:
+  - tools
+  - workflow
+  - automation
+  - development
+  - ui

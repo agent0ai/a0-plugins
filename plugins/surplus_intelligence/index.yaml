@@ -1,0 +1,7 @@
+title: Surplus Intelligence
+description: Use Surplus Intelligence in Agent Zero's model configuration with native API-key storage, live model discovery, provider allow/block lists, routing priorities, and minimum-discount controls.
+github: https://github.com/3clyp50/surplus-intelligence
+tags:
+  - llm
+  - api
+  - integration

@@ -1,0 +1,9 @@
+title: Atlassian Integration
+description: Manage your Atlassian Cloud instance, Jira projects, and Confluence pages directly via Agent Zero.
+github: https://github.com/robulytics/agent-zero-atlassian-plugin
+tags:
+  - tools
+  - productivity
+  - api
+  - integration
+  - automation

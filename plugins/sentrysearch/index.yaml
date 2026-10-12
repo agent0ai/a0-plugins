@@ -1,0 +1,12 @@
+title: SentrySearch
+description: Unofficial Agent Zero fork of Soham Rajadhyaksha's SentrySearch. Index, semantically search, and play local MP4/MOV libraries with Agent Zero's configured multimodal embedding model.
+github: https://github.com/3clyp50/a0_sentrysearch
+tags:
+  - video
+  - search
+  - embeddings
+  - vector-db
+  - ui
+screenshots:
+  - https://raw.githubusercontent.com/3clyp50/a0_sentrysearch/master/docs/agent-zero-modal.webp
+  - https://raw.githubusercontent.com/3clyp50/a0_sentrysearch/master/docs/agent-zero-mobile.webp

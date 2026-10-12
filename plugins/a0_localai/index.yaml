@@ -1,0 +1,7 @@
+title: A0 LocalAI
+description: Adds LocalAI as an OpenAI-compatible LLM provider for Agent Zero chat and embedding models.
+github: https://github.com/neurocis/A0_LocalAI
+tags:
+  - llm
+  - integration
+  - api

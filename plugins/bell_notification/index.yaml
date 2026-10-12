@@ -1,0 +1,7 @@
+title: Bell Notification
+description: Plays a custom sound and shows a browser notification when Agent Zero finishes a task, with configurable duration threshold and enable/disable settings.
+github: https://github.com/alogotron/bell_notification
+tags:
+  - automation
+  - workflow
+  - web

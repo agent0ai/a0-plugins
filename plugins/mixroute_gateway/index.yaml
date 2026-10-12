@@ -1,0 +1,9 @@
+title: MixRoute Gateway
+description: Registers MixRoute as three Agent Zero chat providers - Anthropic with thinking effort control, general models, and Smart Routing - each with its own API key slot. Adds a sidebar credit visor showing balance, runway, burn rate, cache hit rate, and cache savings, read from the MixRoute console API.
+github: https://github.com/revworxai/mixroute_gateway
+tags:
+  - llm
+  - api
+  - integration
+  - monitoring
+  - ui

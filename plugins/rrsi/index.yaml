@@ -1,0 +1,8 @@
+title: RRSI
+description: Regularized recursive self-improvement of Agent Zero harnesses with reproducible tasks, measured policy tokens, isolated evaluation, and versioned activation for new conversations.
+github: https://github.com/TerminallyLazy/agent-zero-rrsi
+tags:
+  - automation
+  - agents
+  - llm
+  - docker

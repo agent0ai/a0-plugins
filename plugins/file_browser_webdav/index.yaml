@@ -1,0 +1,8 @@
+title: File Browser WebDAV access
+description: Connect WebDAV folders over verified HTTPS with per-connection permissions, conditional saves and shared Editor support. Requires Agent Zero v2.12 or later.
+github: https://github.com/3clyp50/a0-file-browser-webdav
+tags:
+  - files
+  - file-browser
+  - storage
+  - integration

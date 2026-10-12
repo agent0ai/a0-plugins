@@ -1,0 +1,7 @@
+title: Easy Voice Transcription Caller (EVTC)
+description: Privacy-first audio/video transcription with local or cloud engines. Auto-converts to 16kHz mono WAV, adaptive chunking with overlap stitching, and structured meeting summaries.
+github: https://github.com/pakgrou-porg/evtc-voice-transcriber
+tags:
+  - tools
+  - automation
+  - api

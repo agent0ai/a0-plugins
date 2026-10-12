@@ -1,0 +1,7 @@
+title: Reasoning Effort
+description: Adds model-aware reasoning effort controls to the Agent Zero chat composer.
+github: https://github.com/3clyp50/a0_reasoning_effort
+tags:
+  - llm
+  - ui
+  - productivity

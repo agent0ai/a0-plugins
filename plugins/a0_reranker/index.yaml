@@ -1,0 +1,8 @@
+title: Reranker
+description: Reranks the documents Agent Zero recalls from memory with a cross-encoder reranker, so the most relevant memories enter the prompt first. Auto-detects the API your server speaks — standard rerank (Cohere, Jina, Infinity, TEI, vLLM /v1/rerank) or a vLLM-served Qwen3-Reranker via client-templated /score — using a correctness probe, not just reachability. Fail-safe (recall keeps its original order on any error), with a shadow mode to A/B before committing and a Test-connection button.
+github: https://github.com/King0James0/a0-reranker
+tags:
+  - memory
+  - search
+  - rag
+  - llm

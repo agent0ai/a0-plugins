@@ -1,0 +1,17 @@
+title: Parley Chat Integration
+description: >-
+  Bring Agent Zero into Stoat/Revolt, Discord, and Slack as a teammate, not a
+  bolted-on bot. It builds smart context-aware conversations from channel
+  history, so you don't have to repeat yourself, and replies right in-thread
+  when @mentioned.
+github: https://github.com/clarkehackworth/a0-agent-parley
+tags:
+  - integration
+  - discord
+  - slack
+  - agents
+  - api
+screenshots:
+  - https://raw.githubusercontent.com/clarkehackworth/a0-agent-parley/main/docs/Screenshot1-2026.07.01.png
+  - https://raw.githubusercontent.com/clarkehackworth/a0-agent-parley/main/docs/Screenshot1-2026.06.30.png
+  - https://raw.githubusercontent.com/clarkehackworth/a0-agent-parley/main/docs/Screenshot2-2026.06.30.png

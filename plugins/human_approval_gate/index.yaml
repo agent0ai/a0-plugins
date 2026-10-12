@@ -1,0 +1,9 @@
+﻿
+title: Human Approval Gate
+description: Pauses Agent Zero before high-risk actions (destructive commands, file deletion, git push, external HTTP writes) and waits for an explicit Approve or Reject in the UI. Every decision is logged to a local audit file. Safe defaults, no external services.
+github: https://github.com/glatinone/human-approval-gate
+tags:
+  - security
+  - automation
+  - agents
+  - tools

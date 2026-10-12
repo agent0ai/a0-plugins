@@ -1,0 +1,9 @@
+title: Discord A0
+description: Multi-bot Discord integration with mentions and replies, per-bot instructions and model defaults, scoped agent approvals, channel research, and file attachments.
+github: https://github.com/3clyp50/discord-a0
+tags:
+  - discord
+  - integration
+  - agents
+  - automation
+  - channels

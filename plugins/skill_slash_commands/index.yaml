@@ -1,0 +1,7 @@
+title: Skill Slash Commands
+description: Exposes selected current-context Agent Zero skills as direct slash commands, using the Commands plugin when available and a lightweight fallback otherwise.
+github: https://github.com/Jehu/a0-skills-slash-command
+tags:
+  - tools
+  - workflow
+  - development

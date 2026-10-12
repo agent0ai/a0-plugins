@@ -1,0 +1,12 @@
+title: OpenRouter Gateway
+description: >-
+  One OpenRouter key, five new modalities for Agent Zero: image generation
+  with image-to-image, multilingual text-to-speech, audio transcription,
+  async video generation, and multimodal embeddings. Includes read-aloud
+  voice integration and model catalog search.
+github: https://github.com/Jehu/a0-openrouter-gateway
+tags:
+  - tools
+  - integration
+  - api
+  - llm

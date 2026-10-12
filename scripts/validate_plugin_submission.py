@@ -13,7 +13,7 @@ from typing import Any, NoReturn, cast
 import yaml
 from PIL import Image
 
-from plugin_resolution import INDEX_YAML_NAME, REPO_ROOT
+from plugin_resolution import INDEX_YAML_NAME, REPO_ROOT, is_valid_plugin_dirname
 
 PLUGINS_DIR = REPO_ROOT / "plugins"
 INDEX_JSON_PATH = REPO_ROOT / "index.json"
@@ -86,6 +86,16 @@ def _all_changed_paths(entries: list[tuple[str, list[str]]]) -> list[str]:
     return out
 
 
+def _validate_plugin_name_format(plugin_name: str, *, context: str) -> None:
+    if is_valid_plugin_dirname(plugin_name):
+        return
+    _fail(
+        f"{context} '{plugin_name}' is invalid: "
+        "expected lowercase letters, numbers, and underscores only "
+        "(dashes are not allowed)"
+    )
+
+
 def _submission_plugin_name(paths: list[str]) -> str:
     plugin_names: set[str] = set()
     for path in paths:
@@ -99,6 +109,7 @@ def _submission_plugin_name(paths: list[str]) -> str:
         plugin_name = parts[1]
         if not plugin_name or plugin_name.startswith("_"):
             _fail(f"Plugin folder names starting with '_' are reserved: {path}")
+        _validate_plugin_name_format(plugin_name, context="Plugin folder name")
         plugin_names.add(plugin_name)
     if len(plugin_names) != 1:
         _fail("PR must modify exactly one plugin folder under plugins/")
@@ -388,6 +399,7 @@ def _validate_remote_plugin_name(content_obj: dict[str, Any], plugin_name: str) 
     remote_name = remote_yaml.get("name")
     if not isinstance(remote_name, str) or not remote_name.strip():
         _fail("remote plugin.yaml must contain non-empty string field 'name'")
+    _validate_plugin_name_format(remote_name, context="remote plugin.yaml name")
     if remote_name != plugin_name:
         _fail(f"remote plugin.yaml name must exactly match plugin folder name '{plugin_name}'")
 

@@ -1,0 +1,13 @@
+title: LLM API Visor
+description: Sidebar visor for Agent Zero LLM API wallet credits, quota multiplier, local usage insights, and dashboard shortcuts.
+github: https://github.com/3clyp50/a0_llm_api_visor
+tags:
+  - llm
+  - api
+  - ui
+  - monitoring
+screenshots:
+  - https://raw.githubusercontent.com/3clyp50/a0_llm_api_visor/main/screenshots/visor.png
+  - https://raw.githubusercontent.com/3clyp50/a0_llm_api_visor/main/screenshots/settings.png
+  - https://raw.githubusercontent.com/3clyp50/a0_llm_api_visor/main/screenshots/insights-overview.png
+  - https://raw.githubusercontent.com/3clyp50/a0_llm_api_visor/main/screenshots/insights-models.png

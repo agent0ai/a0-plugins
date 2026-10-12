@@ -1,0 +1,6 @@
+title: Chat Sort Recent
+description: Toggle chat sorting between Last Modified (most recent first) and Created Date order with a UI button in the Chats section header.
+github: https://github.com/branislav-remen/chat_sort_recent
+tags:
+  - ui
+  - productivity

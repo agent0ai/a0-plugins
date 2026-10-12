@@ -1,0 +1,6 @@
+title: Ripgrep Search
+description: Thin wrapper around ripgrep (rg) for searching file contents and listing files.
+github: https://github.com/linkliti/a0-plugin-rg
+tags:
+  - tools
+  - development

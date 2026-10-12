@@ -1,0 +1,9 @@
+title: SkillOpt Native
+description: Native skill training and offline learning for Agent Zero using Microsoft SkillOpt, with held-out validation, scoped proposals, reviewed adoption, and rollback.
+github: https://github.com/TerminallyLazy/a0-skillopt-native
+tags:
+  - agents
+  - prompting
+  - memory
+  - automation
+  - llm

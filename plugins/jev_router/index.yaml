@@ -1,0 +1,8 @@
+title: Jev Router
+description: Standalone TypeSafe Jev-based auto-routing for Agent Zero. Real-call telemetry, state-aware auto-tune, and live WebUI panel.
+github: https://github.com/twilso24/jev_router
+tags:
+  - routing
+  - models
+  - workflow
+  - telemetry

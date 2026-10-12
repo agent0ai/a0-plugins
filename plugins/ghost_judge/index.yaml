@@ -1,0 +1,9 @@
+title: Ghost Judge
+description: Silent LLM quality gate that evaluates your agent's work with a separate judge model. Set a /goal and the judge ensures completeness before presenting results. Overclock any model.
+github: https://github.com/Kironkeys/ghost-judge
+tags:
+  - workflow
+  - tools
+  - agents
+  - development
+  - automation

@@ -1,0 +1,6 @@
+title: TrustedRouter Provider
+description: Adds TrustedRouter as an OpenAI-compatible chat and embedding provider. One key reaches OpenAI, Anthropic, Google, DeepSeek and others, with per-request routing and failover. Routing policies constrain which upstreams may serve a request - zdr for no-retention providers, e2e for confidential compute, eu for EU-hosted.
+github: https://github.com/Lore-Hex/agent-zero-trustedrouter
+tags:
+  - llm
+  - integration

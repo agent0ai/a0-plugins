@@ -1,0 +1,7 @@
+title: Hindsight Memory
+description: Hindsight retain/recall memory integration for Agent Zero using lifecycle hooks.
+github: https://github.com/Jehu/a0-hindsight
+tags:
+  - memory
+  - integration
+  - tools

@@ -1,0 +1,15 @@
+title: Vision Fallback
+description: >-
+  Routes image analysis to a dedicated vision model when the main chat model
+  doesn't support vision. Intercepts images before they reach the LLM, sends
+  them to a configurable vision model (via LiteLLM), and replaces the image
+  with a text description. Works with any text-only model like glm-5.2,
+  deepseek, or llama3. Features auto API key detection from .env, hash-based
+  cache, and dark mode UI.
+github: https://github.com/lelabdev/a0-vision-fallback
+tags:
+  - llm
+  - tools
+  - vision
+  - integration
+  - agents

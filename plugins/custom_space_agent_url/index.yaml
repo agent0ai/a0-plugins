@@ -1,0 +1,5 @@
+title: Custom Space Agent URL
+description: Customize the Space Agent link URL in the Agent Zero sidebar menu. Configure via plugin settings or SPACE_AGENT_URL environment variable in docker-compose.
+github: https://github.com/schmidt-silas/custom_space_agent_url
+tags:
+  - tools

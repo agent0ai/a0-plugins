@@ -1,0 +1,8 @@
+title: E-Mail Companion
+description: Safe, controlled mailbox access for Agent Zero — read, triage, draft emails with approval-gate for mutations and bundled Mail Agent for context isolation.
+github: https://github.com/Jehu/email-companion
+tags:
+  - tools
+  - security
+  - automation
+  - agents

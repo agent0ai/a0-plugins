@@ -1,0 +1,12 @@
+title: Multi-Preset Manager
+description: Duplicate model presets and copy chosen settings, such as models, context size and provider parameters, from one preset to many, with a preview of the effective changes, automatic backups and one-click undo.
+github: https://github.com/spcdatapro/multi-preset-manager
+tags:
+  - llm
+  - workflow
+  - tools
+  - ui
+screenshots:
+  - https://raw.githubusercontent.com/spcdatapro/multi-preset-manager/main/docs/copy-settings.png
+  - https://raw.githubusercontent.com/spcdatapro/multi-preset-manager/main/docs/copy-preview.png
+  - https://raw.githubusercontent.com/spcdatapro/multi-preset-manager/main/docs/history.png

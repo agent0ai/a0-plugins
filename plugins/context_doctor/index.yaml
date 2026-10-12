@@ -1,0 +1,7 @@
+title: Context Doctor
+description: Repair and beautify model JSON responses before they reach history, WebUI log, and tool execution using json_repair.
+github: https://github.com/linkliti/a0-plugin-context_doctor
+tags:
+  - llm
+  - agents
+  - monologue

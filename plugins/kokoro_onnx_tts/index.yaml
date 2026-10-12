@@ -1,0 +1,7 @@
+title: Kokoro ONNX TTS
+description: Local server-side text-to-speech using Kokoro ONNX. Discovers and downloads Kokoro ONNX models and voice packs from Hugging Face, caches them locally, and registers a speech provider in Agent Zero's voice settings. Supports multiple languages, adjustable speed, and optional mixed-language term pronunciation so English technical terms are spoken correctly inside non-English text. Runs fully offline after the first model download.
+github: https://github.com/Jehu/a0-kokoro-onnx-tts
+tags:
+  - audio
+  - tools
+  - integration

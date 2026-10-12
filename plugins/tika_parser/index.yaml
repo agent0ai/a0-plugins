@@ -1,0 +1,11 @@
+title: Tika Document Parser
+description: >
+  Universal document parsing pipeline via Apache Tika. Handles PDF, Office, images
+  (automatic OCR), email, archives, HTML, and 1000+ formats with a single tool call.
+  Async client with concurrency cap, retries, dedup cache, and recursive embedded
+  object extraction.
+github: https://github.com/amitjaju82/tika_parser
+tags:
+  - tools
+  - integration
+  - workflow

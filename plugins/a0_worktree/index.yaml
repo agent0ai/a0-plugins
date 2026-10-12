@@ -1,0 +1,8 @@
+title: A0 Worktree
+description: Give the agent an isolated git worktree + branch of a repo as its own project, so it can work safely off your main checkout without disturbing it. Also the worktree backend that A0 Swarm's isolated mode delegates to.
+github: https://github.com/King0James0/a0-worktree-plugin
+tags:
+  - tools
+  - workflow
+  - development
+  - agents

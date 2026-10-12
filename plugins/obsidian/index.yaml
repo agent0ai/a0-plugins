@@ -1,0 +1,14 @@
+title: Obsidian
+description: >-
+  Gives Agent Zero its own Obsidian vault. Exposes obsidian-cli so the agent can read, create,
+  search, and organize markdown notes, daily notes, and tasks in an A0-owned vault that persists
+  outside the plugin (preserved on uninstall). Adds an Obsidian icon to the Canvas rail showing the
+  live app (graph view + editor) via a self-healing screencast surface. Ships skills for note-taking
+  and for keeping a clean, linked, project-first vault.
+github: https://github.com/King0James0/a0-obsidian-plugin
+tags:
+  - documents
+  - storage
+  - files
+  - tools
+  - ui

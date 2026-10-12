@@ -1,0 +1,9 @@
+title: A2T - Telegram Connector
+description: Telegram bridge plugin for Agent Zero with multi-bot support, per-user and per-topic project routing, polling and webhook modes, rich message support, typing indicators, and inline keyboards.
+github: https://github.com/fernandobayit/a2t
+tags:
+  - integration
+  - automation
+  - agents
+  - api
+  - workflow

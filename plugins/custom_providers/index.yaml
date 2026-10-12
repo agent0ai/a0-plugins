@@ -1,0 +1,6 @@
+title: Custom Providers
+description: Add and manage custom model providers directly from the Agent Zero UI.
+github: https://github.com/GreifMax/a0-custom-providers
+tags:
+  - api
+  - ui

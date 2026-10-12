@@ -1,0 +1,8 @@
+title: Multi-Project Manager
+description: Duplicate projects and propagate description, instructions, variables and secrets from one project to many, with automatic backups and one-click undo.
+github: https://github.com/spcdatapro/multi-project-manager
+tags:
+  - workflow
+  - tools
+  - ui
+  - secrets

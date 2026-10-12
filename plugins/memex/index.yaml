@@ -1,0 +1,8 @@
+title: Memex
+description: Persistent memory layer for Agent Zero with cross-session search, decay scoring, user profiling, and auto skill learning.
+github: https://github.com/keyboardstaff/memex
+tags:
+  - memory
+  - search
+  - automation
+  - workflow

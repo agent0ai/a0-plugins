@@ -1,0 +1,11 @@
+title: Headroom Context Compression
+description: >
+  Automatically compresses tool outputs in your agent conversations using Headroom AI.
+  Saves 50-70% tokens on every agent turn by compressing file reads, command output,
+  search results, and API responses. Works with any LLM provider. Zero configuration
+  needed — install, run setup, done.
+github: https://github.com/emasoudy/headroom-compress-a0
+tags:
+  - llm
+  - prompting
+  - optimization

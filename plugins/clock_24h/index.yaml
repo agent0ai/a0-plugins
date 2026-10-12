@@ -1,0 +1,8 @@
+title: 24H Clock
+description: Forces the Agent Zero WebUI header clock to display time in 24-hour format (HH:MM:SS) instead of 12-hour AM/PM. Always-on, update-proof, zero config.
+github: https://github.com/jphermans/a0-plugin-clock-24h
+tags:
+  - ui
+  - utilities
+screenshots:
+  - https://raw.githubusercontent.com/jphermans/a0-plugin-clock-24h/main/docs/banner.png

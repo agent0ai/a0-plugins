@@ -1,0 +1,8 @@
+title: File Browser SSH access
+description: Connect SFTP folders to Files with pinned SSH server identities, instance keys, per-connection permissions and shared Editor support. Requires Agent Zero v2.12 or later.
+github: https://github.com/3clyp50/a0-file-browser-ssh
+tags:
+  - files
+  - file-browser
+  - storage
+  - integration

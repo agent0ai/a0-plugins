@@ -1,0 +1,8 @@
+title: LLM Cost Tracker
+description: Privacy-conscious LLM usage and cost tracking with a local SQLite dashboard. Tracks chat and utility model calls, separates provider-reported, estimated API, and API-equivalent costs.
+github: https://github.com/Jehu/a0-llm-cost-tracker
+tags:
+  - llm
+  - tools
+  - development
+  - automation

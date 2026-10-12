@@ -1,0 +1,9 @@
+title: HyperAgents
+description: Self-improvement loop for Agent Zero projects. Provides six tools (archive, patch, eval, scheduler, sandbox, inheritance) that materialize candidate agent variants in isolated workspaces, evaluate them, archive lineage, and promote winning patches behind safety gates.
+github: https://github.com/neurocis/a0_hyperagents
+tags:
+  - agents
+  - automation
+  - workflow
+  - jobs
+  - framework

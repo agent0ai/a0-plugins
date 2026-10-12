@@ -1,0 +1,12 @@
+title: Pascal Editor
+description: Embed Pascal's open-source 3D building editor in Agent Zero's docked or floating canvas, with bundled MCP tools for saved-scene editing. Includes the prebuilt Linux x64 runtime; requires Node.js 22.13 or newer.
+github: https://github.com/3clyp50/pascal_editor
+tags:
+  - ui
+  - tools
+  - integration
+  - workflow
+screenshots:
+  - https://raw.githubusercontent.com/3clyp50/pascal_editor/main/docs/screenshots/right-canvas.png
+  - https://raw.githubusercontent.com/3clyp50/pascal_editor/main/docs/screenshots/nature-split-view.png
+  - https://raw.githubusercontent.com/3clyp50/pascal_editor/main/docs/screenshots/export.png

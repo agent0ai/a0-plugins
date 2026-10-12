@@ -1,0 +1,11 @@
+title: Fish Audio
+description: Browse public and personal Fish Audio voices, generate MP3 speech, and read Agent Zero replies aloud with S2.1 Pro Free.
+github: https://github.com/TerminallyLazy/a0-fish-audio
+tags:
+  - audio
+  - tools
+  - api
+  - integration
+screenshots:
+  - https://raw.githubusercontent.com/TerminallyLazy/a0-fish-audio/main/docs/screenshots/settings.png
+  - https://raw.githubusercontent.com/TerminallyLazy/a0-fish-audio/main/docs/screenshots/voices.png

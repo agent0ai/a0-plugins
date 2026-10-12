@@ -1,0 +1,11 @@
+title: MCP Agent Access Control
+description: Per-agent/per-profile whitelist for MCP servers. Scope global MCP servers to specific agent profiles so each agent only sees and can call the MCP tools it needs (e.g. AWS servers only for AWS agents), keeping agent0 clean. Hides disallowed servers from the prompt and hard-blocks unauthorized calls.
+github: https://github.com/mirecekd/a0-mcp_agent_access
+tags:
+  - mcp
+  - agents
+  - security
+  - tools
+  - configuration
+screenshots:
+  - https://raw.githubusercontent.com/mirecekd/a0-mcp_agent_access/main/docs/screenshot.png

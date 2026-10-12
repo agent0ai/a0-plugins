@@ -1,0 +1,9 @@
+title: Selectable Theme
+description: Select and preview 12 semantic WebUI themes, then create reusable custom light/dark palettes and gradients without modifying Agent Zero core.
+github: https://github.com/3clyp50/selectable_theme
+tags:
+  - ui
+  - theme
+  - customization
+screenshots:
+  - https://raw.githubusercontent.com/3clyp50/selectable_theme/main/screenshots/theme-studio.webp

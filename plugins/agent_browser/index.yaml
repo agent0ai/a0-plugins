@@ -1,0 +1,9 @@
+title: A0 Agent Browser
+description: Native A0 tools for Vercel Agent Browser. Brings CDP-based browser automation into Agent Zero with anti-bot resistance via real Chrome Chromium instances.
+github: https://github.com/TurkerTunali/a0-agent-browser
+tags:
+  - browser
+  - automation
+  - cdp
+  - web
+  - tools

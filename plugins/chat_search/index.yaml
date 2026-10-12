@@ -1,0 +1,7 @@
+title: Chat Search
+description: Search all your chats by keyword or phrase. A magnifying-glass button in the sidebar opens a search panel showing matching chats with highlighted snippets, a live preview pane, keyboard navigation, and click-to-jump to the exact message.
+github: https://github.com/bdunn77/a0-chat-search
+tags:
+  - tools
+  - workflow
+  - integration

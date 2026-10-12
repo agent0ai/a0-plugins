@@ -1,0 +1,7 @@
+title: Cline Pass
+description: Use your Cline Pass subscription as a model provider in Agent Zero. Adds a clinepass provider with forced streaming for utility tasks and an auto-updating catalog of your subscription models.
+github: https://github.com/JordiPeris/a0_cline_pass
+tags:
+  - llm
+  - integration
+  - api

@@ -1,0 +1,9 @@
+title: A0 Self-Improvement
+description: A0 Self-Improvement 2.1.1 fixes metadata-only candidate evidence and skips empty RLM calls, with governed replay, canaries, signed promotion, monitoring, and rollback.
+github: https://github.com/TerminallyLazy/a0-self-improvement
+tags:
+  - llm
+  - prompting
+  - agents
+  - automation
+  - development

@@ -54,7 +54,8 @@ PRs are automatically checked for:
   - `title` max length: 50 characters
   - `description` max length: 500 characters
   - `github` must be a GitHub repository URL that exists and contains `plugin.yaml` at the repository root
-  - The plugin folder name in this index (for example `plugins/my_plugin/`) must exactly match the `name` field in the remote repository's root `plugin.yaml`
+  - The plugin folder name in this index (for example `plugins/my_plugin/`) must use lowercase letters, numbers, and underscores only (regex: `^[a-z0-9_]+$`)
+  - The `name` field in the remote repository's root `plugin.yaml` must use the same format and exactly match the plugin folder name in this index
   - `tags` (if present) must be a list of strings, up to 5
   - `screenshots` (if present) must be a list of full image URLs, up to 5
 - **Thumbnail rules (optional)**
@@ -84,7 +85,7 @@ Generated fallback thumbnails, when created automatically, are stored separately
 generated/thumbnails/<your_plugin_name>/thumbnail.jpg
 ```
 
-The folder name under `plugins/` is authoritative in this index and must exactly match the `name` in your remote repository's root `plugin.yaml`.
+The folder name under `plugins/` is authoritative in this index, must use lowercase letters, numbers, and underscores only, and must exactly match the `name` in your remote repository's root `plugin.yaml`.
 
 ### `index.yaml` format
 
@@ -94,7 +95,7 @@ Required fields:
 
 - **`title`**: Human-readable plugin name
 - **`description`**: One-sentence description
-- **`github`**: URL of the plugin repository (its root `plugin.yaml` must include a `name` field that exactly matches your folder name in this index: `plugins/<your_plugin_name>/`)
+- **`github`**: URL of the plugin repository (its root `plugin.yaml` must include a `name` field that uses lowercase letters, numbers, and underscores only and exactly matches your folder name in this index: `plugins/<your_plugin_name>/`)
 
 Optional fields:
 
@@ -133,3 +134,11 @@ Use tags from [`TAGS.md`](./TAGS.md) where possible (recommended: up to 5 tags):
 By contributing to this repository, you agree that your submission must not contain malicious content.
 
 If we detect malicious behavior (including but not limited to malware, credential theft, obfuscation intended to hide harmful behavior, or supply-chain attacks), the submission will be removed and **we will report it** to the relevant platforms and/or authorities. **Legal action may be taken if needed.**
+
+## Index maintenance
+
+The `generated-index` release serves `index.json`. The shared publisher uploads and verifies `index.json.next` before renaming the current index to `index.json.previous` and promoting the new index. The previous copy is retained for recovery. These renames are not atomic; the downloader can use a completed recovery asset if the main file is missing, and the next publisher restores it before continuing. Workflow downloads include the asset ID to avoid cached redirects to an older upload. Keep the existing workflow serialization enabled.
+
+If the release or all usable index assets are missing, manually run **Generate Plugin State** on `main` with **rebuild_index** enabled. This starts a complete index from repository metadata, ignores plugin/diff/offset/cleanup selections, and verifies that all eligible plugins are included before publishing. `max_plugins` remains a safety limit and must cover the whole catalog. Normal runs still require a valid existing index. Rebuilds also sync plugin discussions; repository statistics are refreshed by the existing stats workflow.
+
+After recovery, check the public [index download](https://github.com/agent0ai/a0-plugins/releases/download/generated-index/index.json). Run the offline publication regression check with `python scripts/test_index_release.py`.

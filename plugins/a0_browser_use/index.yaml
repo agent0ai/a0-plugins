@@ -1,0 +1,9 @@
+title: A0 Classic Browser
+description: Legacy browser-use automation plugin for Agent Zero. Preserves the classic browser_agent tool and model-preset status UI while reusing the native Browser plugin's shared Playwright runtime.
+github: https://github.com/3clyp50/a0_browser_use
+tags:
+  - browser
+  - automation
+  - tools
+  - agents
+  - workflow

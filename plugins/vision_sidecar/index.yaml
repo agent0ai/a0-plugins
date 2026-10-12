@@ -1,0 +1,7 @@
+title: Vision Sidecar
+description: More tolerant vision_load + addition of a Vision Model. When a non vision-capable Main calls vision_load, it can add a specific query to send together with the image(s) to the vision model.
+github: https://github.com/GreifMax/a0-vision-sidecar
+tags:
+  - tools
+  - vision
+  - llm

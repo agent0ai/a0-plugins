@@ -1,5 +1,6 @@
 import json
 import os
+import time
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -165,7 +166,7 @@ def _create_release(owner: str, repo: str) -> dict[str, Any]:
     return rel
 
 
-def _upload_asset(owner: str, repo: str, release: dict[str, Any], asset_name: str, content: bytes) -> None:
+def _upload_asset(owner: str, repo: str, release: dict[str, Any], asset_name: str, content: bytes) -> dict[str, Any]:
     upload_url_tmpl = release.get("upload_url")
     if not isinstance(upload_url_tmpl, str) or "{" not in upload_url_tmpl:
         _fail("Release upload_url missing")
@@ -189,9 +190,6 @@ def _upload_asset(owner: str, repo: str, release: dict[str, Any], asset_name: st
         with urllib.request.urlopen(req, timeout=60) as resp:
             payload = resp.read().decode("utf-8", errors="replace")
     except urllib.error.HTTPError as e:
-        if e.code == 422:
-            # Asset already exists (common when two publishers race). Caller can delete and retry.
-            raise
         msg = e.read().decode("utf-8", errors="replace") if hasattr(e, "read") else str(e)
         _fail(f"Asset upload failed ({e.code}) POST {url}: {msg}")
     except Exception as e:
@@ -199,21 +197,47 @@ def _upload_asset(owner: str, repo: str, release: dict[str, Any], asset_name: st
 
     try:
         parsed = json.loads(payload)
-    except Exception:
-        parsed = None
+    except ValueError as e:
+        _fail(f"Asset upload returned invalid JSON: {e}")
 
-    if isinstance(parsed, dict) and parsed.get("name") == asset_name:
-        print(f"Uploaded asset: {asset_name}")
-        return
+    if (
+        not isinstance(parsed, dict)
+        or not isinstance(parsed.get("id"), int)
+        or parsed.get("name") != asset_name
+        or parsed.get("state") != "uploaded"
+        or parsed.get("size") != len(content)
+    ):
+        _fail(f"Asset upload was not complete: {asset_name}")
 
     print(f"Uploaded asset: {asset_name}")
+    return parsed
 
 
 def _delete_asset(owner: str, repo: str, asset_id: int) -> None:
-    _request_nojson(
-        "DELETE",
-        f"https://api.github.com/repos/{owner}/{repo}/releases/assets/{asset_id}",
-    )
+    url = f"https://api.github.com/repos/{owner}/{repo}/releases/assets/{asset_id}"
+    try:
+        _request_nojson("DELETE", url)
+    except PublishReleaseError:
+        if _request_json_allow_404("GET", url) is not None:
+            raise
+
+
+def _rename_asset(owner: str, repo: str, asset_id: int, name: str) -> None:
+    url = f"https://api.github.com/repos/{owner}/{repo}/releases/assets/{asset_id}"
+    for attempt in range(3):
+        try:
+            # A failed response may still have changed the name on GitHub.
+            asset = _request_json("GET", url)
+            if asset.get("name") == name:
+                return
+            asset = _request_json("PATCH", url, {"name": name})
+            if asset.get("name") != name:
+                _fail(f"Asset rename did not return the expected name: {name}")
+            return
+        except PublishReleaseError:
+            if attempt == 2:
+                raise
+            time.sleep(2)
 
 
 def main() -> int:
@@ -226,6 +250,12 @@ def main() -> int:
         return 0
 
     content = INDEX_PATH.read_bytes()
+    try:
+        index = json.loads(content)
+    except ValueError as e:
+        _fail(f"Invalid index JSON: {e}")
+    if not isinstance(index, dict) or not isinstance(index.get("plugins"), dict) or not index["plugins"]:
+        _fail("Refusing to publish an index without a non-empty plugins object")
 
     release_opt = _get_latest_release(owner, repo)
     if not release_opt:
@@ -241,31 +271,38 @@ def main() -> int:
     # Fetch full release payload (assets can be truncated/absent depending on endpoint used)
     release = _get_release(owner, repo, rid)
 
-    def _delete_existing_assets(release_payload: dict[str, Any]) -> None:
-        assets = release_payload.get("assets")
-        if not isinstance(assets, list):
-            return
-        for a in assets:
-            if not isinstance(a, dict):
-                continue
-            if a.get("name") != asset_name:
-                continue
-            aid = a.get("id")
-            if isinstance(aid, int):
-                print(f"Deleting existing asset: {asset_name} (id={aid})")
-                _delete_asset(owner, repo, aid)
+    assets = {a["name"]: a for a in release.get("assets", [])}
+    next_name = f"{asset_name}.next"
+    previous_name = f"{asset_name}.previous"
+    current = assets.get(asset_name)
 
-    # Safer replacement strategy: try upload first; if it already exists (422), delete and retry.
+    # Finish an interrupted publication before replacing any recovery assets.
+    if current is None:
+        for name in (next_name, previous_name):
+            asset = assets.get(name)
+            if asset and asset.get("state") == "uploaded" and asset.get("size", 0) > 0:
+                _rename_asset(owner, repo, asset["id"], asset_name)
+                current = assets.pop(name)
+                break
+
+    if next_name in assets:
+        _delete_asset(owner, repo, assets[next_name]["id"])
+    staged = _upload_asset(owner, repo, release, next_name, content)
+
+    if current and previous_name in assets:
+        _delete_asset(owner, repo, assets[previous_name]["id"])
+
     try:
-        _upload_asset(owner, repo, release, asset_name, content)
-    except urllib.error.HTTPError as e:
-        if e.code != 422:
-            raise
-        print(f"Asset already exists ({asset_name}); deleting and retrying")
-        _delete_existing_assets(release)
-        # Refresh release assets after deletion
-        release = _get_release(owner, repo, rid)
-        _upload_asset(owner, repo, release, asset_name, content)
+        if current:
+            _rename_asset(owner, repo, current["id"], previous_name)
+        _rename_asset(owner, repo, staged["id"], asset_name)
+    except PublishReleaseError:
+        if current:
+            try:
+                _rename_asset(owner, repo, current["id"], asset_name)
+            except PublishReleaseError as e:
+                print(f"WARN: Unable to restore {asset_name}; recovery assets retained: {e}")
+        raise
 
     html = release.get("html_url")
     if isinstance(html, str):

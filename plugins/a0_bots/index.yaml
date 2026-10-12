@@ -1,0 +1,9 @@
+title: Bots
+description: Adds a WhatsApp-style Agents list to the sidebar with persistent profile chats, pinning, hiding, and quick agent management.
+github: https://github.com/3clyp50/a0_bots
+tags:
+  - agents
+  - ui
+  - workflow
+screenshots:
+  - https://raw.githubusercontent.com/3clyp50/a0_bots/main/webui/screenshot.webp

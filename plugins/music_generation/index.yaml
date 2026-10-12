@@ -1,0 +1,14 @@
+title: Music Generation
+description: >-
+  Generate music from text prompts using Google Lyria 3 Pro via OpenRouter.
+  Create original compositions with control over genre, instrumentation, mood,
+  tempo, key, and structure. Streams audio in real-time via SSE. Outputs WAV or
+  MP3 (auto-detected). Uses Agent Zero's existing OpenRouter API key — no
+  additional setup required.
+github: https://github.com/Mustard5/music_generation
+tags:
+  - audio
+  - music
+  - generation
+  - api
+  - openrouter
