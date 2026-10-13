@@ -1,0 +1,9 @@
+title: A0 Privacy Suite - Local Guard
+description: Locally masks detected personal details in supported model text and provides local memory embeddings. Independent A0 Privacy Suite community beta; detection has limits.
+github: https://github.com/mgr-de/a0-local-privacy-guard
+tags:
+  - security
+  - llm
+  - embeddings
+screenshots:
+  - https://raw.githubusercontent.com/mgr-de/a0-local-privacy-guard/main/docs/community-beta-config.png
