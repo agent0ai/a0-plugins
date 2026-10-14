@@ -1,0 +1,12 @@
+title: Synthetic Context
+description: 'Renders runtime-injected context (Agent Zero extras: memory recall decks,
+  summary decks, heartbeat and job context) as automatic tool results instead of a
+  trailing user message. The model receives each block as the output of a framework-only
+  background tool that is never advertised and cannot be called — passive context
+  without fake user messages.'
+github: https://github.com/Nicfox77/a0-plugin-synthetic-context
+tags:
+- prompting
+- tools
+- framework
+- agents
