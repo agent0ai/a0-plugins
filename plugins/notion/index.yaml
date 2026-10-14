@@ -1,0 +1,12 @@
+title: Notion
+description: >-
+  Notion connector for Agent Zero — agent-facing search/read tools via a
+  bundled local stdio MCP server, plus ingestion atoms for knowledge
+  pipelines. Token stays in the a0 secrets vault.
+github: https://github.com/duketopceo/a0-plugin-notion
+tags:
+  - notion
+  - integration
+  - documents
+  - search
+  - rag
