@@ -1,0 +1,10 @@
+title: Project Sidebar
+description: Replaces the default chats list with a project-grouped sidebar view. Chats are organized under collapsible project headers sorted by most recent activity. Includes edit shortcuts, status indicators, and interoperability data attributes for other plugins.
+github: https://github.com/mbradaschia/a0-project-sidebar
+tags:
+  - ui
+  - web
+  - workflow
+  - tools
+screenshots:
+  - https://raw.githubusercontent.com/mbradaschia/a0-project-sidebar/main/webui/thumbnail.png
