@@ -1,0 +1,9 @@
+title: You.com Search
+description: Adds a youcom_search tool next to the built-in SearXNG search_engine. Works with no key or account (100 searches a day); an optional YDC_API_KEY switches to the keyed Search API. When the free limit is hit, it falls back to SearXNG automatically. SearXNG stays the default.
+github: https://github.com/brainsparker/a0-youcom-search
+tags:
+  - web-search
+  - search
+  - tools
+  - api
+  - integration
