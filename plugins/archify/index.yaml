@@ -1,0 +1,5 @@
+title: "Archify Diagrams"
+description: "Turn plain-language requests into validated, interactive Archify diagrams in Agent Zero chat: architecture, workflow, sequence, ERD and six more types, rendered locally with PNG/SVG/WebM export."
+github: "https://github.com/3clyp50/archify"
+tags: ["tools", "workflow", "development", "ui", "image"]
+screenshots: ["https://raw.githubusercontent.com/3clyp50/archify/main/webui/screenshot.png"]

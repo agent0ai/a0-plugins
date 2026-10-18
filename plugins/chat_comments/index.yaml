@@ -1,0 +1,11 @@
+title: Chat Comments
+description: >-
+  Google-Docs-style comments for Agent Zero chats — select text in any message
+  to attach a note, and one click bundles all comments into a single review
+  request the agent addresses in one turn.
+github: https://github.com/agent-zero-plugins/agent-zero-plugin-chat-comments
+tags:
+  - ui
+  - workflow
+  - agents
+  - prompting

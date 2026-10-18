@@ -1,0 +1,9 @@
+title: A0 Privacy Suite - Manager
+description: Coordinates Local Guard and Model Gateway across profiles, with explicit optional unmasked Developer chats and Secret screening on supported text paths. Independent A0 Privacy Suite community beta (0.9.3).
+github: https://github.com/mgr-de/a0-requesty-privacy-agent
+tags:
+  - security
+  - agents
+  - integration
+screenshots:
+  - https://raw.githubusercontent.com/mgr-de/a0-requesty-privacy-agent/main/docs/community-beta-config.png

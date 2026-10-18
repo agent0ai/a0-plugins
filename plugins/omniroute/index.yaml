@@ -1,0 +1,21 @@
+# Agent Zero Plugin Hub manifest for the omniroute plugin.
+# The hub repo (agent0ai/a0-plugins) indexes plugins via
+# plugins/<name>/index.yaml + thumbnail.png; this file mirrors that
+# manifest so it ships with the plugin itself.
+# CI rules: title <= 50 chars, description <= 500 chars, <= 5 tags
+# from the hub's TAGS.md, folder name == plugin.yaml name, repo
+# public + has LICENSE.
+title: OmniRoute AI Gateway
+description: >-
+  One local gateway behind Agent Zero — 290+ LLM providers through a single
+  OpenAI-compatible endpoint, with 4-tier auto-fallback (Subscription →
+  API Key → Cheap → Free) and a ready-made auto/utility-free route tuned
+  for the utility model. Free-tier first: no API keys required to start.
+  Live dashboard inline in Settings, one-click PowerShell installer, usage
+  analytics, and a quickstart skill for the agent.
+github: https://github.com/Olszalsik/a0-omniroute
+tags:
+  - llm
+  - docker
+  - integration
+  - automation

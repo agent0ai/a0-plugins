@@ -1,0 +1,9 @@
+title: A0 Privacy Suite - Model Gateway
+description: Independent Requesty connection with EU routing and provider data requirements checked against catalog metadata. A0 Privacy Suite community beta (0.9.3); local PII masking is a separate companion.
+github: https://github.com/mgr-de/a0-requesty-privacy-guard
+tags:
+  - security
+  - llm
+  - api
+screenshots:
+  - https://raw.githubusercontent.com/mgr-de/a0-requesty-privacy-guard/main/docs/community-beta-config.png

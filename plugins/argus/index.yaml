@@ -1,0 +1,8 @@
+title: Argus PR Reviewer
+description: AI pull-request review and recorded-flow replay for GitHub PRs via the argus-reviewer CLI — verdicts, findings, and cost narrated into chat, optional sticky PR comments. BYOK through OpenRouter.
+github: https://github.com/duketopceo/a0-plugin-argus
+tags:
+  - github
+  - code-review
+  - testing
+  - tools

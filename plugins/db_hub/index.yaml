@@ -1,0 +1,12 @@
+title: Database Hub
+description: A database workspace and nine agent tools for SQL, vector and graph stores, with schema exploration, reviewed edits, table creation and optional replicated agent memory. Verified with Agent Zero 2.14.
+github: https://github.com/TerminallyLazy/a0-db-hub
+tags:
+  - tools
+  - database
+  - memory
+  - vector-db
+  - ui
+screenshots:
+  - https://raw.githubusercontent.com/TerminallyLazy/a0-db-hub/v1.0.0/docs/images/provider-catalog.jpg
+  - https://raw.githubusercontent.com/TerminallyLazy/a0-db-hub/v1.0.0/docs/images/table-designer.jpg

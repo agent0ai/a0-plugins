@@ -1,0 +1,6 @@
+title: Parallel Watchdog
+description: Wake idle parent agents when parallel background jobs (dispatched with wait:false) reach a terminal state - success, error, timeout or cancelled - via a job_loop tick extension, so results and failures are never left unnoticed by an idle agent.
+github: https://github.com/momo2002/a0_parallel_watchdog
+tags:
+  - tools
+  - workflow
