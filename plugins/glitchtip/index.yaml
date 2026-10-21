@@ -1,0 +1,12 @@
+title: GlitchTip Error Tracking
+description: >-
+  Reports unhandled agent-loop and API exceptions to a self-hosted
+  GlitchTip (Sentry-compatible) instance, tagged with an OTel-compatible
+  trace ID for correlation with Langfuse traces. Stdlib-only, zero
+  dependencies.
+github: https://github.com/duketopceo/a0-plugin-glitchtip
+tags:
+  - monitoring
+  - development
+  - api
+  - tools
