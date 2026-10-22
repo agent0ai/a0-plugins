@@ -1,0 +1,9 @@
+title: Model Fallback System
+description: Rotates through fallback models when a provider rate-limits, times out or errors. Shared cooldowns, permanent-failure detection and adaptive timeouts keep Agent Zero running through hour-long quota resets. No core file edits.
+github: https://github.com/Olszalsik/a0-model-fallback
+tags:
+  - llm
+  - api
+  - agents
+  - workflow
+  - monitoring
