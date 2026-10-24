@@ -1,0 +1,12 @@
+title: Meshtastic A0
+description: >-
+  Chat bridge and messaging between Agent Zero and a Meshtastic LoRa mesh node over the
+  Meshtastic TCP API. Routes inbound mesh DMs into Agent Zero and replies back over the
+  radio, plus agent tools to read nodes and send DMs or broadcasts.
+github: https://github.com/AgentXenAI/a0-meshtastic
+tags:
+  - integration
+  - tools
+  - automation
+  - monitoring
+  - api
