@@ -1,0 +1,10 @@
+title: RTK Compression
+description: >-
+  Thin fail-open adapter that routes Agent Zero terminal commands through the RTK CLI for output compression.
+  Install automatically downloads the pinned RTK binary; uninstall removes plugin files only and leaves the RTK binary user-owned.
+github: https://github.com/rotarurazvan07/rtk-a0
+tags:
+  - tools
+  - cli
+  - agents
+  - development
