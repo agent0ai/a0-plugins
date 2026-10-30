@@ -1,0 +1,8 @@
+title: FXMacroData
+description: Official-source macroeconomic research with 98 native tools for calendars, histories, FX rates, commodities, COT and central-bank analysis. Public USD evaluation; optional subscriber access. Model and data costs are separate.
+github: https://github.com/fxmacrodata/agent-zero-fxmacrodata
+tags:
+  - tools
+  - integration
+  - api
+  - research
