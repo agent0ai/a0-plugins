@@ -1,0 +1,17 @@
+title: Neuro Core
+description: Explainable, structured long-term memory for Agent Zero - typed categories,
+  a relationship graph, transparent scoring, lifecycle maintenance, and an interactive
+  Context Graph that shows why every memory ranked where it did.
+github: https://github.com/thirdeyenation/Neuro-Core
+tags:
+- memory
+- rag
+- embeddings
+- sqlite
+- agents
+screenshots:
+- https://raw.githubusercontent.com/thirdeyenation/Neuro-Core/main/docs/screenshots/screenshot_1_darkmode.png
+- https://raw.githubusercontent.com/thirdeyenation/Neuro-Core/main/docs/screenshots/shot_2.png
+- https://raw.githubusercontent.com/thirdeyenation/Neuro-Core/main/docs/screenshots/shot_3_basic_settings.png
+- https://raw.githubusercontent.com/thirdeyenation/Neuro-Core/main/docs/screenshots/shot_3_advanced_settings.png
+- https://raw.githubusercontent.com/thirdeyenation/Neuro-Core/main/docs/screenshots/shot_3_advanced_settings_continued-2_of_3.png
