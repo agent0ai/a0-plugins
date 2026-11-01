@@ -3,5 +3,6 @@ description: Use your Cline Pass subscription as a model provider in Agent Zero.
 github: https://github.com/JordiPeris/a0_cline_pass
 tags:
   - llm
+  - provider
   - integration
   - api

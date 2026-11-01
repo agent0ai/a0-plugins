@@ -3,4 +3,5 @@ description: Adds TrustedRouter as an OpenAI-compatible chat and embedding provi
 github: https://github.com/Lore-Hex/agent-zero-trustedrouter
 tags:
   - llm
+  - provider
   - integration

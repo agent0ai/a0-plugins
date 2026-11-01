@@ -3,4 +3,5 @@ description: Adds Xiaomi MiMo models (mimo-v2-flash, mimo-v2-pro, mimo-v2-omni, 
 github: https://github.com/wgnr-ai/xiaomi-mimo-provider
 tags:
   - llm
+  - provider
   - integration

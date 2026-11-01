@@ -3,5 +3,6 @@ description: Adds Kilo Code Gateway as an OpenAI-compatible LLM provider for Age
 github: https://github.com/cstreil/a0-plugin-kilo-code-gateway
 tags:
   - llm
+  - provider
   - integration
   - development

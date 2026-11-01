@@ -1,0 +1,9 @@
+title: Notification Logs
+description: Keep the latest 1,000 notifications in your browser, including temporary errors that disappear from the bell's notification list. Open Logs to search, filter, expand, and copy full messages. History survives reloads, stays local to each browser and address, and remains until cleared or aged out by the entry limit. Requires Agent Zero's notification extension points.
+github: https://github.com/3clyp50/a0-notification-logs
+tags:
+  - ui
+  - monitoring
+  - development
+screenshots:
+  - https://raw.githubusercontent.com/3clyp50/a0-notification-logs/main/docs/notification-logs.png

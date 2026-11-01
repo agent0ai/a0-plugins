@@ -3,6 +3,7 @@ description: Adds OpenCode Go and Zen model gateway providers to Agent Zero mode
 github: https://github.com/3clyp50/a0_opencode_go
 tags:
   - llm
+  - provider
   - api
   - integration
   - development

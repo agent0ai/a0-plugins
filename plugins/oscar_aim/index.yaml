@@ -4,8 +4,8 @@ github: https://github.com/TerminallyLazy/oscar_aim
 tags:
   - agents
   - integration
-  - workflow
   - security
   - ui
+  - channels
 screenshots:
   - https://raw.githubusercontent.com/TerminallyLazy/oscar_aim/main/docs/screenshots/dashboard.png

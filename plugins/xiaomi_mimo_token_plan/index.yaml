@@ -3,5 +3,6 @@ description: Adds Xiaomi MiMo Token Plan EU/AMS as an OpenAI-compatible LLM prov
 github: https://github.com/cstreil/a0-plugin-xiaomi-mimo-token-plan
 tags:
   - llm
+  - provider
   - integration
   - development

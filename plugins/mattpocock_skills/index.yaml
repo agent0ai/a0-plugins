@@ -1,0 +1,7 @@
+title: Matt Pocock Skills
+description: Installs Matt Pocock's engineering and productivity skills into Agent Zero — TDD, code review, bug diagnosis, spec and ticket flows, domain modelling, grilling, teach and handoff among 25 skills, each with a matching slash command. Upstream is fetched at install time and can be re-synced on demand, so new skills arrive without manual work.
+github: https://github.com/MarkoSchuetz/a0-mattpocock-skills
+tags:
+  - workflow
+  - development
+  - agents

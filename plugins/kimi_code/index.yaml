@@ -3,5 +3,6 @@ description: Adds Kimi Code as an OpenAI-compatible coding LLM provider for Agen
 github: https://github.com/cstreil/a0-plugin-kimi-code
 tags:
   - llm
+  - provider
   - integration
   - development

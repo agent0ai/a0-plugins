@@ -3,4 +3,5 @@ description: Adds Inception Labs (mercury-2) as a chat LLM provider option in Ag
 github: https://github.com/Raleksand/inception_provider
 tags:
   - llm
+  - provider
   - integration

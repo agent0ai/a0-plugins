@@ -3,6 +3,7 @@ description: Registers AnonRouter as an OpenAI-compatible chat and embedding pro
 github: https://github.com/anonrouterai/agent-zero-anonrouter
 tags:
   - llm
+  - provider
   - embeddings
   - integration
   - api

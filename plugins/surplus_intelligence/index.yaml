@@ -3,5 +3,6 @@ description: Use Surplus Intelligence in Agent Zero's model configuration with n
 github: https://github.com/3clyp50/surplus-intelligence
 tags:
   - llm
+  - provider
   - api
   - integration

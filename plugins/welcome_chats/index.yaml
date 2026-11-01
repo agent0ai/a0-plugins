@@ -1,0 +1,8 @@
+title: Welcome Chats
+description: Find conversations and search message text from the welcome screen. Reuses sidebar chat rows, project folders, sorting, and filters in a responsive panel with half/full-width layout and drag ordering.
+github: https://github.com/3clyp50/welcome_chats
+tags:
+  - welcome
+  - search
+  - ui
+  - workflow

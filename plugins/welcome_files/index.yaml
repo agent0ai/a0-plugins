@@ -1,0 +1,8 @@
+title: Welcome Files
+description: Browse folders, filter files, and open them in Agent Zero directly from a responsive welcome-screen panel. Supports half/full width, drag ordering, and dismissal on customizable welcome layouts.
+github: https://github.com/3clyp50/welcome_files
+tags:
+  - welcome
+  - files
+  - ui
+  - workflow

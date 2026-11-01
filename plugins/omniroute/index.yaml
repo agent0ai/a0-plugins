@@ -16,6 +16,7 @@ description: >-
 github: https://github.com/Olszalsik/a0-omniroute
 tags:
   - llm
+  - provider
   - docker
   - integration
   - automation

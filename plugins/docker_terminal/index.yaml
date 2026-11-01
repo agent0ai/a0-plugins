@@ -1,7 +1,8 @@
 title: Docker Terminal
-description: Embedded multi-session terminal panel for Agent Zero with tabbed PTY sessions inside the chat UI.
+description: Interactive multi-session terminal for Agent Zero, available in chat and as a movable welcome-screen panel with responsive half/full-width layout.
 github: https://github.com/3clyp50/docker_terminal
 tags:
+  - welcome
   - development
   - tools
   - workflow
