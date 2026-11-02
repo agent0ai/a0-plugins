@@ -1,0 +1,14 @@
+title: Jev Compact — Span-Scored Context Compaction
+description: >-
+  Span-level context compaction for a0 chats. Scores transcript spans
+  against a moving work-highlight (heuristic offline, or TypeSafe Jev /
+  OpenRouter Decisions when a key is configured), keeps high-value spans
+  verbatim, tombstones the rest — every tombstone restores verbatim via
+  the bundled a0_jev_compact MCP server. Non-destructive.
+github: https://github.com/duketopceo/a0-plugin-jev-compact
+tags:
+  - memory
+  - llm
+  - prompting
+  - workflow
+  - agents
