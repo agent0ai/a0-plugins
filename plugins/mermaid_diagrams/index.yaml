@@ -1,0 +1,12 @@
+title: Mermaid Diagrams
+description: >-
+  Renders Mermaid code blocks as interactive SVG diagrams directly in the chat UI, so flowcharts,
+  sequence diagrams, class and ER diagrams, state machines, mindmaps and timelines appear as
+  pictures instead of raw syntax. Ships a skill that teaches the agent Mermaid syntax plus a
+  behavioural nudge to reach for a diagram when a user asks to be shown a process, architecture
+  or set of relationships.
+github: https://github.com/agent-zero-plugins/agent-zero-plugin-mermaid-diagrams
+tags:
+  - ui
+  - documents
+  - workflow
