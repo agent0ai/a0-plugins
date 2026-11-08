@@ -1,0 +1,9 @@
+title: Code Intelligence
+description: Language-server diagnostics, semantic navigation and reviewed edits, plus Python and Node.js debugging in Agent Zero projects.
+github: https://github.com/TerminallyLazy/a0-code-intelligence
+tags:
+  - development
+  - tools
+  - monitoring
+  - workflow
+  - docker

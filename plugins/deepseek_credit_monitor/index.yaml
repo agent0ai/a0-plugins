@@ -1,0 +1,11 @@
+title: DeepSeek Credit Monitor
+description: Displays the current DeepSeek API account balance in the Agent Zero WebUI sidebar. Features multi-currency balance display (USD/CNY), currency-aware low-balance alerts, a details popover, and secure server-side API calls with the key stored in Agent Zero's secret store.
+github: https://github.com/jphermans/deepseek-credit-monitor
+tags:
+  - deepseek
+  - balance
+  - credits
+  - monitoring
+  - api
+screenshots:
+  - https://raw.githubusercontent.com/jphermans/deepseek-credit-monitor/main/assets/repo-preview.png
