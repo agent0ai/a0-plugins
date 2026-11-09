@@ -1,0 +1,12 @@
+title: Preset API Keys
+description: Give each model preset its own API key, so usage and rate limits stay apart per project or per person. Presets without one keep using the provider key. Keys are set from a dialog, stored owner-only on the server, masked and never sent back to the browser.
+github: https://github.com/spcdatapro/preset-api-keys
+tags:
+  - llm
+  - secrets
+  - tools
+  - ui
+screenshots:
+  - https://raw.githubusercontent.com/spcdatapro/preset-api-keys/main/docs/keys.png
+  - https://raw.githubusercontent.com/spcdatapro/preset-api-keys/main/docs/set-key.png
+  - https://raw.githubusercontent.com/spcdatapro/preset-api-keys/main/docs/orphans.png
