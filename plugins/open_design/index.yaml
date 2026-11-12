@@ -1,0 +1,11 @@
+title: OpenDesign
+description: Create interactive designs with OpenDesign's systems and templates, preview them in Agent Zero's native canvas, and export standalone HTML. Uses your selected A0 model and preserves design revisions.
+github: https://github.com/3clyp50/a0-open-design
+tags:
+  - ui
+  - tools
+  - workflow
+  - integration
+screenshots:
+  - https://raw.githubusercontent.com/3clyp50/a0-open-design/main/docs/studio.png
+  - https://raw.githubusercontent.com/3clyp50/a0-open-design/main/docs/preview.png
