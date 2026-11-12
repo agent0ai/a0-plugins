@@ -1,0 +1,14 @@
+title: Chat History
+description: 'Queryable chat history for every conversation (main chat, subagents,
+  background jobs) in an embedded Postgres database (pg0, no extra containers): full-text
+  and semantic search, context inspection, and a live replica that never loses messages
+  to compaction. Embeddings use the embedding model already configured in model settings.
+  Optional Continuous Mode turns the primary chat into one infinite rolling conversation
+  with compaction summaries archived to a durable deck.'
+github: https://github.com/Nicfox77/a0-plugin-chat-history
+tags:
+- storage
+- database
+- search
+- agents
+- ui
