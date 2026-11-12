@@ -1,0 +1,10 @@
+title: Installable Web App (PWA)
+description: Makes the web UI installable with a public manifest, PNG icons, and mobile
+  home-screen metadata while preserving Agent Zero's versioned service worker. Works
+  through the tailscale-serve HTTPS frontend on desktop and mobile, including iOS
+  home-screen install.
+github: https://github.com/Nicfox77/a0-plugin-pwa-installable
+tags:
+- ui
+- web
+- integration
