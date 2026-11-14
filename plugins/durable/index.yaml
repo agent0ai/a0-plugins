@@ -1,0 +1,12 @@
+title: Durable Execution
+description: >-
+  Durable, restart-survivable agent tasks. Engine-agnostic contract with a
+  zero-dependency local SQLite-journal engine (default) and an optional
+  Restate adapter for operators running the Restate sidecar.
+github: https://github.com/duketopceo/a0-plugin-durable
+tags:
+  - jobs
+  - workflow
+  - sqlite
+  - automation
+  - scheduling
