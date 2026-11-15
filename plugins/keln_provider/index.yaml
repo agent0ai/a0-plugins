@@ -1,0 +1,7 @@
+title: Keln Provider
+description: Adds Keln as a chat model provider, with open models through an OpenAI-compatible API and automatic KELN_API_KEY mapping.
+github: https://github.com/kris-holy/agent-zero-keln-provider
+tags:
+  - llm
+  - provider
+  - integration
