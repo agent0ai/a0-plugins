@@ -1,0 +1,13 @@
+title: Sweeppea
+description: >
+  Official Sweeppea integration. Enter your API token once to access 70+ sweepstakes
+  management tools — create promotions, manage participants, draw winners, handle rules
+  and legal compliance. Automatically configures the Sweeppea MCP server, no technical
+  setup required.
+github: https://github.com/Sweeppea-Development-Lab/a0-sweeppea
+tags:
+  - sweepstakes
+  - mcp
+  - marketing
+  - integration
+  - compliance

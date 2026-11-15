@@ -1,0 +1,8 @@
+title: Fax for Agents
+description: Configure fax MCP tools and follow a sandbox send walkthrough in Agent Zero.
+github: https://github.com/faxforagents/agent-zero-plugin
+tags:
+  - integration
+  - documents
+  - workflow
+  - ui

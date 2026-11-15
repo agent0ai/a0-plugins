@@ -1,5 +1,5 @@
 title: Markdown Memory
-description: Shared Obsidian-compatible Markdown memory for every Agent Zero chat. Injects vault operating policy, recalls relevant notes semantically via local Ollama or cloud embeddings (Ollama Cloud, OpenRouter), and provides server-side memory_search and memory_reindex tools that also work in remote A0 CLI sessions. Vault stays in plain Markdown files, editable in Obsidian.
+description: Shared Obsidian-compatible Markdown memory for every Agent Zero chat, with semantic recall through local Ollama or cloud embeddings and server-side memory_search and memory_reindex tools that also work in remote A0 CLI sessions.
 github: https://github.com/jphermans/markdown-memory
 tags:
   - memory

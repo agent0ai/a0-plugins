@@ -1,0 +1,10 @@
+title: OpenMontage
+description: Video production with OpenMontage pipelines and Agent Zero as the orchestrator. Browse video types, create projects, inspect real checkpoints, and play or download rendered videos in a native panel.
+github: https://github.com/3clyp50/a0-openmontage
+tags:
+  - tools
+  - workflow
+  - integration
+  - ui
+screenshots:
+  - https://raw.githubusercontent.com/3clyp50/a0-openmontage/main/docs/studio.png
