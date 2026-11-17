@@ -1,0 +1,6 @@
+title: Desearch
+description: Search the web through hosted Desearch MCP and return ranked titles, links and snippets for source-backed answers. Requires a Desearch API key in the Agent Zero runtime environment.
+github: https://github.com/Desearch-ai/desearch-agent-zero
+tags:
+  - search
+  - research
