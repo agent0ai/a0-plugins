@@ -1,0 +1,11 @@
+title: Reverse Engineer Anything
+description: Reverse engineering workbench for Agent Zero. Live RE tool inventory with install hints, analysis workspaces with zip-safe file uploads, a shared history log, and a live sidebar activity indicator. Based on the leanrea method.
+github: https://github.com/jphermans/reverse_engineer_anything
+tags:
+  - tools
+  - files
+  - workflow
+  - development
+  - security
+screenshots:
+  - https://raw.githubusercontent.com/jphermans/reverse_engineer_anything/main/assets/repo-preview.png
