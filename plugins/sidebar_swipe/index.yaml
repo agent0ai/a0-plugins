@@ -1,0 +1,6 @@
+title: Sidebar Swipe
+description: Swipe from the left edge to open the Agent Zero sidebar on mobile, and swipe left to close it. Complements the built-in toggle button with guarded touch gestures.
+github: https://github.com/axbitinfo-jpg/sidebar_swipe
+tags:
+  - ui
+  - workflow
