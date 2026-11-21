@@ -1,0 +1,9 @@
+title: Keenable Search
+description: Adds a keenable_search tool next to the built-in SearXNG search_engine. Works with no key or account (1,000 requests an hour per IP); an optional KEENABLE_API_KEY switches to the keyed search API. On a rate limit it falls back to SearXNG. SearXNG stays the default.
+github: https://github.com/KGKallasmaa/a0-keenable-search
+tags:
+  - web-search
+  - search
+  - tools
+  - api
+  - integration
