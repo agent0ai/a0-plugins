@@ -1,9 +1,9 @@
 title: LinkedIn
-description: Manage approved LinkedIn posting workflows in Agent Zero, including account checks, text post publishing, and recent post retrieval.
+description: Publish approved LinkedIn posts from Agent Zero across multiple accounts and company pages, with account readiness checks, organization discovery, browser OAuth, and text or multi-image posting.
 github: https://github.com/gshock/a0-linkedin
 tags:
-  - social
-  - linkedin
-  - publishing
-  - marketing
-  - channels
+  - api
+  - oauth
+  - integration
+  - automation
+  - image
