@@ -1,0 +1,7 @@
+title: Backlog.md
+description: Markdown-native task manager and Kanban board. Gives the agent tools to create, list, review, and archive tasks with acceptance criteria, milestones, and dependencies inside any repository.
+github: https://github.com/MarkoSchuetz/a0-backlog-md
+tags:
+  - tools
+  - workflow
+  - storage
