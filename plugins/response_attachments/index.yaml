@@ -1,0 +1,8 @@
+title: Response Attachments
+description: Extract framework file markers into response attachments without core
+  patches.
+github: https://github.com/Nicfox77/a0-plugin-response-attachments
+tags:
+- files
+- tools
+- ui
