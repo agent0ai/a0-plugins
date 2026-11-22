@@ -1,0 +1,7 @@
+title: AIGROW Provider
+description: Adds AIGROW as a chat model provider, with Claude, GPT, Gemini, Grok, Qwen and Kimi models through an OpenAI-compatible API and automatic AIGROW_API_KEY mapping.
+github: https://github.com/guglielmo-io/agent-zero-aigrow-provider
+tags:
+  - llm
+  - provider
+  - integration

@@ -1,0 +1,10 @@
+title: Minecraft
+description: Build and explore Minecraft Java Edition from Agent Zero's right canvas or in-game @a0 chat. Install a separate Fabric profile, connect through Windows Launcher Host access, and use your existing model presets and authentication. Supports client controls on Realms and Agent Zero running locally or on a VPS, without shared folders.
+github: https://github.com/3clyp50/a0-minecraft-control
+tags:
+  - games
+  - automation
+  - integration
+  - ui
+screenshots:
+  - https://raw.githubusercontent.com/3clyp50/a0-minecraft-control/main/webui/preview.jpg
