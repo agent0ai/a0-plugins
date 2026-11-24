@@ -1,0 +1,9 @@
+title: deAPI
+description: Image, video, speech and music generation, transcription of files and YouTube/TikTok/X/Twitch/Kick links, video description and OCR through deAPI's hosted MCP server. Lists the server's tools at runtime, so new models appear without an update. Requires a deAPI API key in DEAPI_API_KEY.
+github: https://github.com/deapi-ai/deapi-agent-zero
+tags:
+  - image
+  - video
+  - audio
+  - tools
+  - api
