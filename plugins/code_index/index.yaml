@@ -1,0 +1,13 @@
+title: Code Index
+description: 'Automatic semantic code index for Agent Zero projects. Detects every
+  git repository in the active project folder (whole folder when there are none),
+  indexes incrementally on startup and file changes, and ships the code_search tool:
+  natural-language and symbol search across all repos with an optional repository
+  filter. Embeddings use the embedding model configured in Agent Zero model settings.'
+github: https://github.com/Nicfox77/a0-plugin-code-index
+tags:
+- development
+- search
+- embeddings
+- rag
+- tools
