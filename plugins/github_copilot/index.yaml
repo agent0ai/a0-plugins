@@ -1,0 +1,9 @@
+title: GitHub Copilot
+description: Claude Code/Codex-like GitHub integration for Agent Zero. Manage repos, files, PRs, issues, branches, code search, and git workflows directly from chat.
+github: https://github.com/jarmen423/github-copilot
+tags:
+  - tools
+  - integration
+  - git
+  - github
+  - workflow
