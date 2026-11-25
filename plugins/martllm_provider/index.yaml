@@ -1,0 +1,7 @@
+title: MartLLM Provider
+description: Adds MartLLM, a marketplace of third-party sellers with an OpenAI-compatible API, as a chat model provider with model discovery and MARTLLM_API_KEY mapping.
+github: https://github.com/al-global-tech/agent-zero-martllm
+tags:
+  - llm
+  - provider
+  - integration
