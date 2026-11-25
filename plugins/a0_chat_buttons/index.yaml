@@ -1,0 +1,10 @@
+title: A0 Chat Buttons
+description: Adds Copy URL, Rename, Close and Stop buttons to the chat action bar, an active-chat name chip with inline rename in the model strip, and a Rewind button on every finished answer.
+github: https://github.com/craig-halliday/a0_chat_buttons
+tags:
+  - ui
+  - workflow
+  - tools
+screenshots:
+  - https://raw.githubusercontent.com/craig-halliday/a0_chat_buttons/main/docs/action-bar.png
+  - https://raw.githubusercontent.com/craig-halliday/a0_chat_buttons/main/docs/chat-name-chip.png
