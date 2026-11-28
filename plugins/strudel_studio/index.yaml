@@ -1,0 +1,12 @@
+title: Strudel Studio
+description: Compose, perform, and record Strudel music alongside Agent Zero in a shared editor, with revision-checked agent edits, samples, scenes, a mixer, WAV recording, 27 creation and workflow skills, and optional Koala Sampler exchange.
+github: https://github.com/TerminallyLazy/a0-strudel-studio
+tags:
+  - audio
+  - tools
+  - workflow
+  - ui
+  - integration
+screenshots:
+  - https://raw.githubusercontent.com/TerminallyLazy/a0-strudel-studio/v0.1.0/docs/studio-wide.png
+  - https://raw.githubusercontent.com/TerminallyLazy/a0-strudel-studio/v0.1.0/docs/studio-narrow.png
